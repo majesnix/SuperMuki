@@ -126,7 +126,7 @@ class Bee {
     if (!debug) {
       if ((position.x-guyWidth/2)-(thePlayer.position.x+player1.width/2)<=1  && 
         (thePlayer.position.x-player1.width/2)-(position.x+guyWidth/2)<=1 &&
-        position.y-guyHeight*0.49<thePlayer.position.y && position.y>=thePlayer.position.y && thePlayer.velocity.y==0) {
+        position.y-guyHeight<thePlayer.position.y && position.y>=thePlayer.position.y && thePlayer.velocity.y==0) {
         thePlayer.calculateLifes();
       }
     }
