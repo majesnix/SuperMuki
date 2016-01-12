@@ -74,7 +74,7 @@ class Ninja {
         theWorld.worldSquareAt(position)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(position)==World.TILE_GRASS_RIGHT_TOP ||
         theWorld.worldSquareAt(position)==World.TILE_GRASS_LTR || theWorld.worldSquareAt(position)==World.TILE_STONE ||
         theWorld.worldSquareAt(position)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(position)==World.TILE_CLOUD ||
-        theWorld.worldSquareAt(position)==World.TILE_ALGE || || theWorld.worldSquareAt(position)==World.TILE_MAGIC) {
+        theWorld.worldSquareAt(position)==World.TILE_ALGE || theWorld.worldSquareAt(position)==World.TILE_MAGIC) {
         position.sub(velocity);
         velocity.x=0.0;
         velocity.y=0.0;

@@ -294,13 +294,6 @@ class Player {
       if (!checkpointTriggered) {
         coinsRemembered++;
       }
-    } else if (theWorld.worldSquareAt(position)==World.COIN) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      coinsCollected++;
-      if (!checkpointTriggered) {
-        coinsRemembered++;
-      }
     } else if (theWorld.worldSquareAt(topSide)==World.COIN) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -313,13 +306,6 @@ class Player {
       theWorld.setSquareAtToThis(centerOfPlayer, World.TILE_EMPTY);
       sndCoin.trigger();
       rubysCollected++;
-      if (!checkpointTriggered) {
-        rubysRemembered++;
-      }
-    } else if (theWorld.worldSquareAt(position)==World.RUBY) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      coinsCollected++;
       if (!checkpointTriggered) {
         rubysRemembered++;
       }
@@ -336,16 +322,6 @@ class Player {
      **************/
     if (theWorld.worldSquareAt(centerOfPlayer)==World.ITEM_DOMINIC_APPLE) {
       theWorld.setSquareAtToThis(centerOfPlayer, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      if (!checkpointTriggered) {
-        itemsRemembered++;
-      }
-      itembox.item1=true;
-      messages.textPosition=1;
-      storyDCL();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_DOMINIC_APPLE) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
       sndCoin.trigger();
       itemsCollected++;
       if (!checkpointTriggered) {
@@ -375,16 +351,6 @@ class Player {
       itembox.item2=true;
       messages.textPosition=1;
       storyDCL2();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_DOMINIC_BIER) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      if (!checkpointTriggered) {
-        itemsRemembered++;
-      }
-      itembox.item2=true;
-      messages.textPosition=1;
-      storyDCL2();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_DOMINIC_BIER) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -398,16 +364,6 @@ class Player {
     }
     if (theWorld.worldSquareAt(centerOfPlayer)==World.ITEM_DOMINIC_KAFFEE) {
       theWorld.setSquareAtToThis(centerOfPlayer, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      if (!checkpointTriggered) {
-        itemsRemembered++;
-      }
-      itembox.item3=true;
-      messages.textPosition=1;
-      storyDCL3();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_DOMINIC_KAFFEE) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
       sndCoin.trigger();
       itemsCollected++;
       if (!checkpointTriggered) {
@@ -437,16 +393,6 @@ class Player {
       messages.textPosition=1;
       itembox.item4=true;
       storyDCL4();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_DOMINIC_COMPUTER) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      if (!checkpointTriggered) {
-        itemsRemembered++;
-      }
-      itembox.item4=true;
-      messages.textPosition=1;
-      storyDCL4();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_DOMINIC_COMPUTER) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -465,13 +411,6 @@ class Player {
       messages.textPosition=1;
       itembox.item5=true;
       storyDCL5();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_DOMINIC_BURGER) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      itembox.item5=true;
-      messages.textPosition=1;
-      storyDCL5();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_DOMINIC_BURGER) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -487,13 +426,6 @@ class Player {
       messages.textPosition=1;
       itembox.item6=true;
       storyDCL6();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_DOMINIC_GOLF) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      itembox.item6=true;
-      messages.textPosition=1;
-      storyDCL6();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_DOMINIC_GOLF) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -508,13 +440,6 @@ class Player {
       itemsCollected++;
       messages.textPosition=1;
       itembox.item7=true;
-      storyDCL7();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_DOMINIC_JAVA) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      itembox.item7=true;
-      messages.textPosition=1;
       storyDCL7();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_DOMINIC_JAVA) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
@@ -537,13 +462,6 @@ class Player {
       messages.textPosition=1;
       itembox.item1=true;
       storyLENA();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_LENA_BRILLE) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      itembox.item1=true;
-      messages.textPosition=1;
-      storyLENA();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_LENA_BRILLE) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -561,16 +479,6 @@ class Player {
       }
       messages.textPosition=1;
       itembox.item2=true;
-      storyLENA2();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_LENA_HUND) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      if (!checkpointTriggered) {
-        itemsRemembered++;
-      }
-      itembox.item2=true;
-      messages.textPosition=1;
       storyLENA2();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_LENA_HUND) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
@@ -593,16 +501,6 @@ class Player {
       messages.textPosition=1;
       itembox.item3=true;
       storyLENA3();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_LENA_KUNST) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      if (!checkpointTriggered) {
-        itemsRemembered++;
-      }
-      itembox.item3=true;
-      messages.textPosition=1;
-      storyLENA3();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_LENA_KUNST) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -624,16 +522,6 @@ class Player {
       messages.textPosition=1;
       itembox.item4=true;
       storyLENA4();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_LENA_VEGGIE) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      if (!checkpointTriggered) {
-        itemsRemembered++;
-      }
-      itembox.item4=true;
-      messages.textPosition=1;
-      storyLENA4();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_LENA_VEGGIE) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -651,13 +539,6 @@ class Player {
       messages.textPosition=1;
       itembox.item5=true;
       storyLENA5();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_LENA_SPORT) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      itembox.item5=true;
-      messages.textPosition=1;
-      storyLENA5();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_LENA_SPORT) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -673,13 +554,6 @@ class Player {
       messages.textPosition=1;
       itembox.item6=true;
       storyLENA6();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_LENA_METAL) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      itembox.item6=true;
-      messages.textPosition=1;
-      storyLENA6();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_LENA_METAL) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -694,13 +568,6 @@ class Player {
       itemsCollected++;
       messages.textPosition=1;
       itembox.item7=true;
-      storyLENA7();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_LENA_NOTEN) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      itembox.item7=true;
-      messages.textPosition=1;
       storyLENA7();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_LENA_NOTEN) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
@@ -723,13 +590,6 @@ class Player {
       messages.textPosition=1;
       itembox.item1=true;
       storyCENNET();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_CENNET_BRILLE) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      itembox.item1=true;
-      messages.textPosition=1;
-      storyCENNET();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_CENNET_BRILLE) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -747,16 +607,6 @@ class Player {
       }
       messages.textPosition=1;
       itembox.item2=true;
-      storyCENNET2();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_CENNET_CAT) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      if (!checkpointTriggered) {
-        itemsRemembered++;
-      }
-      itembox.item2=true;
-      messages.textPosition=1;
       storyCENNET2();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_CENNET_CAT) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
@@ -779,16 +629,6 @@ class Player {
       messages.textPosition=1;
       itembox.item3=true;
       storyCENNET3();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_CENNET_BURGER) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      if (!checkpointTriggered) {
-        itemsRemembered++;
-      }
-      itembox.item3=true;
-      messages.textPosition=1;
-      storyCENNET3();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_CENNET_BURGER) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -810,16 +650,6 @@ class Player {
       messages.textPosition=1;
       itembox.item4=true;
       storyCENNET4();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_CENNET_SCHMINKE) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      if (!checkpointTriggered) {
-        itemsRemembered++;
-      }
-      itembox.item4=true;
-      messages.textPosition=1;
-      storyCENNET4();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_CENNET_SCHMINKE) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -838,13 +668,6 @@ class Player {
       messages.textPosition=1;
       itembox.item5=true;
       storyCENNET5();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_CENNET_KUNST) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      itembox.item5=true;
-      messages.textPosition=1;
-      storyCENNET5();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_CENNET_KUNST) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -860,13 +683,6 @@ class Player {
       messages.textPosition=1;
       itembox.item6=true;
       storyCENNET6();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_CENNET_NOTEN) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      itembox.item6=true;
-      messages.textPosition=1;
-      storyCENNET6();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_CENNET_NOTEN) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -881,13 +697,6 @@ class Player {
       itemsCollected++;
       messages.textPosition=1;
       itembox.item7=true;
-      storyCENNET7();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_CENNET_GAMEBOY) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      itembox.item7=true;
-      messages.textPosition=1;
       storyCENNET7();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_CENNET_GAMEBOY) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
@@ -910,16 +719,6 @@ class Player {
       messages.textPosition=1;
       itembox.item1=true;
       storyLORI();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_LORI_BRILLE) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      if (!checkpointTriggered) {
-        itemsRemembered++;
-      }
-      itembox.item1=true;
-      messages.textPosition=1;
-      storyLORI();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_LORI_BRILLE) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -940,16 +739,6 @@ class Player {
       }
       messages.textPosition=1;
       itembox.item2=true;
-      storyLORI2();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_LORI_COMPUTER) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      if (!checkpointTriggered) {
-        itemsRemembered++;
-      }
-      itembox.item2=true;
-      messages.textPosition=1;
       storyLORI2();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_LORI_COMPUTER) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
@@ -972,16 +761,6 @@ class Player {
       messages.textPosition=1;
       itembox.item3=true;
       storyLORI3();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_LORI_NOTEN) { 
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      if (!checkpointTriggered) {
-        itemsRemembered++;
-      }
-      itembox.item3=true;
-      messages.textPosition=1;
-      storyLORI3();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_LORI_NOTEN) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -1003,16 +782,6 @@ class Player {
       messages.textPosition=1;
       itembox.item4=true;
       storyLORI4();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_LORI_TOPF) {
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      if (!checkpointTriggered) {
-        itemsRemembered++;
-      }
-      itembox.item4=true;
-      messages.textPosition=1;
-      storyLORI4();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_LORI_TOPF) {
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -1031,13 +800,6 @@ class Player {
       messages.textPosition=1;
       itembox.item5=true;
       storyLORI5();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_LORI_SCHUHE) {
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      itembox.item5=true;
-      messages.textPosition=1;
-      storyLORI5();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_LORI_SCHUHE) {
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -1053,13 +815,6 @@ class Player {
       messages.textPosition=1;
       itembox.item6=true;
       storyLORI6();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_LORI_EIS) {
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      itembox.item6=true;
-      messages.textPosition=1;
-      storyLORI6();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_LORI_EIS) {
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
@@ -1074,13 +829,6 @@ class Player {
       itemsCollected++;
       messages.textPosition=1;
       itembox.item7=true;
-      storyLORI7();
-    } else if (theWorld.worldSquareAt(position)==World.ITEM_LORI_KUNST) {
-      theWorld.setSquareAtToThis(position, World.TILE_EMPTY);
-      sndCoin.trigger();
-      itemsCollected++;
-      itembox.item7=true;
-      messages.textPosition=1;
       storyLORI7();
     } else if (theWorld.worldSquareAt(topSide)==World.ITEM_LORI_KUNST) {
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
