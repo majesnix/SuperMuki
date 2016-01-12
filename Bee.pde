@@ -120,7 +120,6 @@ class Bee {
       thePlayer.velocity.y=-2.0;
     }
 
-
     /*******************************************
      **  Gegner berührt Player -> Player kill  **
      *******************************************/

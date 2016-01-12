@@ -701,7 +701,7 @@ void storyLENA5() {
 }//storyLENA5
 
 void storyLENA6() {
-  messages.s[0] = "Her favorite music is metal and her favorite\nbands are While She Sleeps and Bring Me The Horizon";
+  messages.s[0] = "Her favorite music is metal and her favorite\nbands are While She Sleeps and BMTH";
   messages.s[1] = "";
 
   messages.setText(messages.s[messages.index]);
