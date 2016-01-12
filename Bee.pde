@@ -133,6 +133,27 @@ class Bee {
     }
   }//checkForWallbumping
 
+  void checkForFalling() {
+    if (theWorld.worldSquareAt(position)==World.TILE_EMPTY) {
+      isOnGround=false;
+    }
+
+    if (isOnGround==false) {  
+      if (theWorld.worldSquareAt(position)==World.TILE_SOLID ||
+        theWorld.worldSquareAt(position)==World.TILE_SOLID2 || theWorld.worldSquareAt(position)==World.TILE_GRASS_LEFT ||
+        theWorld.worldSquareAt(position)==World.TILE_GRASS_RIGHT || theWorld.worldSquareAt(position)==World.TILE_GRASS_LTR ||
+        theWorld.worldSquareAt(position)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(position)==World.TILE_GRASS_RIGHT_TOP ||
+        theWorld.worldSquareAt(position)==World.TILE_STONE || theWorld.worldSquareAt(position)==World.TILE_LAVA_TOP ||
+        theWorld.worldSquareAt(position)==World.TILE_CLOUD  || theWorld.worldSquareAt(position)==World.TILE_ALGE) {
+        isOnGround = true;
+        position.y = theWorld.topOfSquare(position);
+        velocity.y = 0.0;
+      } else { // fall
+        velocity.y += GRAVITY_POWER;
+      }
+    }
+  }//checkForFalling
+
   /*******************************************
    **  Permanentes patrollieren des Gegners  **
    *******************************************/
@@ -159,6 +180,7 @@ class Bee {
     position.add(velocity);
 
     checkForWallBumping();
+    checkForFalling();
   }//move
 
   void draw() {
