@@ -881,6 +881,13 @@ class Player {
     }
   }//checkForCoinGetting
 
+  void checkForSpout(){
+    if (theWorld.worldSquareAt(position)==World.TILE_FON1 || theWorld.worldSquareAt(position)==World.TILE_FON2){
+      velocity.y=-10;
+    }
+
+  }
+
   /*******************
    ****** Fallen ******
    *******************/
@@ -947,6 +954,8 @@ class Player {
     checkForCoinGetting();
 
     checkForFalling();
+
+    checkForSpout();
   }//move
 
   /********************

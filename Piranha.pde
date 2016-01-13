@@ -1,8 +1,8 @@
 class Piranha {
-	pVector position, velocity
+	PVector position, velocity;
 	
 	Boolean isOnGround;
-	Boolean faceingRight;
+	Boolean facingRight;
 	Boolean moveLeft;
 	Boolean alive;
 
@@ -59,17 +59,16 @@ class Piranha {
       theWorld.worldSquareAt(topSide)==World.TILE_GRASS_LEFT || theWorld.worldSquareAt(topSide)==World.TILE_GRASS_RIGHT ||
       theWorld.worldSquareAt(topSide)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(topSide)==World.TILE_GRASS_RIGHT_TOP ||
       theWorld.worldSquareAt(topSide)==World.TILE_GRASS_LTR || theWorld.worldSquareAt(topSide)==World.TILE_STONE ||
-      theWorld.worldSquareAt(topSide)==World.TILE_BLASE || theWorld.worldSquareAt(topSide)==World.TILE_CLOUD) || 
-      theWorld.worldSquareAt(topSide)==World.TILE_BLASE2) || theWorld.worldSquareAt(topSide)==World.TILE_FON1) || 
+      theWorld.worldSquareAt(topSide)==World.TILE_BLASE || theWorld.worldSquareAt(topSide)==World.TILE_CLOUD || 
+      theWorld.worldSquareAt(topSide)==World.TILE_BLASE2 || theWorld.worldSquareAt(topSide)==World.TILE_FON1 || 
       theWorld.worldSquareAt(topSide)==World.TILE_FON2) {
       if (theWorld.worldSquareAt(position)==World.TILE_SOLID || theWorld.worldSquareAt(position)==World.TILE_SOLID2 ||
         theWorld.worldSquareAt(position)==World.TILE_GRASS_LEFT || theWorld.worldSquareAt(position)==World.TILE_GRASS_RIGHT ||
         theWorld.worldSquareAt(position)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(position)==World.TILE_GRASS_RIGHT_TOP ||
         theWorld.worldSquareAt(position)==World.TILE_GRASS_LTR || theWorld.worldSquareAt(position)==World.TILE_STONE ||
-        theWorld.worldSquareAt(position)==World.TILE_BLASE || theWorld.worldSquareAt(position)==World.TILE_CLOUD) || 
-        theWorld.worldSquareAt(position)==World.TILE_BLASE2) || theWorld.worldSquareAt(position)==World.TILE_FON1) || 
-        theWorld.worldSquareAt(position)==World.TILE_FON2) 
-        {
+        theWorld.worldSquareAt(position)==World.TILE_BLASE || theWorld.worldSquareAt(position)==World.TILE_CLOUD || 
+        theWorld.worldSquareAt(position)==World.TILE_BLASE2 || theWorld.worldSquareAt(position)==World.TILE_FON1 || 
+        theWorld.worldSquareAt(position)==World.TILE_FON2) {
         position.sub(velocity);
         velocity.x=0.0;
         velocity.y=0.0;
@@ -137,9 +136,9 @@ class Piranha {
         theWorld.worldSquareAt(position)==World.TILE_GRASS_RIGHT || theWorld.worldSquareAt(position)==World.TILE_GRASS_LTR ||
         theWorld.worldSquareAt(position)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(position)==World.TILE_GRASS_RIGHT_TOP ||
         theWorld.worldSquareAt(position)==World.TILE_STONE || theWorld.worldSquareAt(position)==World.TILE_LAVA_TOP ||
-        theWorld.worldSquareAt(position)==World.TILE_CLOUD  || theWorld.worldSquareAt(position)==World.TILE_ALGE) || 
-        theWorld.worldSquareAt(position)==World.TILE_BLASE) || theWorld.worldSquareAt(position)==World.TILE_BLASE2) ||
-        theWorld.worldSquareAt(position)==World.TILE_FON1) || theWorld.worldSquareAt(position)==World.TILE_FON2) {
+        theWorld.worldSquareAt(position)==World.TILE_CLOUD  || theWorld.worldSquareAt(position)==World.TILE_ALGE || 
+        theWorld.worldSquareAt(position)==World.TILE_BLASE || theWorld.worldSquareAt(position)==World.TILE_BLASE2 ||
+        theWorld.worldSquareAt(position)==World.TILE_FON1 || theWorld.worldSquareAt(position)==World.TILE_FON2) {
         isOnGround = true;
         position.y = theWorld.topOfSquare(position);
         velocity.y = 0.0;
@@ -199,7 +198,7 @@ class Piranha {
      *  Bild des "Gegners"
      */
 
-      image(Piranha, 0, 0);
+      image(piranha, 0, 0);
 
     popMatrix();
   }//draw

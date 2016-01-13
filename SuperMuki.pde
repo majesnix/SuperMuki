@@ -53,7 +53,7 @@ PImage questionmark;
 PImage rubin;
 
 Gif muncher, ninja, archer, archer_attack, archer_attack2, ninja_attack, fireface, fireface_left, fireface_right, evilpig, bee, ballon_cat, piranha;
-Gif lava, lava_top, wolke, water, flower, fon1, fon2, blase;
+Gif lava, lava_top, wolke, water, flower, fon1, fon2, blase2;
 Gif coin;
 /************
  **  ITEMS  **
@@ -494,6 +494,7 @@ void resetEverything() {
   evilpigs.clear();
   pigshots.clear();
   bees.clear();
+  piranhas.clear();
 
   itembox.reset();
   theDoge.reset();

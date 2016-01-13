@@ -34,8 +34,8 @@ class World {
   static final int TILE_ALGE_BOTTOM = 17;
   static final int TILE_MAGIC = 18;
   static final int TILE_BLASE2 = 19;    //Zerplatzende Blase
-  static final int TILE_FON1 = 67
-  static final int TILE_FON2 = 68
+  static final int TILE_FON1 = 67;
+  static final int TILE_FON2 = 68;
 
   static final int COIN = 20;      //Münze
 
@@ -244,7 +244,7 @@ class World {
           worldGrid[ii][i] = TILE_EMPTY;
           bees.add(new Bee(i*GRID_UNIT_SIZE+(GRID_UNIT_SIZE/2), ii*GRID_UNIT_SIZE+(GRID_UNIT_SIZE/2+10)));
         } else if(a[ii][i] == PIRANHA){
-          worldGrid[ii][i] == TILE_EMPTY;
+          worldGrid[ii][i] = TILE_EMPTY;
           piranhas.add(new Piranha(i*GRID_UNIT_SIZE+(GRID_UNIT_SIZE/2), ii*GRID_UNIT_SIZE+(GRID_UNIT_SIZE/2)));
         } else if (a[ii][i] == TILE_MOVING) {
           worldGrid[ii][i] = TILE_EMPTY;
