@@ -168,7 +168,8 @@ class Player {
       theWorld.worldSquareAt(topSide)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(topSide)==World.TILE_CLOUD ||
       theWorld.worldSquareAt(topSide)==World.TILE_MOVING || theWorld.worldSquareAt(topSide)==World.TILE_ALGE ||
       theWorld.worldSquareAt(topSide)==World.TILE_BLASE || theWorld.worldSquareAt(topSide)==World.TILE_ALGE_BOTTOM ||
-      theWorld.worldSquareAt(topSide)==World.TILE_MAGIC) {
+      theWorld.worldSquareAt(topSide)==World.TILE_MAGIC || theWorld.worldSquareAt(topSide)==World.TILE_BLASE2 || 
+    theWorld.worldSquareAt(topSide)==World.TILE_FON1 || theWorld.worldSquareAt(topSide)==World.TILE_FON2 ){
 
       if (theWorld.worldSquareAt(position)==World.TILE_SOLID || theWorld.worldSquareAt(position)==World.TILE_SOLID2 ||
         theWorld.worldSquareAt(position)==World.TILE_GRASS_LEFT || theWorld.worldSquareAt(position)==World.TILE_GRASS_RIGHT ||
@@ -177,7 +178,8 @@ class Player {
         theWorld.worldSquareAt(position)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(position)==World.TILE_CLOUD ||
         theWorld.worldSquareAt(position)==World.TILE_MOVING || theWorld.worldSquareAt(position)==World.TILE_ALGE ||
         theWorld.worldSquareAt(position)==World.TILE_BLASE || theWorld.worldSquareAt(position)==World.TILE_ALGE_BOTTOM ||
-        theWorld.worldSquareAt(position)==World.TILE_MAGIC) {
+        theWorld.worldSquareAt(position)==World.TILE_MAGIC || theWorld.worldSquareAt(position)==World.TILE_BLASE2 || 
+        theWorld.worldSquareAt(position)==World.TILE_FON1 || theWorld.worldSquareAt(position)==World.TILE_FON2 ) {
         position.sub(velocity);
         velocity.x=0.0;
         velocity.y=0.0;
@@ -196,7 +198,8 @@ class Player {
       theWorld.worldSquareAt(leftSideLow)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(leftSideLow)==World.TILE_CLOUD ||
       theWorld.worldSquareAt(leftSideLow)==World.TILE_MOVING || theWorld.worldSquareAt(leftSideLow)==World.TILE_ALGE ||
       theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE || theWorld.worldSquareAt(leftSideLow)==World.TILE_ALGE_BOTTOM ||
-      theWorld.worldSquareAt(leftSideLow)==World.TILE_MAGIC) {
+      theWorld.worldSquareAt(leftSideLow)==World.TILE_MAGIC || theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE2 || 
+      theWorld.worldSquareAt(leftSideLow)==World.TILE_FON1 | theWorld.worldSquareAt(leftSideLow)==World.TILE_FON2) {
       position.x = theWorld.rightOfSquare(leftSideLow)+wallProbeDistance;
       if (velocity.x < 0) {
         velocity.x = 0.0;
@@ -210,7 +213,8 @@ class Player {
       theWorld.worldSquareAt(leftSideHigh)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(leftSideHigh)==World.TILE_CLOUD ||
       theWorld.worldSquareAt(leftSideHigh)==World.TILE_MOVING || theWorld.worldSquareAt(leftSideHigh)==World.TILE_ALGE ||
       theWorld.worldSquareAt(leftSideHigh)==World.TILE_BLASE || theWorld.worldSquareAt(leftSideHigh)==World.TILE_ALGE_BOTTOM ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_MAGIC) {
+      theWorld.worldSquareAt(leftSideHigh)==World.TILE_MAGIC || theWorld.worldSquareAt(leftSideHigh)==World.TILE_BLASE2 || 
+      theWorld.worldSquareAt(leftSideHigh)==World.TILE_FON2 || theWorld.worldSquareAt(leftSideHigh)==World.TILE_FON2) {
       position.x = theWorld.rightOfSquare(leftSideHigh)+wallProbeDistance;
       if (velocity.x < 0) {
         velocity.x = 0.0;
@@ -224,7 +228,8 @@ class Player {
       theWorld.worldSquareAt(rightSideLow)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(rightSideLow)==World.TILE_CLOUD ||
       theWorld.worldSquareAt(rightSideLow)==World.TILE_MOVING || theWorld.worldSquareAt(rightSideLow)==World.TILE_ALGE ||
       theWorld.worldSquareAt(rightSideLow)==World.TILE_BLASE || theWorld.worldSquareAt(rightSideLow)==World.TILE_ALGE_BOTTOM ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_MAGIC) {
+      theWorld.worldSquareAt(rightSideLow)==World.TILE_MAGIC || theWorld.worldSquareAt(rightSideLow)==World.TILE_BLASE2 || 
+      theWorld.worldSquareAt(rightSideLow)==World.TILE_FON1 || theWorld.worldSquareAt(rightSideLow)==World.TILE_FON2) {
       position.x = theWorld.leftOfSquare(rightSideLow)-wallProbeDistance;
       if (velocity.x > 0) {
         velocity.x = 0.0;
@@ -238,7 +243,8 @@ class Player {
       theWorld.worldSquareAt(rightSideHigh)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(rightSideHigh)==World.TILE_CLOUD ||
       theWorld.worldSquareAt(rightSideHigh)==World.TILE_MOVING || theWorld.worldSquareAt(rightSideHigh)==World.TILE_ALGE ||
       theWorld.worldSquareAt(rightSideHigh)==World.TILE_BLASE || theWorld.worldSquareAt(rightSideHigh)==World.TILE_ALGE_BOTTOM ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_MAGIC) {
+      theWorld.worldSquareAt(rightSideHigh)==World.TILE_MAGIC || theWorld.worldSquareAt(rightSideHigh)==World.TILE_BLASE2 || 
+      theWorld.worldSquareAt(rightSideHigh)==World.TILE_FON1 || theWorld.worldSquareAt(rightSideHigh)==World.TILE_FON2) {
       position.x = theWorld.leftOfSquare(rightSideHigh)-wallProbeDistance;
       if (velocity.x > 0) {
         velocity.x = 0.0;
@@ -921,7 +927,9 @@ class Player {
         theWorld.worldSquareAt(position)==World.TILE_STONE || theWorld.worldSquareAt(position)==World.TILE_LAVA_TOP ||
         theWorld.worldSquareAt(position)==World.TILE_LAVA || theWorld.worldSquareAt(position)==World.TILE_CLOUD ||
         theWorld.worldSquareAt(position)==World.TILE_ALGE || theWorld.worldSquareAt(position)==World.TILE_BLASE ||
-        theWorld.worldSquareAt(position)==World.TILE_ALGE_BOTTOM || theWorld.worldSquareAt(position)==World.TILE_MAGIC) { // landed on solid square?
+        theWorld.worldSquareAt(position)==World.TILE_ALGE_BOTTOM || theWorld.worldSquareAt(position)==World.TILE_MAGIC || 
+        theWorld.worldSquareAt(position)==World.TILE_BLASE2 || theWorld.worldSquareAt(position)==World.TILE_FON1 || 
+        theWorld.worldSquareAt(position)==World.TILE_FON2 ) { // landed on solid square?
         isOnGround = true;
         position.y = theWorld.topOfSquare(position);
         velocity.y = 0.0;

@@ -33,6 +33,9 @@ class World {
   static final int TILE_FLOWER=16;
   static final int TILE_ALGE_BOTTOM = 17;
   static final int TILE_MAGIC = 18;
+  static final int TILE_BLASE2 = 19;    //Zerplatzende Blase
+  static final int TILE_FON1 = 67
+  static final int TILE_FON2 = 68
 
   static final int COIN = 20;      //Münze
 
@@ -76,6 +79,7 @@ class World {
   static final int FIREFACE = 63;        //Fireface spawnpunkt
   static final int EVILPIG = 64;          //Evilpig spawnpunkt
   static final int BEE = 65;              //Bee spawnpunkt
+  static final int PIRANHA = 66;          
 
   static final int TILE_TRIGGER_EVENT = 90;
   static final int TILE_CHECKPOINT = 91;
@@ -239,6 +243,9 @@ class World {
         } else if (a[ii][i] == BEE) {
           worldGrid[ii][i] = TILE_EMPTY;
           bees.add(new Bee(i*GRID_UNIT_SIZE+(GRID_UNIT_SIZE/2), ii*GRID_UNIT_SIZE+(GRID_UNIT_SIZE/2+10)));
+        } else if(a[ii][i] == PIRANHA){
+          worldGrid[ii][i] == TILE_EMPTY;
+          piranhas.add(new Piranha(i*GRID_UNIT_SIZE+(GRID_UNIT_SIZE/2), ii*GRID_UNIT_SIZE+(GRID_UNIT_SIZE/2)));
         } else if (a[ii][i] == TILE_MOVING) {
           worldGrid[ii][i] = TILE_EMPTY;
           platforms.add(new MovingPlatform(i*GRID_UNIT_SIZE+(GRID_UNIT_SIZE), ii*GRID_UNIT_SIZE+(GRID_UNIT_SIZE), "TILE_CLOUD"));
@@ -303,6 +310,12 @@ class World {
           image(flower, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
         } else if (worldGrid[ii][i]==TILE_ALGE_BOTTOM) {
           image(water, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
+        } else if (worldGrid[ii][i]==TILE_BLASE2){
+          image(blase2, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
+        } else if (worldGrid[ii][i]==TILE_FON1){
+          image(fon1, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
+        } else if (worldGrid[ii][i]==TILE_FON2){
+          image(fon2, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
         }
         if (worldGrid[ii][i]==COIN) { // Münze     + Werte, damit die Gegenstände ca. im Zentrum des Blocks liegen
           image(coin, i*GRID_UNIT_SIZE+10, ii*GRID_UNIT_SIZE+8);

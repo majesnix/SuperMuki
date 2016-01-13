@@ -52,8 +52,8 @@ PImage arrow, fireball, pigshot;
 PImage questionmark;
 PImage rubin;
 
-Gif muncher, ninja, archer, archer_attack, archer_attack2, ninja_attack, fireface, fireface_left, fireface_right, evilpig, bee, ballon_cat;
-Gif lava, lava_top, wolke, water, flower;
+Gif muncher, ninja, archer, archer_attack, archer_attack2, ninja_attack, fireface, fireface_left, fireface_right, evilpig, bee, ballon_cat, piranha;
+Gif lava, lava_top, wolke, water, flower, fon1, fon2, blase;
 Gif coin;
 /************
  **  ITEMS  **
@@ -114,6 +114,7 @@ ArrayList<Fireball> fireballs = new ArrayList<Fireball>();
 ArrayList<Evilpig> evilpigs = new ArrayList<Evilpig>();
 ArrayList<Pigshot> pigshots = new ArrayList<Pigshot>();
 ArrayList<Bee> bees = new ArrayList<Bee>();
+ArrayList<Piranha> piranhas = new ArrayList<Piranha>();
 ArrayList<MovingPlatform> platforms = new ArrayList<MovingPlatform>();
 
 Player thePlayer = new Player();
@@ -273,6 +274,12 @@ void loadImages() {
   water.loop();
   flower = new Gif(this, "tiles/flower.gif");
   flower.loop();
+  blase2 = new Gif(this, "tiles/blase2.gif");
+  blase2.loop();
+  fon1 = new Gif(this, "tiles/fontaeneLinks.gif");
+  fon1.loop();
+  fon2 = new Gif(this, "tiles/fontaeneRechts.gif");
+  fon2.loop();
 
   /**************
    **  ENEMIES  **
@@ -303,6 +310,8 @@ void loadImages() {
   bee.loop();
   ballon_cat = new Gif(this,"enemies/ballon_cat.gif");
   ballon_cat.loop();
+  piranha = new Gif(this, "enemies/piranha.gif");
+  piranha.loop();
 
   muncher = new Gif(this, "tiles/muncher_dcl.gif");
   muncher.loop();
@@ -1005,6 +1014,19 @@ void draw() {
       Bee bee = bees.get(--i);
       if ( !bee.alive ) {  
         bees.remove(i);
+      }
+    }
+    for (int i=0; i < piranhas.size(); i++) {
+      Piranha piranha = piranhas.get(i);
+      if (piranha.position.x<thePlayer.position.x+width && piranha.position.x>thePlayer.position.x-width) {
+        piranha.move();
+        piranha.draw();
+      }
+    }
+    for (int i = piranhas.size(); i != 0; ) {
+      Piranha piranha = piranhas.get(--i);
+      if ( !piranha.alive ) {  
+        piranhas.remove(i);
       }
     }
     for (int i=0; i < platforms.size(); i++) {
