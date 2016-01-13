@@ -3,18 +3,19 @@
  **************************************************************************************/
 
 class Player {
-  PVector position, velocity;
+  PVector position, velocity, tilePosition;
   
   Boolean isOnGround; // used to keep track of whether the player is on the ground. useful for control and animation.
   Boolean facingRight; // used to keep track of which direction the player last moved in. used to flip player image.
   Boolean checkpointTriggered;
   Boolean isOnPlatform;
+  Boolean bubbleBoom;
   int animDelay; // countdown timer between animation updates
   int animFrame; // keeps track of which animation frame is currently shown for the player
   int coinsCollected, itemsCollected, rubysCollected; // a counter to keep a tally on how many coins the player has collected
   int coinsRemembered, itemsRemembered, rubysRemembered;
-  int coinsRememberedAfterCheckpoint, itemsRememberedAfterCheckpoint, rubysRememberedAfterCheckpoint;
   int dogeIntroCount;
+  int timer;
 
   static final float JUMP_POWER = 10.0; // how hard the player jolts upward on jump
   static final float RUN_SPEED = 5.0; // force of player movement on ground, in pixels/cycle
@@ -31,6 +32,7 @@ class Player {
     position = new PVector();
     velocity = new PVector();
     checkpointTriggered=false;
+    bubbleBoom=false;
   }//Player
 
   void reset() {
@@ -879,14 +881,7 @@ class Player {
       checkpointTriggered=true;
       saveGame();
     }
-  }//checkForCoinGetting
-
-  void checkForSpout(){
-    if (theWorld.worldSquareAt(position)==World.TILE_FON1 || theWorld.worldSquareAt(position)==World.TILE_FON2){
-      velocity.y=-10;
-    }
-
-  }
+  }//checkForCoinGettin
 
   /*******************
    ****** Fallen ******
@@ -976,6 +971,29 @@ class Player {
         }
   }//checkForFalling
 
+  /**************
+  **  Fontäne  **
+  ***************/
+
+  void checkForSpout(){
+    if (theWorld.worldSquareAt(position)==World.TILE_FON1 || theWorld.worldSquareAt(position)==World.TILE_FON2){
+      velocity.y=-10;
+    }
+  }//checkForSpout
+
+
+  void bubbleBurst(){
+    if(theWorld.worldSquareAt(position)==World.TILE_BLASE && !bubbleBoom){
+      timer = millis();
+      tilePosition = new PVector(position.x,position.y);
+      bubbleBoom=true;
+    }    if(millis()/1000-timer/1000==1 && bubbleBoom){
+      theWorld.setSquareAtToThis(position, World.TILE_BLASE2);
+        timers.add(new Timer((int)millis(),tilePosition));
+        bubbleBoom=false;
+      }
+  }//bubbleBurst
+
   void move() {
     position.add(velocity);
 
@@ -986,6 +1004,8 @@ class Player {
     checkForFalling();
 
     checkForSpout();
+
+    bubbleBurst();
   }//move
 
   /********************

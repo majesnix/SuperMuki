@@ -116,6 +116,7 @@ ArrayList<Pigshot> pigshots = new ArrayList<Pigshot>();
 ArrayList<Bee> bees = new ArrayList<Bee>();
 ArrayList<Piranha> piranhas = new ArrayList<Piranha>();
 ArrayList<MovingPlatform> platforms = new ArrayList<MovingPlatform>();
+ArrayList<Timer> timers = new ArrayList<Timer>();
 
 Player thePlayer = new Player();
 World theWorld = new World();
@@ -1037,6 +1038,16 @@ void draw() {
         platform.draw();
       }
     }
+    for (int i=0; i < timers.size(); i++) {
+      Timer timer = timers.get(i);
+        timer.run();
+    }
+    for (int i = timers.size(); i != 0; ) {
+      Timer timer = timers.get(--i);
+      if ( timer.done ) {  
+        timers.remove(i);
+      }
+    }
     
     if(!dogeMessages.dogeSpeaking){
     theDoge.dogeRandom();
@@ -1130,6 +1141,8 @@ void draw() {
           outlinedText("Level: "+level, width-8, 515);
           outlinedText("Checkpoint Triggered: "+thePlayer.checkpointTriggered, width-8, 535);
           outlinedText("Doge Speaking: "+dogeMessages.dogeSpeaking, width-8, 555);
+          outlinedText("Bubble Timers: "+timers.size(), width-8, 575);
+          outlinedText("Bubble Timers: "+thePlayer.bubbleBoom, width-8, 595);
         }
 
         textAlign(CENTER);
