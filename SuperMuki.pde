@@ -1163,9 +1163,9 @@ void draw() {
     }
     if (level==0) {
       textAlign(CENTER);
-      outlinedText("PRESS R TO START", width/2, height/2);
-      outlinedText("PRESS L TO LOAD GAME", width/2, height/2+height/100*3.64);
-      outlinedText("PRESS ESC TO EXIT", width/2, height/2+height/100*7.29);
+      outlinedText("PRESS R TO START", width/2, height/2-85);
+      outlinedText("PRESS L TO LOAD GAME", width/2, height/2+height/100*3.64-85);
+      outlinedText("PRESS ESC TO EXIT", width/2, height/2+height/100*7.29-85);
     }
   }
 }//draw
