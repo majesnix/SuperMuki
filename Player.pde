@@ -894,6 +894,24 @@ class Player {
 
   void checkForFalling() {
     // If we're standing on an empty or coin tile, we're not standing on anything. Fall!
+    PVector centerOfPlayer;
+
+    int guyHeight;
+
+    if (level==1) {
+      guyHeight = player1.height;
+    } else if (level==2) {
+      guyHeight = player2.height;
+    } else if (level==3) {
+      guyHeight = player3.height;
+    } else if (level==4) {
+      guyHeight = player4.height;
+    } else {
+      guyHeight = player1.height;
+    }
+
+    centerOfPlayer = new PVector(position.x, position.y-guyHeight/2);
+
     if (theWorld.worldSquareAt(position)==World.TILE_EMPTY ||
       theWorld.worldSquareAt(position)==World.COIN ||
       theWorld.worldSquareAt(position)==World.ITEM_DOMINIC_APPLE ||
@@ -944,6 +962,18 @@ class Player {
         velocity.y += GRAVITY_POWER;
       }
     }
+    if (isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_SOLID || isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_MUNCHER ||
+        isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_SOLID2 || isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_GRASS_LEFT ||
+        isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_GRASS_RIGHT || isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_GRASS_LTR ||
+        isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_GRASS_LEFT_TOP || isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_GRASS_RIGHT_TOP ||
+        isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_STONE || isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_LAVA_TOP ||
+        isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_LAVA || isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_CLOUD ||
+        isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_ALGE || isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_BLASE ||
+        isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_ALGE_BOTTOM || isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_MAGIC || 
+        isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_BLASE2 || isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_FON1 || 
+        isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_FON2){
+          position.y=position.y-guyHeight/2;
+        }
   }//checkForFalling
 
   void move() {
