@@ -177,7 +177,7 @@ class Player {
         theWorld.worldSquareAt(position)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(position)==World.TILE_CLOUD ||
         theWorld.worldSquareAt(position)==World.TILE_MOVING || theWorld.worldSquareAt(position)==World.TILE_ALGE ||
         theWorld.worldSquareAt(position)==World.TILE_BLASE || theWorld.worldSquareAt(position)==World.TILE_ALGE_BOTTOM ||
-        stheWorld.worldSquareAt(position)==World.TILE_MAGIC) {
+        theWorld.worldSquareAt(position)==World.TILE_MAGIC) {
         position.sub(velocity);
         velocity.x=0.0;
         velocity.y=0.0;
