@@ -132,7 +132,7 @@ ItemBox itembox;
  ************/
 
 void setup() {
-  size(1280, 960);
+  size(1280, 960, P2D);
 
   pixelDensity(1);
 
