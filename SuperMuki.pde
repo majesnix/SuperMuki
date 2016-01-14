@@ -1145,7 +1145,7 @@ void draw() {
           outlinedText("Checkpoint Triggered: "+thePlayer.checkpointTriggered, width-8, 535);
           outlinedText("Doge Speaking: "+dogeMessages.dogeSpeaking, width-8, 555);
           outlinedText("Bubble Timers: "+timers.size(), width-8, 575);
-          outlinedText("Bubble Timers: "+thePlayer.bubbleBoom, width-8, 595);
+          outlinedText("Platforms: "+platforms.size(), width-8, 595);
         }
 
         textAlign(CENTER);

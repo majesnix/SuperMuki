@@ -7,10 +7,10 @@ class Timer{
 	Timer(){
 	}
 
-	Timer(int _startTime, PVector playerPosition){
+	Timer(int _startTime, PVector _tilePosition){
 
 		startTime = _startTime;
-		tilePosition = playerPosition;
+		tilePosition = _tilePosition;
 		done=false;
 	}
 

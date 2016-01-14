@@ -28,31 +28,31 @@ class Keyboard {
       if(!gameStarted){
       }
       if (level==0) {
-        loadLVL1();
         level++;
+        loadLVL1();
         dogeIntro=true;
         gameStarted=true;
         saveGame();
       }
       if (gameWon() && level==1) {//Sofern das Spiel gewonnen wurde..
         thePlayer.checkpointTriggered=false;
-        loadLVL2(); // wird dass passende LVL geladen
         level++;
+        loadLVL2(); // wird dass passende LVL geladen
         saveGame();
       } else if (gameWon() && level==2) {
         thePlayer.checkpointTriggered=false;
-        loadLVL3();
         level++;
+        loadLVL3();
         saveGame();
       } else if (gameWon() && level==3) {
         thePlayer.checkpointTriggered=false;
-        loadLVL4();
         level++;
+        loadLVL4();
         saveGame();
       } else if (gameWon() && level==4) {
         //thePlayer.checkpointTriggered=false;
-        ending();
         level++;
+        ending();
       } else if (lifes==0) {
         thePlayer.checkpointTriggered=false;
         music.play();

@@ -15,14 +15,14 @@ class MovingPlatform {
     velocity = new PVector();
   }//Moving_Platform
   
-  /*MovingPlatform(int x, int y) {
+  MovingPlatform(int x, int y) {
     moveLeft=true;
     position = new PVector();
     velocity = new PVector();
     position.x=x;
     position.y=y;
     tile = "TILE_CLOUD";
-  }//Moving_Platform*/
+  }//Moving_Platform
 
   MovingPlatform(int x, int y, String s) {
     moveLeft=true;
@@ -84,49 +84,49 @@ class MovingPlatform {
     topSide.y = position.y-ceilingProbeDistance;                    
 
     if (theWorld.worldSquareAt(rightSideHigh)==World.TILE_CLOUD || theWorld.worldSquareAt(rightSideLow)==World.TILE_CLOUD ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_SOLID || theWorld.worldSquareAt(rightSideLow)==World.TILE_SOLID ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_SOLID2 || theWorld.worldSquareAt(rightSideLow)==World.TILE_SOLID2 ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_LEFT_TOP ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_RIGHT_TOP || theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_RIGHT_TOP ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_LTR || theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_LTR ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_STONE || theWorld.worldSquareAt(rightSideLow)==World.TILE_STONE ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_LAVA || theWorld.worldSquareAt(rightSideLow)==World.TILE_LAVA ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(rightSideLow)==World.TILE_LAVA_TOP ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_ALGE || theWorld.worldSquareAt(rightSideLow)==World.TILE_ALGE ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_BLASE || theWorld.worldSquareAt(rightSideLow)==World.TILE_BLASE ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_LEFT || theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_LEFT ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_RIGHT || theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_RIGHT ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_WATER || theWorld.worldSquareAt(rightSideLow)==World.TILE_WATER ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_BLOCK || theWorld.worldSquareAt(rightSideLow)==World.TILE_BLOCK ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_MAGIC || theWorld.worldSquareAt(rightSideLow)==World.TILE_MAGIC) {
-      position.x = (theWorld.leftOfSquare(rightSideLow)-wallProbeDistance);
-      if (velocity.x > 0) {
-        velocity.x = 0.0;
+        theWorld.worldSquareAt(rightSideHigh)==World.TILE_SOLID || theWorld.worldSquareAt(rightSideLow)==World.TILE_SOLID ||
+        theWorld.worldSquareAt(rightSideHigh)==World.TILE_SOLID2 || theWorld.worldSquareAt(rightSideLow)==World.TILE_SOLID2 ||
+        theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_LEFT_TOP ||
+        theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_RIGHT_TOP || theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_RIGHT_TOP ||
+        theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_LTR || theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_LTR ||
+        theWorld.worldSquareAt(rightSideHigh)==World.TILE_STONE || theWorld.worldSquareAt(rightSideLow)==World.TILE_STONE ||
+        theWorld.worldSquareAt(rightSideHigh)==World.TILE_LAVA || theWorld.worldSquareAt(rightSideLow)==World.TILE_LAVA ||
+        theWorld.worldSquareAt(rightSideHigh)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(rightSideLow)==World.TILE_LAVA_TOP ||
+        theWorld.worldSquareAt(rightSideHigh)==World.TILE_ALGE || theWorld.worldSquareAt(rightSideLow)==World.TILE_ALGE ||
+        theWorld.worldSquareAt(rightSideHigh)==World.TILE_BLASE || theWorld.worldSquareAt(rightSideLow)==World.TILE_BLASE ||
+        theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_LEFT || theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_LEFT ||
+        theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_RIGHT || theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_RIGHT ||
+        theWorld.worldSquareAt(rightSideHigh)==World.TILE_WATER || theWorld.worldSquareAt(rightSideLow)==World.TILE_WATER ||
+        theWorld.worldSquareAt(rightSideHigh)==World.TILE_BLOCK || theWorld.worldSquareAt(rightSideLow)==World.TILE_BLOCK ||
+        theWorld.worldSquareAt(rightSideHigh)==World.TILE_MAGIC || theWorld.worldSquareAt(rightSideLow)==World.TILE_MAGIC) {
+      //position.x = (theWorld.leftOfSquare(rightSideLow)-wallProbeDistance);
+      //if (velocity.x > 0) {
+        //velocity.x = 0.0;
         moveLeft=true;
-      }
+      //}
     }
 
     if (theWorld.worldSquareAt(leftSideHigh)==World.TILE_CLOUD || theWorld.worldSquareAt(leftSideLow)==World.TILE_CLOUD ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_SOLID || theWorld.worldSquareAt(leftSideLow)==World.TILE_SOLID ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_SOLID2 || theWorld.worldSquareAt(leftSideLow)==World.TILE_SOLID2 ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_LEFT_TOP ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_RIGHT_TOP || theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_RIGHT_TOP ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_LTR || theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_LTR ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_STONE || theWorld.worldSquareAt(leftSideLow)==World.TILE_STONE ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_LAVA || theWorld.worldSquareAt(leftSideLow)==World.TILE_LAVA ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(leftSideLow)==World.TILE_LAVA_TOP ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_ALGE || theWorld.worldSquareAt(leftSideLow)==World.TILE_ALGE ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_BLASE || theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_LEFT || theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_LEFT ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_RIGHT || theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_RIGHT ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_WATER || theWorld.worldSquareAt(leftSideLow)==World.TILE_WATER ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_BLOCK || theWorld.worldSquareAt(leftSideLow)==World.TILE_BLOCK ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_MAGIC || theWorld.worldSquareAt(leftSideLow)==World.TILE_MAGIC) {
-      position.x = (theWorld.rightOfSquare(leftSideLow)+wallProbeDistance);
-      if (velocity.x < 0) {
-        velocity.x = 0.0;
+        theWorld.worldSquareAt(leftSideHigh)==World.TILE_SOLID || theWorld.worldSquareAt(leftSideLow)==World.TILE_SOLID ||
+        theWorld.worldSquareAt(leftSideHigh)==World.TILE_SOLID2 || theWorld.worldSquareAt(leftSideLow)==World.TILE_SOLID2 ||
+        theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_LEFT_TOP ||
+        theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_RIGHT_TOP || theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_RIGHT_TOP ||
+        theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_LTR || theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_LTR ||
+        theWorld.worldSquareAt(leftSideHigh)==World.TILE_STONE || theWorld.worldSquareAt(leftSideLow)==World.TILE_STONE ||
+        theWorld.worldSquareAt(leftSideHigh)==World.TILE_LAVA || theWorld.worldSquareAt(leftSideLow)==World.TILE_LAVA ||
+        theWorld.worldSquareAt(leftSideHigh)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(leftSideLow)==World.TILE_LAVA_TOP ||
+        theWorld.worldSquareAt(leftSideHigh)==World.TILE_ALGE || theWorld.worldSquareAt(leftSideLow)==World.TILE_ALGE ||
+        theWorld.worldSquareAt(leftSideHigh)==World.TILE_BLASE || theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE ||
+        theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_LEFT || theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_LEFT ||
+        theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_RIGHT || theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_RIGHT ||
+        theWorld.worldSquareAt(leftSideHigh)==World.TILE_WATER || theWorld.worldSquareAt(leftSideLow)==World.TILE_WATER ||
+        theWorld.worldSquareAt(leftSideHigh)==World.TILE_BLOCK || theWorld.worldSquareAt(leftSideLow)==World.TILE_BLOCK ||
+        theWorld.worldSquareAt(leftSideHigh)==World.TILE_MAGIC || theWorld.worldSquareAt(leftSideLow)==World.TILE_MAGIC) {
+      //position.x = (theWorld.rightOfSquare(leftSideLow)+wallProbeDistance);
+      //if (velocity.x < 0) {
+       // velocity.x = 0.0;
         moveLeft=false;
-      }
+      //}
     }
 
     if ((position.x-guyWidth/2)-thePlayer.position.x<=5  && 
