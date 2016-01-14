@@ -53,7 +53,7 @@ PImage questionmark;
 PImage rubin;
 
 Gif muncher, ninja, archer, archer_attack, archer_attack2, ninja_attack, fireface, fireface_left, fireface_right, evilpig, bee, ballon_cat, piranha;
-Gif lava, lava_top, wolke, water, flower, fon1, fon2, blase2;
+Gif lava, lava_top, wolke, water, flower, fon1, fon2, blase2, blase3;
 Gif coin;
 /************
  **  ITEMS  **
@@ -277,6 +277,8 @@ void loadImages() {
   flower.loop();
   blase2 = new Gif(this, "tiles/blase2.gif");
   blase2.loop();
+  blase3 = new Gif(this, "tiles/blase3.gif");
+  blase3.loop();
   fon1 = new Gif(this, "tiles/fontaeneLinks.gif");
   fon1.loop();
   fon2 = new Gif(this, "tiles/fontaeneRechts.gif");
@@ -697,7 +699,7 @@ void storyLENA3() {
 }//storyLENA3
 
 void storyLENA4() {
-  messages.s[0] = "She wants to eat less meat and\nis going to be a vegetarian";
+  messages.s[0] = "She loves healthy food";
   messages.s[1] = "";
 
   messages.setText(messages.s[messages.index]);
