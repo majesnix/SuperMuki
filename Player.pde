@@ -988,7 +988,7 @@ class Player {
       tilePosition = new PVector(position.x,position.y);
       bubbleBoom=true;
     }    if(millis()/1000-timer/1000==1 && bubbleBoom){
-      theWorld.setSquareAtToThis(position, World.TILE_BLASE2);
+      theWorld.setSquareAtToThis(tilePosition, World.TILE_BLASE2);
         timers.add(new Timer((int)millis(),tilePosition));
         bubbleBoom=false;
       }

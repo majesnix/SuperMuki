@@ -80,9 +80,9 @@ class Piranha {
       }
     }
     if ( theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_EMPTY || 
-      theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_LAVA ||
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_KILL ||
-      theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_MUNCHER) {
+      theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE ||
+      theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE2) {
       position.x = (theWorld.leftOfSquare(rightSideLow)-wallProbeDistance);
       if (velocity.x > 0) {
         velocity.x = 0.0;
@@ -91,9 +91,9 @@ class Piranha {
     }
 
     if ( theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_EMPTY || 
-      theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_LAVA ||
-      theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_KILL ||
-      theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_MUNCHER) {
+    	theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_KILL ||
+      theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE ||
+      theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE2) {
       position.x = (theWorld.rightOfSquare(leftSideLow)+wallProbeDistance);
       if (velocity.x < 0) {
         velocity.x = 0.0;
