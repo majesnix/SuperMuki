@@ -487,6 +487,7 @@ void movieEvent(Movie m) {
 void resetEverything() {
 
   arrows.clear();//Löscht alle elemente der ArrayLists
+  timers.clear();
   fireballs.clear();
   platforms.clear(); 
   ninjas.clear();

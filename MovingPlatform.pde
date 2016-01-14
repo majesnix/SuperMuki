@@ -15,14 +15,14 @@ class MovingPlatform {
     velocity = new PVector();
   }//Moving_Platform
   
-  MovingPlatform(int x, int y) {
+  /*MovingPlatform(int x, int y) {
     moveLeft=true;
     position = new PVector();
     velocity = new PVector();
     position.x=x;
     position.y=y;
     tile = "TILE_CLOUD";
-  }//Moving_Platform
+  }//Moving_Platform*/
 
   MovingPlatform(int x, int y, String s) {
     moveLeft=true;
@@ -37,6 +37,7 @@ class MovingPlatform {
     velocity.x = 0;
     velocity.y = 0;
     moveLeft=true;
+    tile = "";
   }//Reset
 
   /********************************
@@ -96,7 +97,8 @@ class MovingPlatform {
       theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_LEFT || theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_LEFT ||
       theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_RIGHT || theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_RIGHT ||
       theWorld.worldSquareAt(rightSideHigh)==World.TILE_WATER || theWorld.worldSquareAt(rightSideLow)==World.TILE_WATER ||
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_BLOCK) {
+      theWorld.worldSquareAt(rightSideHigh)==World.TILE_BLOCK || theWorld.worldSquareAt(rightSideLow)==World.TILE_BLOCK ||
+      theWorld.worldSquareAt(rightSideHigh)==World.TILE_MAGIC || theWorld.worldSquareAt(rightSideLow)==World.TILE_MAGIC) {
       position.x = (theWorld.leftOfSquare(rightSideLow)-wallProbeDistance);
       if (velocity.x > 0) {
         velocity.x = 0.0;
@@ -118,7 +120,8 @@ class MovingPlatform {
       theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_LEFT || theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_LEFT ||
       theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_RIGHT || theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_RIGHT ||
       theWorld.worldSquareAt(leftSideHigh)==World.TILE_WATER || theWorld.worldSquareAt(leftSideLow)==World.TILE_WATER ||
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_BLOCK) {
+      theWorld.worldSquareAt(leftSideHigh)==World.TILE_BLOCK || theWorld.worldSquareAt(leftSideLow)==World.TILE_BLOCK ||
+      theWorld.worldSquareAt(leftSideHigh)==World.TILE_MAGIC || theWorld.worldSquareAt(leftSideLow)==World.TILE_MAGIC) {
       position.x = (theWorld.rightOfSquare(leftSideLow)+wallProbeDistance);
       if (velocity.x < 0) {
         velocity.x = 0.0;
@@ -180,6 +183,9 @@ class MovingPlatform {
       guyWidth = grass_top.width;
       guyHeight = grass_top.height;
       break;
+    case "TILE_BLASE3":
+      guyWidth = blase3.width;
+      guyHeight = blase3.height;
     default:
       guyWidth = wolke.width;
       guyHeight = wolke.height;
@@ -196,7 +202,9 @@ class MovingPlatform {
       image(grass_top, 0, 0);
     } else if (tile=="TILE_STONE") {
       image(stone, 0, 0);
-    }
+    } else if (tile=="TILE_BLASE3") {
+      image(blase3, 0, 0);
+    }  
     popMatrix();
   }//draw
 }//Moving_Platform.class

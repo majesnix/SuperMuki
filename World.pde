@@ -36,6 +36,7 @@ class World {
   static final int TILE_BLASE2 = 19;    //Zerplatzende Blase
   static final int TILE_FON1 = 67;
   static final int TILE_FON2 = 68;
+  //static final int TILE_BLASE3 = 69;
 
   static final int COIN = 20;      //Münze
 
@@ -102,7 +103,7 @@ class World {
 
   /*
   **  GridSpotX = zwischen 0-400 (12.000 X) SPALTE
-   **  GridSpotY = zwischen 0 - 35 (1.050 Y) ZEILE
+   **  GridSpotY = zwischen 0 - 35 (1.140 Y) ZEILE
    */
 
   // returns what type of tile is at a given pixel coordinate
@@ -246,7 +247,16 @@ class World {
         } else if(a[ii][i] == PIRANHA){
           worldGrid[ii][i] = TILE_EMPTY;
           piranhas.add(new Piranha(i*GRID_UNIT_SIZE+(GRID_UNIT_SIZE/2), ii*GRID_UNIT_SIZE+(GRID_UNIT_SIZE/2)));
-        } else if (a[ii][i] == TILE_MOVING) {
+        } else if (a[ii][i] == TILE_MOVING && level==1) {
+          worldGrid[ii][i] = TILE_EMPTY;
+          platforms.add(new MovingPlatform(i*GRID_UNIT_SIZE+(GRID_UNIT_SIZE), ii*GRID_UNIT_SIZE+(GRID_UNIT_SIZE), "TILE_CLOUD"));
+        } else if (a[ii][i] == TILE_MOVING && level==2) {
+          worldGrid[ii][i] = TILE_EMPTY;
+          platforms.add(new MovingPlatform(i*GRID_UNIT_SIZE+(GRID_UNIT_SIZE), ii*GRID_UNIT_SIZE+(GRID_UNIT_SIZE), "TILE_STONE"));
+        } else if (a[ii][i] == TILE_MOVING && level==3) {
+          worldGrid[ii][i] = TILE_EMPTY;
+          platforms.add(new MovingPlatform(i*GRID_UNIT_SIZE+(GRID_UNIT_SIZE), ii*GRID_UNIT_SIZE+(GRID_UNIT_SIZE), "TILE_BLASE3"));
+        } else if (a[ii][i] == TILE_MOVING && level==4) {
           worldGrid[ii][i] = TILE_EMPTY;
           platforms.add(new MovingPlatform(i*GRID_UNIT_SIZE+(GRID_UNIT_SIZE), ii*GRID_UNIT_SIZE+(GRID_UNIT_SIZE), "TILE_CLOUD"));
         } else {
@@ -309,7 +319,7 @@ class World {
         } else if (worldGrid[ii][i]==TILE_FLOWER) {
           image(flower, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
         } else if (worldGrid[ii][i]==TILE_ALGE_BOTTOM) {
-          image(water, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
+          image(alge_bottom, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
         } else if (worldGrid[ii][i]==TILE_BLASE2){
           image(blase2, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
         } else if (worldGrid[ii][i]==TILE_FON1){

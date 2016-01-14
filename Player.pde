@@ -967,7 +967,7 @@ class Player {
         isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_ALGE_BOTTOM || isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_MAGIC || 
         isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_BLASE2 || isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_FON1 || 
         isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_FON2){
-          position.y=position.y-guyHeight/2;
+          position.y=position.y-guyHeight;
         }
   }//checkForFalling
 
