@@ -36,7 +36,6 @@ class World {
   static final int TILE_BLASE2 = 19;    //Zerplatzende Blase
   static final int TILE_FON1 = 67;
   static final int TILE_FON2 = 68;
-  //static final int TILE_BLASE3 = 69;
 
   static final int COIN = 20;      //Münze
 

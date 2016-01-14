@@ -22,7 +22,7 @@ class ItemBox {
   void drawItem() {
     if (level==1) {
       if (item1) {
-        image(dcl_apple, 20, height-height/100*5.5/*82.5*/);
+        image(dcl_apple, 20, height-height/100*5.5);
       } else {
         image(questionmark, 20, height-height/100*5.5);
       }

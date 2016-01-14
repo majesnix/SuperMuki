@@ -50,7 +50,6 @@ class Keyboard {
         loadLVL4();
         saveGame();
       } else if (gameWon() && level==4) {
-        //thePlayer.checkpointTriggered=false;
         level++;
         ending();
       } else if (lifes==0) {

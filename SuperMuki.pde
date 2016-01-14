@@ -85,11 +85,13 @@ int lifes; //Leben
 int rememberLifes;
 int level; //Level Counter
 int checkpointReachedDisplayTimer;
+int menuTimer;
 
 Boolean debug, MusicOn;
 Boolean dogeIntro;
 Boolean gameStarted;
 Boolean dogeSpeaking;
+Boolean ballonCatStart;
 
 int gameStartTimeSec, gameCurrentTimeSec;
 
@@ -153,6 +155,8 @@ void setup() {
   lifes = 3;
   level = 0;
   checkpointReachedDisplayTimer = 0;
+  menuTimer=millis();
+  ballonCatStart=false;
 
   cameraOffsetX = 0.0;
   cameraOffsetY = 0.0;
@@ -907,6 +911,15 @@ void draw() {
 
   if (level==0) {
     image(menu, 0, 0);
+    if(millis()/1000 - menuTimer/1000==15){
+      theBallonCat.position.x=1281;
+      theBallonCat.position.y=65;
+      ballonCatStart=true;
+    }
+    if(ballonCatStart){
+        theBallonCat.move();
+      theBallonCat.draw();
+      }
   } else if (level==1) {
     image(bg, 0, 0);
   } else if (level==2) {
