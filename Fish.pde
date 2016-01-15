@@ -3,6 +3,7 @@ class Fish {
 	PVector position, velocity;
 
 	Boolean alive;
+	float rotation;
 
 	Fish(float positionX, float positionY){
 		velocity = new PVector();
@@ -10,6 +11,7 @@ class Fish {
 		position.x = positionX;
 		position.y = positionY;
 		alive=true;
+		rotation = 0;
 	}
 
 	void move(){
@@ -30,6 +32,8 @@ class Fish {
     pushMatrix();
     translate(position.x, position.y);
     translate(-guyWidth/2, -guyHeight);
+
+    rotate(radians(rotation++));
 
       image(fish, 0, 0);
 
