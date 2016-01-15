@@ -39,19 +39,19 @@ class Doge {
     int topEdge = World.GRID_UNITS_TALL*World.GRID_UNIT_SIZE-height;
 
     if (!dogeIntro) {
-      if (position.x==thePlayer.position.x-15) {
+      if ((int)position.x==(int)thePlayer.position.x-30) {
         velocity.x = 0;
       } else if (position.x>=thePlayer.position.x) {
         velocity.x -= speedHere;
       } else if (position.x<=thePlayer.position.x-150) {
         velocity.x += speedHere;
-      } 
-      if (position.y==thePlayer.position.y-100 || position.y<0) {
-        velocity.y=0;
-      } else if (position.y>thePlayer.position.y-100) {
-        velocity.y -=speedHere;
-      } else if (position.y<thePlayer.position.y-100) {
+      }
+      if (position.y<thePlayer.position.y-100 || position.y<0) {
         velocity.y +=speedHere;
+      } else if ((int)position.y==(int)thePlayer.position.y-100) {
+        velocity.y=0;
+      }  else if (position.y>thePlayer.position.y-100) {
+        velocity.y -=speedHere;
       }
       velocity.x *= frictionHere;
       velocity.y *=frictionHere;

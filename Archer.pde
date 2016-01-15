@@ -26,7 +26,7 @@ class Archer {
     moveLeft=true;
     position = new PVector();
     velocity = new PVector();
-  }//Enemy
+  }//Archer
 
   Archer(int x, int y) {
     isOnGround = false;
@@ -37,7 +37,7 @@ class Archer {
     velocity = new PVector();
     position.x=x;
     position.y=y;
-  }//Enemy
+  }//Archer
 
   void reset() {
     velocity.x = 0;
