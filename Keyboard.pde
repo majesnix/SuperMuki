@@ -9,12 +9,13 @@
 class Keyboard {
   // used to track keyboard input
   Boolean holdingUp, holdingRight, holdingLeft, holdingSpace, holdingDown;
-
+  Boolean throwFish;
 
   Keyboard() {
     holdingUp=holdingRight=holdingLeft=holdingSpace=holdingDown=false;
     debug=false;
     MusicOn=true;
+    throwFish=false;
   }//keyboard
 
   /* The way that Processing, and many programming languages/environments, deals with keys is
@@ -97,33 +98,32 @@ class Keyboard {
       if (key == '1') {
         dogeIntro=false;
         thePlayer.checkpointTriggered=false;
-        loadLVL1();
         level=1;
+        loadLVL1();
       } else if (key == '2') {
         dogeIntro=false;
         thePlayer.checkpointTriggered=false;
-        loadLVL2();
         level=2;
+        loadLVL2();
       } else if (key == '3') {
         dogeIntro=false;
         thePlayer.checkpointTriggered=false;
-        loadLVL3();
         level=3;
+        loadLVL3();
       } else if (key == '4') {
         dogeIntro=false;
         thePlayer.checkpointTriggered=false;
-        loadLVL4();
         level=4;
+        loadLVL4();
       } else if (key == '9') {
         dogeIntro=false;
         thePlayer.checkpointTriggered=false;
         loadLVLtest();
       }
     }
-    /*if (key =='s'){
-      saveGame();
-    }*/
-
+    if(key == 'f'){
+      throwFish=true;
+    }
     /***************************************
      **  Musik muten / wieder aufschalten  **
      ***************************************/
@@ -190,6 +190,9 @@ class Keyboard {
     }        
     if (keyCode == ' ') {
       holdingSpace = false;
+    }
+    if(key == 'f'){
+      throwFish = false;
     }
   }//releaseKey
 }//Keyboard.class

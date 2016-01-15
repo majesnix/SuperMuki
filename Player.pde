@@ -12,7 +12,7 @@ class Player {
   Boolean bubbleBoom;
   int animDelay; // countdown timer between animation updates
   int animFrame; // keeps track of which animation frame is currently shown for the player
-  int coinsCollected, itemsCollected, rubysCollected; // a counter to keep a tally on how many coins the player has collected
+  int coinsCollected, itemsCollected, rubysCollected, fishsCollected; // a counter to keep a tally on how many coins the player has collected
   int coinsRemembered, itemsRemembered, rubysRemembered;
   int dogeIntroCount;
   int timer;
@@ -320,10 +320,19 @@ class Player {
     } else if (theWorld.worldSquareAt(topSide)==World.RUBY) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
-      coinsCollected++;
+      rubysCollected++;
       if (!checkpointTriggered) {
         rubysRemembered++;
       }
+    }
+    if (theWorld.worldSquareAt(centerOfPlayer)==World.FISH) { 
+      theWorld.setSquareAtToThis(centerOfPlayer, World.TILE_EMPTY);
+      sndCoin.trigger();
+      fishsCollected++;
+    } else if (theWorld.worldSquareAt(topSide)==World.FISH) { 
+      theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
+      sndCoin.trigger();
+      fishsCollected++;
     }
     /***************
      **  Dominic  **
@@ -971,15 +980,24 @@ class Player {
         }
   }//checkForFalling
 
-  /**************
-  **  Fontäne  **
-  ***************/
+/**
+ * Method to push Player up when stepping on Spout
+ * 
+ * @author Claßen, Dominic
+ */
+
 
   void checkForSpout(){
     if (theWorld.worldSquareAt(position)==World.TILE_FON1 || theWorld.worldSquareAt(position)==World.TILE_FON2){
       velocity.y=-10;
     }
   }//checkForSpout
+
+/**
+ * Method to start Bubble Explosion Timers
+ * 
+ * @author Claßen, Dominic
+ */
 
 
   void bubbleBurst(){
@@ -1008,9 +1026,11 @@ class Player {
     bubbleBurst();
   }//move
 
-  /********************
-   ** Leben berechnen **
-   ********************/
+/**
+ * Method to calculate Player lifes
+ * 
+ * @author Claßen, Dominic
+ */
 
   void calculateLifes() {
     if (level==1 && !gameWon()) {  
@@ -1202,6 +1222,10 @@ class Player {
           image(player4_run2, 0, 0);
         }
       }
+    }
+    if(theKeyboard.throwFish && fishsCollected>0){
+      fishs.add(new Fish(position.x, position.y));
+      fishsCollected--;
     }
 
     popMatrix(); // undoes all translate/scale/rotate calls since the pushMatrix earlier in this function

@@ -54,7 +54,7 @@ PImage rubin;
 
 Gif muncher, ninja, archer, archer_attack, archer_attack2, ninja_attack, fireface, fireface_left, fireface_right, evilpig, bee, ballon_cat, piranha;
 Gif lava, lava_top, wolke, water, flower, fon1, fon2, blase2, blase3;
-Gif coin;
+Gif coin, fish;
 /************
  **  ITEMS  **
  ************/
@@ -119,6 +119,7 @@ ArrayList<Bee> bees = new ArrayList<Bee>();
 ArrayList<Piranha> piranhas = new ArrayList<Piranha>();
 ArrayList<MovingPlatform> platforms = new ArrayList<MovingPlatform>();
 ArrayList<Timer> timers = new ArrayList<Timer>();
+ArrayList<Fish> fishs = new ArrayList<Fish>();
 
 Player thePlayer = new Player();
 World theWorld = new World();
@@ -337,6 +338,8 @@ void loadImages() {
   coin = new Gif(this, "items/Coin.gif");
   coin.loop();
   rubin = loadImage("items/rubin.png");
+  fish = new Gif(this, "items/dcl_item_2.gif");
+  fish.loop();
 
   dcl_apple = loadImage("items/dominic/apple.png");
   dcl_bier = new Gif(this, "items/dominic/bier.gif");
@@ -493,8 +496,9 @@ void movieEvent(Movie m) {
 void resetEverything() {
 
   arrows.clear();//Löscht alle elemente der ArrayLists
-  timers.clear();
   fireballs.clear();
+  fishs.clear();
+  timers.clear();
   platforms.clear(); 
   ninjas.clear();
   archers.clear();
@@ -1064,6 +1068,17 @@ void draw() {
         timers.remove(i);
       }
     }
+    for (int i=0; i < fishs.size(); i++) {
+      Fish fish = fishs.get(i);
+        fish.move();
+        fish.draw();
+    }
+    for (int i = fishs.size(); i != 0; ) {
+      Fish fish = fishs.get(--i);
+      if ( !fish.alive ) {  
+        fishs.remove(i);
+      }
+    }
     
     if(!dogeMessages.dogeSpeaking){
     theDoge.dogeRandom();
@@ -1109,6 +1124,7 @@ void draw() {
     if (level!=0) {
       textAlign(LEFT); 
       if (level!=5 && lifes!=0) {
+        outlinedText("Fish: "+thePlayer.fishsCollected, 8, height-height/100*17);
         outlinedText("Rubys: "+thePlayer.rubysCollected +"/"+theWorld.rubysInStage, 8, height-height/100*14);
         outlinedText("Coins: "+thePlayer.coinsCollected +"/"+theWorld.coinsInStage, 8, height-height/100*11);
         outlinedText("Items Collected:", 8, height-height/100*8);
@@ -1159,6 +1175,7 @@ void draw() {
           outlinedText("Doge Speaking: "+dogeMessages.dogeSpeaking, width-8, 555);
           outlinedText("Bubble Timers: "+timers.size(), width-8, 575);
           outlinedText("Platforms: "+platforms.size(), width-8, 595);
+          outlinedText("Fish: "+fishs.size(), width-8, 615);
         }
 
         textAlign(CENTER);

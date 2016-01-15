@@ -9,7 +9,6 @@ class Arrow { //<>//
 
   static final float AIR_RUN_SPEED = 1.5;
   static final float AIR_SLOWDOWN_PERC = 0.85;
-  static final float TRIVIAL_SPEED = 1.0;
   static final float ARROW_GRAVITY = 0.1;
 
   Arrow(float x, float y, boolean b) {

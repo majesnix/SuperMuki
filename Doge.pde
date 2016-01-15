@@ -7,8 +7,8 @@ class Doge {
 
   int delay=0;
 
-  static final float AIR_RUN_SPEED = 0.8;
-  static final float AIR_SLOWDOWN_PERC = 0.9;
+  static final float SPEED = 0.8;
+  static final float SLOWDOWN_PERC = 0.9;
 
   Doge() {
     facingRight = false;
@@ -34,8 +34,8 @@ class Doge {
 
   void move() {
 
-    float speedHere = AIR_RUN_SPEED;
-    float frictionHere = AIR_SLOWDOWN_PERC;
+    float speedHere = SPEED;
+    float frictionHere = SLOWDOWN_PERC;
     int topEdge = World.GRID_UNITS_TALL*World.GRID_UNIT_SIZE-height;
 
     if (!dogeIntro) {
@@ -46,7 +46,7 @@ class Doge {
       } else if (position.x<=thePlayer.position.x-150) {
         velocity.x += speedHere;
       } 
-      if (position.y==thePlayer.position.y-100) {
+      if (position.y==thePlayer.position.y-100 || position.y<0) {
         velocity.y=0;
       } else if (position.y>=thePlayer.position.y-100) {
         velocity.y -=speedHere;

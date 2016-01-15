@@ -83,7 +83,7 @@ class Piranha {
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_KILL ||
       theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE ||
       theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE2 ||
-      position.x>World.GRID_UNITS_WIDE*World.GRID_UNITS_SIZE-15) {
+      position.x>World.GRID_UNITS_WIDE*World.GRID_UNIT_SIZE-15) {
       position.x = (theWorld.leftOfSquare(rightSideLow)-wallProbeDistance);
       if (velocity.x > 0) {
         velocity.x = 0.0;

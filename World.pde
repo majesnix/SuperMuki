@@ -72,6 +72,7 @@ class World {
   static final int ITEM_LORI_KUNST = 48;
 
   static final int RUBY = 49;
+  static final int FISH = 50;
 
   static final int TILE_MUNCHER = 60;    //NomNom Pflanzen
   static final int NINJA = 61;            //Ninja spawnpunkt
@@ -331,6 +332,9 @@ class World {
         }
         if (worldGrid[ii][i]==RUBY) { // Münze     + Werte, damit die Gegenstände ca. im Zentrum des Blocks liegen
           image(rubin, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
+        }
+        if (worldGrid[ii][i]==FISH){
+          image(fish, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
         }
         if (worldGrid[ii][i]==ITEM_DOMINIC_APPLE) {
           image(dcl_apple, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);

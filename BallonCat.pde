@@ -18,6 +18,16 @@ class BallonCat{
     facingRight=false;
   }//reset
 
+  void checkForFish(){
+    for(int i=0; i<fishs.size();i++){
+      Fish tmpFish = fishs.get(i);
+      if(position.y==tmpFish.position.y-fish.height && position.x-ballon_cat.width/2-15 < tmpFish.position.x && position.x+ballon_cat.width/2+15 > tmpFish.position.x ){
+        tmpFish.alive = false;
+        lifes++;
+      }
+    }
+  }
+
   void move() {
 
     float speedHere = AIR_RUN_SPEED;
@@ -30,6 +40,7 @@ class BallonCat{
       velocity.x *= frictionHere;
       
       position.add(velocity);
+      checkForFish();
   }//move
 
   /*********************
