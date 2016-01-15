@@ -43,6 +43,7 @@ class Player {
       coinsRemembered = 0;
       itemsRemembered = 0;
       rubysCollected = 0;
+      fishsCollected = 0;
     } else {
       coinsCollected = coinsRemembered;
       itemsCollected = itemsRemembered;
