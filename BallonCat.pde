@@ -21,7 +21,7 @@ class BallonCat{
   void checkForFish(){
     for(int i=0; i<fishs.size();i++){
       Fish tmpFish = fishs.get(i);
-      if(position.y==tmpFish.position.y-fish.height && position.x-ballon_cat.width/2-15 < tmpFish.position.x && position.x+ballon_cat.width/2+15 > tmpFish.position.x ){
+      if(position.y==tmpFish.position.y-fish.height && position.x-ballon_cat.width/2-5 < tmpFish.position.x && position.x+ballon_cat.width/2+5 > tmpFish.position.x ){
         tmpFish.alive = false;
         lifes++;
       }
