@@ -48,7 +48,7 @@ class Doge {
       } 
       if (position.y==thePlayer.position.y-100 || position.y<0) {
         velocity.y=0;
-      } else if (position.y>=thePlayer.position.y-100) {
+      } else if (position.y>thePlayer.position.y-100) {
         velocity.y -=speedHere;
       } else if (position.y<thePlayer.position.y-100) {
         velocity.y +=speedHere;
