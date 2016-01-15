@@ -50,11 +50,11 @@ PImage bg, bg2, bg3, bg4, menu;
 PImage dirt, grass_top, grass_left_top, grass_right_top, grass_ltr, stone, alge, alge_bottom, blase, grass_left, grass_right, dirt_big;
 PImage arrow, fireball, pigshot;
 PImage questionmark;
-PImage rubin, fish;
+PImage rubin;
 
 Gif muncher, ninja, archer, archer_attack, archer_attack2, ninja_attack, fireface, fireface_left, fireface_right, evilpig, bee, ballon_cat, piranha;
 Gif lava, lava_top, wolke, water, flower, fon1, fon2, blase2, blase3;
-Gif coin/*, fish*/;
+Gif coin, fish;
 /************
  **  ITEMS  **
  ************/
@@ -338,9 +338,9 @@ void loadImages() {
   coin = new Gif(this, "items/Coin.gif");
   coin.loop();
   rubin = loadImage("items/rubin.png");
-  /*fish = new Gif(this, "items/dcl_item_2.gif");
-  fish.loop();*/
-  fish = loadImage("items/fish2.png");
+  fish = new Gif(this, "items/fish.gif");
+  fish.loop();
+  //fish = loadImage("items/fish2.png");
 
   dcl_apple = loadImage("items/dominic/apple.png");
   dcl_bier = new Gif(this, "items/dominic/bier.gif");
