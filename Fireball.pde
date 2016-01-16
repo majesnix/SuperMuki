@@ -10,8 +10,7 @@ class Fireball extends Arrow {
     position.x = x;
     position.y = y;
     dir = PVector.sub(thePlayer.position,position);
-    dir.normalize();
-    dir.mult(0.4);
+    dir.normalize().mult(0.4);
     acceleration = dir;
   }//Fireball
 
