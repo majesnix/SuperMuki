@@ -987,7 +987,6 @@ void draw() {
     for (int i=0; i < firefaces.size(); i++) {
       Fireface fireface = firefaces.get(i);
       if (fireface.position.x<thePlayer.position.x+width && fireface.position.x>thePlayer.position.x-width) {
-        //fireface.move();
         fireface.draw();
       }
     }

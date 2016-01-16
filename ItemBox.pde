@@ -1,3 +1,11 @@
+/**
+ * ItemBox.pde
+ * Purpose: Tracks the Players Progress in each lvl, shows the already collected Items
+ *
+ * @author Claßen, Dominic
+ * @version 1.0
+ */
+
 class ItemBox {
 
   //positioning 

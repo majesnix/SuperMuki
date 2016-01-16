@@ -1,3 +1,11 @@
+/**
+ * Ninja.pde
+ * Purpose: Enemy Main.class, checks Collision detection, Falling and Enemy-Kill / Player-Kill triggers
+ *
+ * @author Claßen, Dominic
+ * @version 1.0
+ */
+
 class Ninja {
   PVector position, velocity;
 
@@ -10,11 +18,10 @@ class Ninja {
   static final float AIR_RUN_SPEED = 2.0;
   static final float SLOWDOWN_PERC = 0.6;
   static final float AIR_SLOWDOWN_PERC = 0.85;
-  static final float TRIVIAL_SPEED = 1.0;
 
   Ninja() {
     isOnGround = false;
-    facingRight = true;
+    facingRight = false;
     alive=false;
     moveLeft=true;
     position = new PVector();
@@ -23,7 +30,7 @@ class Ninja {
 
   Ninja(int x, int y) {
     isOnGround = false;
-    facingRight = true;
+    facingRight = false;
     alive=true;
     moveLeft=true;
     position = new PVector();
@@ -99,6 +106,7 @@ class Ninja {
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_KILL ||
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_WATER ||
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_MUNCHER ||
+      theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.COIN ||
       theWorld.worldSquareAt(rightSideLow)==World.TILE_BLASE ||
       theWorld.worldSquareAt(rightSideLow)==World.TILE_BLASE2 ||
       theWorld.worldSquareAt(rightSideLow)==World.TILE_ALGE ||
@@ -107,6 +115,7 @@ class Ninja {
       if (velocity.x > 0) {
         velocity.x = 0.0;
         moveLeft=true;
+        facingRight=false;
       }
     }
 
@@ -115,6 +124,7 @@ class Ninja {
       theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_KILL ||
       theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_WATER ||
       theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_MUNCHER ||
+      theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.COIN ||
       theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE ||
       theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE2 ||
       theWorld.worldSquareAt(leftSideLow)==World.TILE_ALGE ||
@@ -123,6 +133,7 @@ class Ninja {
       if (velocity.x < 0) {
         velocity.x = 0.0;
         moveLeft=false;
+        facingRight=true;
       }
     }
 
@@ -188,9 +199,11 @@ class Ninja {
     if (thePlayer.position.x>position.x && thePlayer.position.x-position.x<80) {
       speedHere*=3;
       moveLeft=false;
+      facingRight=true;
     } else if (position.x - thePlayer.position.x<80 && thePlayer.position.x<position.x) {
       speedHere*=3;
       moveLeft=true;
+      facingRight=false;
     }
 
     if (moveLeft && !gameWon()) {
@@ -210,12 +223,6 @@ class Ninja {
   void draw() {
     int guyWidth = ninja.width;
     int guyHeight = ninja.height;
-
-    if (velocity.x<-TRIVIAL_SPEED) {
-      facingRight = false;
-    } else if (velocity.x>TRIVIAL_SPEED) {
-      facingRight = true;
-    }
 
     pushMatrix();
     translate(position.x, position.y);

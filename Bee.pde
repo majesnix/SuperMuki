@@ -1,19 +1,26 @@
+/**
+ * Bee.pde
+ * Purpose: "transforms" Ninja "into" Bee
+ *
+ * @author Claßen, Dominic
+ * @version 1.0
+ */
+
 class Bee extends Ninja {
 
   static final float AIR_RUN_SPEED = 1.0;
   static final float AIR_SLOWDOWN_PERC = 0.75;
-  static final float TRIVIAL_SPEED = 1.0;
 
   Bee() {
     isOnGround = false;
-    facingRight = true;
+    facingRight = false;
     alive=false;
     moveLeft=true;
   }//Bee
   
   Bee(int x, int y) {
     isOnGround = false;
-    facingRight = true;
+    facingRight = false;
     alive=true;
     moveLeft=true;
     position.x=x;
@@ -31,9 +38,11 @@ class Bee extends Ninja {
     if (thePlayer.position.x>position.x && thePlayer.position.x-position.x<80 &&  thePlayer.position.y==position.y) {
       speedHere*=2;
       moveLeft=false;
+      facingRight=true;
     } else if (position.x - thePlayer.position.x<80 && thePlayer.position.x<position.x && thePlayer.position.y==position.y) {
       speedHere*=2;
       moveLeft=true;
+      facingRight=false;
     }
 
     if (moveLeft && !gameWon()) {
@@ -52,12 +61,6 @@ class Bee extends Ninja {
   void draw() {
     int guyWidth = bee.width;
     int guyHeight = bee.height;
-
-    if (velocity.x<-TRIVIAL_SPEED) {
-      facingRight = false;
-    } else if (velocity.x>TRIVIAL_SPEED) {
-      facingRight = true;
-    }
 
     pushMatrix();
     translate(position.x, position.y);

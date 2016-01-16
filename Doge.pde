@@ -1,3 +1,11 @@
+/**
+ * Doge.pde
+ * Purpose: Provides the Player with Tips while he is playing the game
+ *
+ * @author Claßen, Dominic
+ * @version 1.0
+ */
+
 class Doge {
 
   PVector position, velocity;

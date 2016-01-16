@@ -1,3 +1,11 @@
+/**
+ * Timer.pde
+ * Purpose: Remembers the tileposition, and starts a Timer, when the timer is done, TILE is replaced with an EMPTY Block
+ *
+ * @author Claßen, Dominic
+ * @version 1.0
+ */
+
 class Timer{
 
 	int startTime;

@@ -1,14 +1,22 @@
+/**
+ * Piranha.pde
+ * Purpose: Changes Bee Picture to Piranha
+ *
+ * @author Claßen, Dominic
+ * @version 1.0
+ */
+
 class Piranha extends Bee{
 
     Piranha() {
     isOnGround = false;
-    facingRight = true;
+    facingRight = false;
     alive=false;
     moveLeft=true;
   }
    Piranha(int x, int y) {
     isOnGround = false;
-    facingRight = true;
+    facingRight = false;
     alive=true;
     moveLeft=true;
     position.x=x;
@@ -18,12 +26,6 @@ class Piranha extends Bee{
   void draw() {
     int guyWidth = piranha.width;
     int guyHeight = piranha.height;
-
-    if (velocity.x<-TRIVIAL_SPEED) {
-      facingRight = false;
-    } else if (velocity.x>TRIVIAL_SPEED) {
-      facingRight = true;
-    }
 
     pushMatrix();
     translate(position.x, position.y);

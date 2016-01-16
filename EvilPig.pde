@@ -1,3 +1,11 @@
+/**
+ * EvilPig.pde
+ * Purpose: Transforms Archer to Pig
+ *
+ * @author Claßen, Dominic
+ * @version 1.0
+ */
+
 class Evilpig extends Archer {
 
   Evilpig() {
@@ -29,8 +37,10 @@ class Evilpig extends Archer {
 
     if (thePlayer.position.x>position.x && thePlayer.position.x-position.x<150) {
       moveLeft=false;
+      facingRight=true;
     } else if (position.x - thePlayer.position.x<150 && thePlayer.position.x<position.x) {
       moveLeft=true;
+      facingRight=false;
     }
 
     if (moveLeft && !gameWon()) {
@@ -51,12 +61,6 @@ class Evilpig extends Archer {
     int guyWidth = evilpig.width;
     int guyHeight = evilpig.height;
     arrowStart=int(guyWidth*0.3);
-
-    if (velocity.x<-TRIVIAL_SPEED) {
-      facingRight = false;
-    } else if (velocity.x>TRIVIAL_SPEED) {
-      facingRight = true;
-    }
 
     pushMatrix();
     translate(position.x, position.y);

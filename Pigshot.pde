@@ -1,3 +1,11 @@
+/**
+ * Pigshot.pde
+ * Purpose: Replaces Arrow Texture with a little piggie
+ *
+ * @author Claßen, Dominic
+ * @version 1.0
+ */
+
 class Pigshot extends Arrow {
 
   Pigshot(float x, float y, boolean b) {

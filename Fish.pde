@@ -1,3 +1,11 @@
+/**
+ * Fish.pde
+ * Purpose: Little Fish who flys up in the Sky, -> BallonCat
+ *
+ * @author Claßen, Dominic
+ * @version 1.0
+ */
+
 class Fish {
 	
 	PVector position, velocity;

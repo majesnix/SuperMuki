@@ -1,3 +1,11 @@
+/**
+ * Arrow.pde
+ * Purpose: Arrow trajectory, rotation while flying and collision detection
+ *
+ * @author Claßen, Dominic
+ * @version 1.0
+ */
+
 class Arrow {
 
   PVector position, velocity;

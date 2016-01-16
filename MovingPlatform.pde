@@ -1,3 +1,11 @@
+/**
+ * MovingPlatform.pde
+ * Purpose: Creates a moving Platform in the World, which transports the Player, when he jumps onto it
+ *
+ * @author Claßen, Dominic
+ * @version 1.0
+ */
+
 class MovingPlatform {
   PVector position, velocity;
 

@@ -1,3 +1,11 @@
+/**
+ * Fireball.pde
+ * Purpose: Fireball for Fireface, no Gravity influence, becaus its a magic shot
+ *
+ * @author Claßen, Dominic
+ * @version 1.0
+ */
+
 class Fireball extends Arrow {
 
   PVector dir, acceleration;

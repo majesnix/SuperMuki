@@ -1,3 +1,11 @@
+/**
+ * BallonCat.pde
+ * Purpose: Flying Cat with a Ballon, who gives the Player some lifes, when he throws a Fish @ BallonCat
+ *
+ * @author Claßen, Dominic
+ * @version 1.0
+ */
+
 class BallonCat{
 
 

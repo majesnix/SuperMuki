@@ -1,3 +1,11 @@
+/**
+ * Archer.pde
+ * Purpose: Transforms Ninja to Archer, Archers can shoot Arrows
+ *
+ * @author Claßen, Dominic
+ * @version 1.0
+ */
+
 class Archer extends Ninja {
 
   Boolean shootingAllowed=true;
@@ -10,14 +18,14 @@ class Archer extends Ninja {
 
   Archer() {
     isOnGround = false;
-    facingRight = true;
+    facingRight = false;
     alive=false;
     moveLeft=true;
   }//Archer
 
   Archer(int x, int y) {
     isOnGround = false;
-    facingRight = true;
+    facingRight = false;
     alive=true;
     moveLeft=true;
     position.x=x;
@@ -30,8 +38,10 @@ void move() {
 
     if (thePlayer.position.x>position.x && thePlayer.position.x-position.x<150) {
       moveLeft=false;
+      facingRight=true;
     } else if (position.x - thePlayer.position.x<150 && thePlayer.position.x<position.x) {
       moveLeft=true;
+      facingRight=false;
     }
 
     if (moveLeft && !gameWon()) {
@@ -52,12 +62,6 @@ void move() {
     int guyWidth = archer.width;
     int guyHeight = archer.height;
     arrowStart=int(guyWidth*0.3);
-
-    if (velocity.x<-TRIVIAL_SPEED) {
-      facingRight = false;
-    } else if (velocity.x>TRIVIAL_SPEED) {
-      facingRight = true;
-    }
 
     pushMatrix();
     translate(position.x, position.y);
