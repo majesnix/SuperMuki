@@ -69,45 +69,9 @@ class Arrow {
     topSide.x = position.x;
     topSide.y = position.y-ceilingProbeDistance;
 
-    if ( theWorld.worldSquareAt(topSide)==World.TILE_MUNCHER || theWorld.worldSquareAt(leftSideHigh)==World.TILE_MUNCHER ||
-      theWorld.worldSquareAt(leftSideLow)==World.TILE_MUNCHER || theWorld.worldSquareAt(rightSideHigh)==World.TILE_MUNCHER ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_MUNCHER || theWorld.worldSquareAt(position)==World.TILE_MUNCHER ||
-      theWorld.worldSquareAt(topSide)==World.TILE_LAVA || theWorld.worldSquareAt(leftSideHigh)==World.TILE_LAVA ||
-      theWorld.worldSquareAt(leftSideLow)==World.TILE_LAVA || theWorld.worldSquareAt(rightSideHigh)==World.TILE_LAVA ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_LAVA || theWorld.worldSquareAt(position)==World.TILE_LAVA ||
-      theWorld.worldSquareAt(topSide)==World.TILE_KILL || theWorld.worldSquareAt(leftSideHigh)==World.TILE_KILL ||
-      theWorld.worldSquareAt(leftSideLow)==World.TILE_KILL || theWorld.worldSquareAt(rightSideHigh)==World.TILE_KILL ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_KILL || theWorld.worldSquareAt(position)==World.TILE_KILL ||
-      theWorld.worldSquareAt(topSide)==World.TILE_CLOUD || theWorld.worldSquareAt(leftSideHigh)==World.TILE_CLOUD ||
-      theWorld.worldSquareAt(leftSideLow)==World.TILE_CLOUD || theWorld.worldSquareAt(rightSideHigh)==World.TILE_CLOUD ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_CLOUD || theWorld.worldSquareAt(position)==World.TILE_CLOUD ||
-      theWorld.worldSquareAt(topSide)==World.TILE_SOLID || theWorld.worldSquareAt(leftSideHigh)==World.TILE_SOLID ||
-      theWorld.worldSquareAt(leftSideLow)==World.TILE_SOLID || theWorld.worldSquareAt(rightSideHigh)==World.TILE_SOLID ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_SOLID || theWorld.worldSquareAt(position)==World.TILE_SOLID ||
-      theWorld.worldSquareAt(topSide)==World.TILE_SOLID2 || theWorld.worldSquareAt(leftSideHigh)==World.TILE_SOLID2 ||
-      theWorld.worldSquareAt(leftSideLow)==World.TILE_SOLID2 || theWorld.worldSquareAt(rightSideHigh)==World.TILE_SOLID2 ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_SOLID2 || theWorld.worldSquareAt(position)==World.TILE_SOLID2 ||
-      theWorld.worldSquareAt(topSide)==World.TILE_GRASS_LEFT || theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_LEFT ||
-      theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_LEFT || theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_LEFT ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_LEFT || theWorld.worldSquareAt(position)==World.TILE_GRASS_LEFT ||
-      theWorld.worldSquareAt(topSide)==World.TILE_GRASS_RIGHT || theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_RIGHT ||
-      theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_RIGHT || theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_RIGHT ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_RIGHT || theWorld.worldSquareAt(position)==World.TILE_GRASS_RIGHT ||
-      theWorld.worldSquareAt(topSide)==World.TILE_GRASS_LTR || theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_LTR ||
-      theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_LTR || theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_LTR ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_LTR || theWorld.worldSquareAt(position)==World.TILE_GRASS_LTR ||
-      theWorld.worldSquareAt(topSide)==World.TILE_STONE || theWorld.worldSquareAt(leftSideHigh)==World.TILE_STONE ||
-      theWorld.worldSquareAt(leftSideLow)==World.TILE_STONE || theWorld.worldSquareAt(rightSideHigh)==World.TILE_STONE ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_STONE || theWorld.worldSquareAt(position)==World.TILE_STONE ||
-      theWorld.worldSquareAt(topSide)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(leftSideHigh)==World.TILE_LAVA_TOP ||
-      theWorld.worldSquareAt(leftSideLow)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(rightSideHigh)==World.TILE_LAVA_TOP ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(position)==World.TILE_LAVA_TOP ||
-      theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_RIGHT_TOP || theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_RIGHT_TOP ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_RIGHT_TOP || theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_RIGHT_TOP ||
-      theWorld.worldSquareAt(topSide)==World.TILE_GRASS_RIGHT_TOP || theWorld.worldSquareAt(position)==World.TILE_GRASS_RIGHT_TOP ||
-      theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_LEFT_TOP ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_LEFT_TOP ||
-      theWorld.worldSquareAt(topSide)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(position)==World.TILE_GRASS_LEFT_TOP) {
+    if (theWorld.worldSquareAt(topSide)!=World.TILE_EMPTY || theWorld.worldSquareAt(leftSideHigh)!=World.TILE_EMPTY ||
+      theWorld.worldSquareAt(leftSideLow)!=World.TILE_EMPTY || theWorld.worldSquareAt(rightSideHigh)!=World.TILE_EMPTY ||
+      theWorld.worldSquareAt(rightSideLow)!=World.TILE_EMPTY || theWorld.worldSquareAt(position)!=World.TILE_EMPTY) {
 
       alive=false;
       return;
