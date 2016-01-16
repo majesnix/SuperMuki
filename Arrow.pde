@@ -1,4 +1,4 @@
-class Arrow { //<>//
+class Arrow {
 
   PVector position, velocity;
 
@@ -10,6 +10,13 @@ class Arrow { //<>//
   static final float AIR_RUN_SPEED = 1.5;
   static final float AIR_SLOWDOWN_PERC = 0.85;
   static final float ARROW_GRAVITY = 0.1;
+
+  Arrow(){
+    alive=true;
+    isOnGround=false;
+    position = new PVector();
+    velocity = new PVector();
+  }
 
   Arrow(float x, float y, boolean b) {
     facingRight = b;
@@ -94,7 +101,13 @@ class Arrow { //<>//
       theWorld.worldSquareAt(rightSideLow)==World.TILE_STONE || theWorld.worldSquareAt(position)==World.TILE_STONE ||
       theWorld.worldSquareAt(topSide)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(leftSideHigh)==World.TILE_LAVA_TOP ||
       theWorld.worldSquareAt(leftSideLow)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(rightSideHigh)==World.TILE_LAVA_TOP ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(position)==World.TILE_LAVA_TOP) {
+      theWorld.worldSquareAt(rightSideLow)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(position)==World.TILE_LAVA_TOP ||
+      theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_RIGHT_TOP || theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_RIGHT_TOP ||
+      theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_RIGHT_TOP || theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_RIGHT_TOP ||
+      theWorld.worldSquareAt(topSide)==World.TILE_GRASS_RIGHT_TOP || theWorld.worldSquareAt(position)==World.TILE_GRASS_RIGHT_TOP ||
+      theWorld.worldSquareAt(leftSideLow)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(leftSideHigh)==World.TILE_GRASS_LEFT_TOP ||
+      theWorld.worldSquareAt(rightSideLow)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(rightSideHigh)==World.TILE_GRASS_LEFT_TOP ||
+      theWorld.worldSquareAt(topSide)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(position)==World.TILE_GRASS_LEFT_TOP) {
 
       alive=false;
       return;

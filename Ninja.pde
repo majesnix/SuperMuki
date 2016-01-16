@@ -68,13 +68,17 @@ class Ninja {
       theWorld.worldSquareAt(topSide)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(topSide)==World.TILE_GRASS_RIGHT_TOP ||
       theWorld.worldSquareAt(topSide)==World.TILE_GRASS_LTR || theWorld.worldSquareAt(topSide)==World.TILE_STONE ||
       theWorld.worldSquareAt(topSide)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(topSide)==World.TILE_CLOUD||
-      theWorld.worldSquareAt(topSide)==World.TILE_ALGE || theWorld.worldSquareAt(topSide)==World.TILE_MAGIC) {
+      theWorld.worldSquareAt(topSide)==World.TILE_ALGE || theWorld.worldSquareAt(topSide)==World.TILE_ALGE_BOTTOM ||
+      theWorld.worldSquareAt(topSide)==World.TILE_MAGIC || theWorld.worldSquareAt(topSide)==World.TILE_BLASE2 ||
+      theWorld.worldSquareAt(topSide)==World.TILE_FON1 || theWorld.worldSquareAt(topSide)==World.TILE_FON2) {
       if (theWorld.worldSquareAt(position)==World.TILE_SOLID || theWorld.worldSquareAt(position)==World.TILE_SOLID2 ||
         theWorld.worldSquareAt(position)==World.TILE_GRASS_LEFT || theWorld.worldSquareAt(position)==World.TILE_GRASS_RIGHT ||
         theWorld.worldSquareAt(position)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(position)==World.TILE_GRASS_RIGHT_TOP ||
         theWorld.worldSquareAt(position)==World.TILE_GRASS_LTR || theWorld.worldSquareAt(position)==World.TILE_STONE ||
         theWorld.worldSquareAt(position)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(position)==World.TILE_CLOUD ||
-        theWorld.worldSquareAt(position)==World.TILE_ALGE || theWorld.worldSquareAt(position)==World.TILE_MAGIC) {
+        theWorld.worldSquareAt(position)==World.TILE_ALGE || theWorld.worldSquareAt(position)==World.TILE_ALGE_BOTTOM ||
+        theWorld.worldSquareAt(position)==World.TILE_MAGIC || theWorld.worldSquareAt(position)==World.TILE_BLASE2 ||
+        theWorld.worldSquareAt(position)==World.TILE_FON1 || theWorld.worldSquareAt(position)==World.TILE_FON2) {
         position.sub(velocity);
         velocity.x=0.0;
         velocity.y=0.0;
@@ -94,7 +98,11 @@ class Ninja {
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_LAVA ||
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_KILL ||
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_WATER ||
-      theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_MUNCHER) {
+      theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_MUNCHER ||
+      theWorld.worldSquareAt(rightSideLow)==World.TILE_BLASE ||
+      theWorld.worldSquareAt(rightSideLow)==World.TILE_BLASE2 ||
+      theWorld.worldSquareAt(rightSideLow)==World.TILE_ALGE ||
+      position.x>World.GRID_UNITS_WIDE*World.GRID_UNIT_SIZE-15) {
       position.x = (theWorld.leftOfSquare(rightSideLow)-wallProbeDistance);
       if (velocity.x > 0) {
         velocity.x = 0.0;
@@ -106,7 +114,11 @@ class Ninja {
       theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_LAVA ||
       theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_KILL ||
       theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_WATER ||
-      theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_MUNCHER) {
+      theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_MUNCHER ||
+      theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE ||
+      theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE2 ||
+      theWorld.worldSquareAt(leftSideLow)==World.TILE_ALGE ||
+      position.x<1) {
       position.x = (theWorld.rightOfSquare(leftSideLow)+wallProbeDistance);
       if (velocity.x < 0) {
         velocity.x = 0.0;
@@ -153,7 +165,9 @@ class Ninja {
         theWorld.worldSquareAt(position)==World.TILE_GRASS_LTR || theWorld.worldSquareAt(position)==World.TILE_GRASS_LEFT_TOP ||
         theWorld.worldSquareAt(position)==World.TILE_GRASS_RIGHT_TOP || theWorld.worldSquareAt(position)==World.TILE_STONE ||
         theWorld.worldSquareAt(position)==World.TILE_LAVA_TOP || theWorld.worldSquareAt(position)==World.TILE_CLOUD  ||
-        theWorld.worldSquareAt(position)==World.TILE_ALGE || theWorld.worldSquareAt(position)==World.TILE_MAGIC) {
+        theWorld.worldSquareAt(position)==World.TILE_ALGE || theWorld.worldSquareAt(position)==World.TILE_ALGE_BOTTOM ||
+        theWorld.worldSquareAt(position)==World.TILE_MAGIC || theWorld.worldSquareAt(position)==World.TILE_BLASE2 ||
+        theWorld.worldSquareAt(position)==World.TILE_FON1 || theWorld.worldSquareAt(position)==World.TILE_FON2) {
         isOnGround = true;
         position.y = theWorld.topOfSquare(position);
         velocity.y = 0.0;
@@ -222,4 +236,4 @@ class Ninja {
 
     popMatrix();
   }//draw
-}//Enemy.class
+}//Ninja.class
