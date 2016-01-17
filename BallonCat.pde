@@ -11,13 +11,14 @@ class BallonCat{
 
   PVector position, velocity;
 
-  Boolean facingRight;
+  Boolean facingRight,moveLeft;
 
   static final float AIR_RUN_SPEED = 0.3;
   static final float AIR_SLOWDOWN_PERC = 0.5;
 
   BallonCat() {
     facingRight = false;
+    moveLeft = true;
     position = new PVector();
     velocity = new PVector();
   }//BallonCat
@@ -41,8 +42,18 @@ class BallonCat{
     float speedHere = AIR_RUN_SPEED;
     float frictionHere = AIR_SLOWDOWN_PERC;
 
-      if (position.x>0) {
+      if (moveLeft) {
         velocity.x -= speedHere;
+        facingRight=false;
+        if(position.x<-30){
+          moveLeft=false;
+        }
+      } else if (!moveLeft){
+        velocity.x += speedHere;
+        facingRight=true;
+        if(position.x>1281){
+          moveLeft=true;
+        }
       }
       
       velocity.x *= frictionHere;

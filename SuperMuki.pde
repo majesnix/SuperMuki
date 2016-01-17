@@ -922,7 +922,7 @@ void draw() {
       ballonCatStart=true;
     }
     if(ballonCatStart){
-        theBallonCat.move();
+      theBallonCat.move();
       theBallonCat.draw();
       }
   } else if (level==1) {
