@@ -7,15 +7,15 @@ class Player {
   
   Boolean isOnGround; // used to keep track of whether the player is on the ground. useful for control and animation.
   Boolean facingRight; // used to keep track of which direction the player last moved in. used to flip player image.
-  Boolean checkpointTriggered;
-  Boolean isOnPlatform;
-  Boolean bubbleBoom;
+  Boolean checkpointTriggered; // keeps track of whether the player reached the checkpoint or not.
+  Boolean isOnPlatform; // keeps track of wheter the player is on a MovingPlatorm or not.
+  Boolean bubbleBoom; // checks wheter the Players stands on a bubble
   int animDelay; // countdown timer between animation updates
   int animFrame; // keeps track of which animation frame is currently shown for the player
   int coinsCollected, itemsCollected, rubysCollected, fishsCollected; // a counter to keep a tally on how many coins the player has collected
-  int coinsRemembered, itemsRemembered, rubysRemembered;
-  int dogeIntroCount;
-  int timer;
+  int coinsRemembered, itemsRemembered, rubysRemembered; // rememberes the collected Coins / Rubys / items and loads them after checkpoint / game loaded
+  int dogeIntroCount; // starts the Doge intro and deactivates the movement block
+  int timer; // timer for bubbleBoom
 
   static final float JUMP_POWER = 10.0; // how hard the player jolts upward on jump
   static final float RUN_SPEED = 5.0; // force of player movement on ground, in pixels/cycle
@@ -255,9 +255,9 @@ class Player {
     }
   }//checkForWallbumping
 
-  /*******************
-   ** Münzen sammeln **
-   *******************/
+  /*****************************
+   ** Münzen / Items sammeln  **
+   ****************************/
 
   void checkForCoinGetting() {
 

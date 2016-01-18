@@ -35,7 +35,7 @@ class BallonCat{
         lifes++;
       }
     }
-  }
+  }//checkForFish
 
   void move() {
 

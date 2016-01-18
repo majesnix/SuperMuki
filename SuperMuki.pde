@@ -38,9 +38,9 @@ import gifAnimation.*;   //https://github.com/01010101/GifAnimation
 Minim minim;
 Movie ending;
 
-/****************************
- **  Bilder initialisieren  **
- ****************************/
+/**************************
+ **  Bilder deklarieren  **
+ *************************/
 
 PImage player1, player1_run1, player1_run2;
 PImage player2, player2_run1, player2_run2;
@@ -55,6 +55,9 @@ PImage rubin;
 Gif muncher, ninja, archer, archer_attack, archer_attack2, ninja_attack, fireface, fireface_left, fireface_right, evilpig, bee, ballon_cat, piranha;
 Gif lava, lava_top, wolke, water, flower, fon1, fon2, blase2, blase3;
 Gif coin, fish;
+
+Gif magical_doge;
+
 /************
  **  ITEMS  **
  ************/
@@ -65,8 +68,6 @@ PImage lena_brille, lena_hund, lena_kunst, lena_veggie, lena_sport, lena_metal, 
 PImage cennet_brille, cennet_cat, cennet_burger, cennet_schminke, cennet_kunst, cennet_noten, cennet_gameboy;
 Gif lori_computer;
 PImage lori_brille, lori_noten, lori_topf, lori_schuhe, lori_eis, lori_kunst;
-
-Gif magical_doge;
 
 PFont font;
 
@@ -81,9 +82,9 @@ final float GRAVITY_POWER = 0.8;
  **  Hilfsvariablen  **
  *********************/
 
-int lifes; //Leben
-int rememberLifes;
-int level; //Level Counter
+int lifes; //Lifes
+int rememberLifes; //remembers the correct lifes, after switching from debug mode back to normal mode
+int level; //Level counter
 int checkpointReachedDisplayTimer;
 int menuTimer;
 
@@ -141,20 +142,20 @@ void setup() {
 
   font = loadFont("Hack-20.vlw");
 
-  messages = new MsgBox(new PVector(width/2-280, height-(height/100)*10), 560, font, 40);
-  dogeMessages = new MsgBox(new PVector(width/2-280, height-height/100*99), 560, font, 30);
-  itembox = new ItemBox(new PVector(10, height-height/100*7), 290);
+  messages = new MsgBox(new PVector(width/2-280, height-(height/100)*10), 560, font, 40); //creates the message Box
+  dogeMessages = new MsgBox(new PVector(width/2-280, height-height/100*99), 560, font, 30); //creates message Box for the Doge
+  itembox = new ItemBox(new PVector(10, height-height/100*7), 290); //creates itemBox
 
-  loadImages();
+  loadImages(); //method which loads images into the imagevariables
 
-  menu.resize(width, height);
+  menu.resize(width, height); //resize Background pictures to right size
   bg.resize(width, height);
   bg2.resize(width, height);
   bg3.resize(width, height);
   bg4.resize(width, height);
 
-  lifes = 3;
-  level = 0;
+  lifes = 3; // game starts with 3 lifes
+  level = 0; // game starts with level 0 (the menu)
   checkpointReachedDisplayTimer = 0;
   menuTimer=millis();
   ballonCatStart=false;
@@ -186,6 +187,10 @@ void setup() {
   gameStarted=false;
 }//Setup
 
+/*
+* Method to load the game
+*/
+
 void loadGame() {
   dogeIntro=false;
   String[] values = loadStrings(SAVEGAME);
@@ -203,6 +208,10 @@ void loadGame() {
   lifes=int(values[11]);
   thePlayer.rubysRemembered=int(values[12]);
 }//loadGame
+
+/*
+* Method to save the game
+*/
 
 void saveGame() {
 
@@ -225,6 +234,9 @@ void saveGame() {
   saveStrings(dataFile(SAVEGAME), values);
 }//saveGame
 
+/*
+* Method to load images
+*/
 void loadImages() {
 
   /*******************
@@ -340,7 +352,6 @@ void loadImages() {
   rubin = loadImage("items/rubin.png");
   fish = new Gif(this, "items/fish.gif");
   fish.loop();
-  //fish = loadImage("items/fish2.png");
 
   dcl_apple = loadImage("items/dominic/apple.png");
   dcl_bier = new Gif(this, "items/dominic/bier.gif");
@@ -411,7 +422,7 @@ int[][] loadWorld(int n) {
     }
     return a;
   }
-}
+}//loadWorld
 
 /************
  **  LVL 1  **
@@ -419,10 +430,10 @@ int[][] loadWorld(int n) {
 
 void loadLVL1() {
 
-  resetEverything(); // resettet Spieler, Gegener, Platformen, etc.
+  resetEverything(); // resets player, clears arraylists
   theWorld.generate(1);
   if (!thePlayer.checkpointTriggered) {
-    gameCurrentTimeSec = gameStartTimeSec = millis()/1000; // Setz timer zurück
+    gameCurrentTimeSec = gameStartTimeSec = millis()/1000; // resets timer but only when checkpoint is reached
   }
 }//loadLVL1
 
@@ -432,10 +443,10 @@ void loadLVL1() {
 
 void loadLVL2() {
 
-  resetEverything(); // resettet Spieler, Gegener, Platformen, etc.
+  resetEverything();
   theWorld.generate(2);
   if (!thePlayer.checkpointTriggered) {
-    gameCurrentTimeSec = gameStartTimeSec = millis()/1000; // Setz timer zurück
+    gameCurrentTimeSec = gameStartTimeSec = millis()/1000;
   }
 }//loadLVL2
 
@@ -445,10 +456,10 @@ void loadLVL2() {
 
 void loadLVL3() {
 
-  resetEverything(); // resettet Spieler, Gegener, Platformen, etc.
+  resetEverything();
   theWorld.generate(3);
   if (!thePlayer.checkpointTriggered) {
-    gameCurrentTimeSec = gameStartTimeSec = millis()/1000; // Setz timer zurück
+    gameCurrentTimeSec = gameStartTimeSec = millis()/1000;
   }
 }//loadLVL3
 
@@ -458,10 +469,10 @@ void loadLVL3() {
 
 void loadLVL4() {
 
-  resetEverything(); // resettet Spieler, Gegener, Platformen, etc.
+  resetEverything();
   theWorld.generate(4);
   if (!thePlayer.checkpointTriggered) {
-    gameCurrentTimeSec = gameStartTimeSec = millis()/1000; // Setz timer zurück
+    gameCurrentTimeSec = gameStartTimeSec = millis()/1000;
   }
 }//loadLVL4
 
@@ -471,10 +482,10 @@ void loadLVL4() {
 
 void loadLVLtest() {
 
-  resetEverything(); // resettet Spieler, Gegener, Platformen, etc.
+  resetEverything();
   theWorld.generate(9);
   if (!thePlayer.checkpointTriggered) {
-    gameCurrentTimeSec = gameStartTimeSec = millis()/1000; // Setz timer zurück
+    gameCurrentTimeSec = gameStartTimeSec = millis()/1000;
   }
 }//loadLVLtest
 
@@ -494,9 +505,15 @@ void movieEvent(Movie m) {
   m.read();
 }//movieEvent
 
+/**
+* Method to reset every Object in Game
+*
+* @author Claßen, Dominic
+*/
+
 void resetEverything() {
 
-  arrows.clear();//Löscht alle elemente der ArrayLists
+  arrows.clear();
   fireballs.clear();
   fishs.clear();
   timers.clear();
@@ -514,9 +531,9 @@ void resetEverything() {
   thePlayer.reset();
 }//resetEverything
 
-/**********************
- **  Siegesbedingung  **
- **********************/
+/******************
+ **  How to win  **
+ *****************/
 
 Boolean gameWon() {
   int guyWidth, guyHeight, wallProbeDistance, ceilingProbeDistance;
@@ -575,9 +592,9 @@ Boolean gameWon() {
 }//gameWon
 
 
-/*************************************************
- **  Umrandet den Text mit einem schwarzen Rand  **
- **************************************************/
+/*********************************
+ **  Text with a black outline  **
+ ********************************/
 
 void outlinedText(String sayThis, float atX, float atY) {
   textFont(font);
@@ -590,12 +607,11 @@ void outlinedText(String sayThis, float atX, float atY) {
   text(sayThis, atX, atY);
 }//outlinedText
 
-/************************************************************************************************************
- **  Aktualisiert die Kamera perspektive, sobald der Spieler die Mitte des Bildes erreicht hat X / Y Wert,  **
- **  wird das Bild mitbewegt                                                                                **
- **                                                                                                         **
- **  Y "Verfolgung" hinzugefügt, dcl                                                                        **
- ************************************************************************************************************/
+/**************************************************************************
+ **  Keeps track of the Player position and updates the Camera position  **
+ **                                                                      **
+ **  Y update added by Claßen, Dominic                                   **
+ *************************************************************************/
 
 void updateCameraPosition() {
   int rightEdge = World.GRID_UNITS_WIDE*World.GRID_UNIT_SIZE-width;
@@ -623,9 +639,9 @@ void updateCameraPosition() {
   }
 }//updateCameraPosition
 
-/***********************************************************
- **  Setz den passenden Text, je nach eingesammeltem Item  **
- ***********************************************************/
+/***********************
+ **  Storyline texts  **
+ **********************/
 
 void storyDCL() {
   messages.s[0] = "Dominic likes Apple(s). As long as one \nWindows PC is left!";
@@ -910,9 +926,9 @@ void dogeRandomText() {
 
 void draw() {
 
-  /*****************************************************
-   **  Wechselnde Hintergründe je LVL + Abspann Video  **
-   *****************************************************/
+  /***********************************************
+   **  changeing backgrounds and the aftermovie **
+   **********************************************/
 
   if (level==0) {
     image(menu, 0, 0);
@@ -945,6 +961,11 @@ void draw() {
   if (level!=0) {
     theWorld.render();
   }
+
+  /*
+  * Draw and remove Enemies , projectiles, timers, etc.
+  */
+
   if (level!=5 && lifes!=0 && level!=0 && !gameWon()) {
     for (int i=0; i < ninjas.size(); i++) {
       Ninja ninja = ninjas.get(i);
@@ -1117,7 +1138,7 @@ void draw() {
     }
   }
 
-  if (focused == false) { // Fenster ausgewählt?
+  if (focused == false) { // checks wheter the window is in focus or not
     textAlign(CENTER);
     outlinedText("Click here to Play!\n\nUse the arrow keys to move.\nSpacebar or UP to jump.", width/2, height-height/100*31.25);
   } else {
@@ -1147,6 +1168,9 @@ void draw() {
         outlinedText("Pause: P", width-8, 25);
         outlinedText("Mute: M", width-8, 45);
 
+        /*
+        * Displays usefull information, while in debug mode
+        */
 
         if (debug) {
           outlinedText("Player X: "+thePlayer.position.x, width-8, 75);
