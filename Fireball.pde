@@ -29,7 +29,6 @@ class Fireball extends Arrow {
     position.add(velocity);
 
     checkForWallBumping();
-
   }
 
   void draw() {

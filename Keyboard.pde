@@ -29,7 +29,7 @@ class Keyboard {
       if(!gameStarted){
       }
       if (level==0) {
-        level++;
+        level=1;
         loadLVL1();
         dogeIntro=true;
         gameStarted=true;
@@ -37,28 +37,39 @@ class Keyboard {
       }
       if (gameWon() && level==1) {//Sofern das Spiel gewonnen wurde..
         thePlayer.checkpointTriggered=false;
-        level++;
+        level=2;
         loadLVL2(); // wird dass passende LVL geladen
         saveGame();
       } else if (gameWon() && level==2) {
         thePlayer.checkpointTriggered=false;
-        level++;
+        level=3;
         loadLVL3();
         saveGame();
       } else if (gameWon() && level==3) {
         thePlayer.checkpointTriggered=false;
-        level++;
+        level=4;
         loadLVL4();
         saveGame();
       } else if (gameWon() && level==4) {
-        level++;
+        level=5;
         ending();
       } else if (lifes==0) {
         thePlayer.checkpointTriggered=false;
         music.play();
-        loadLVL1();
-        lifes=3;
-        level=1;
+        if(level==1){
+          loadLVL1();
+          lifes=3;
+        } else if(level==2){
+          loadLVL2();
+          lifes=3;
+        } else if(level==3){
+          loadLVL3();
+          lifes=3;
+        } else if(level==4){
+          loadLVL4();
+          lifes=3;
+        }
+        
       }
     }
     if (key == 'l'  && !gameStarted) {
