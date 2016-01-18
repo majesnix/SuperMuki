@@ -24,9 +24,9 @@ class Pigshot extends Arrow {
     pushMatrix();
     translate(position.x, position.y);
 
-    /*************************
-     **  Rotation des Pigs  **
-     *************************/
+    /***********************************
+     **  Rotation of the mini Piggie  **
+     **********************************/
     if (!facingRight) {
       if (velocity.y<0) {
         rotate(radians(10));

@@ -55,8 +55,8 @@ class Player {
     velocity.y = 0;
   }//reset
 
-  /*******************
-   ** Tastatur input **
+  /********************
+   ** Kwyboard input **
    *******************/
 
   void inputCheck() {
@@ -82,8 +82,8 @@ class Player {
   }//inputCheck
 
   /*********************
-   ** Kollisions check **
-   *********************/
+   ** Collision check **
+   ********************/
 
   void checkForWallBumping() {
 
@@ -157,7 +157,10 @@ class Player {
       theWorld.worldSquareAt(rightSideLow)==World.TILE_KILL || theWorld.worldSquareAt(position)==World.TILE_KILL ||
       theWorld.worldSquareAt(topSide)==World.TILE_WATER || theWorld.worldSquareAt(leftSideHigh)==World.TILE_WATER ||
       theWorld.worldSquareAt(leftSideLow)==World.TILE_WATER || theWorld.worldSquareAt(rightSideHigh)==World.TILE_WATER ||
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_WATER || theWorld.worldSquareAt(position)==World.TILE_WATER) {
+      theWorld.worldSquareAt(rightSideLow)==World.TILE_WATER || theWorld.worldSquareAt(position)==World.TILE_WATER ||
+      theWorld.worldSquareAt(topSide)==World.TILE_WATER2 || theWorld.worldSquareAt(leftSideHigh)==World.TILE_WATER2 ||
+      theWorld.worldSquareAt(leftSideLow)==World.TILE_WATER2 || theWorld.worldSquareAt(rightSideHigh)==World.TILE_WATER2 ||
+      theWorld.worldSquareAt(rightSideLow)==World.TILE_WATER2 || theWorld.worldSquareAt(position)==World.TILE_WATER2) {
 
       calculateLifes();
       return;
@@ -255,9 +258,9 @@ class Player {
     }
   }//checkForWallbumping
 
-  /*****************************
-   ** Münzen / Items sammeln  **
-   ****************************/
+  /******************************
+   ** Coins / Items collection **
+   *****************************/
 
   void checkForCoinGetting() {
 
@@ -330,10 +333,16 @@ class Player {
       theWorld.setSquareAtToThis(centerOfPlayer, World.TILE_EMPTY);
       sndCoin.trigger();
       fishsCollected++;
+      dogeMessages.textPosition=1;
+      dogeMessages.dogeSpeaking=true;
+      dogeText3();
     } else if (theWorld.worldSquareAt(topSide)==World.FISH) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
       fishsCollected++;
+      dogeMessages.textPosition=1;
+      dogeMessages.dogeSpeaking=true;
+      dogeText3();
     }
     /***************
      **  Dominic  **
@@ -893,9 +902,9 @@ class Player {
     }
   }//checkForCoinGettin
 
-  /*******************
-   ****** Fallen ******
-   *******************/
+  /*********************
+   ****** Falling ******
+   ********************/
 
   void checkForFalling() {
     // If we're standing on an empty or coin tile, we're not standing on anything. Fall!
@@ -1089,7 +1098,7 @@ class Player {
     int guyWidth;
     int guyHeight;
 
-//Spielermaße per Spieler
+//Height / Width per Player
     if (level==1) {
       guyWidth = player1.width;
       guyHeight = player1.height;
@@ -1107,7 +1116,7 @@ class Player {
       guyHeight = player1.height;
     }
 
-//In welche richtung steht der Charakter?
+    //Player facing Right / Left
     if (velocity.x<-TRIVIAL_SPEED) {
       facingRight = false;
     } else if (velocity.x>TRIVIAL_SPEED) {
@@ -1117,7 +1126,7 @@ class Player {
     pushMatrix(); // lets us compound/accumulate translate/scale/rotate calls, then undo them all at once
     translate(position.x, position.y);
 
-    //Spieler LVL 1
+    //Player LVL 1
 
     if (level==1) {
       if (facingRight==false) {
@@ -1145,7 +1154,7 @@ class Player {
           image(player1_run2, 0, 0);
         }
       }
-    } else if (level==2) {            //Spieler LVL 2
+    } else if (level==2) {            //Player LVL 2
       if (facingRight==false) {
         scale(-1, 1);
       }
@@ -1171,7 +1180,7 @@ class Player {
           image(player2_run2, 0, 0);
         }
       }
-    } else if (level==3) {            //Spieler LVL 3
+    } else if (level==3) {            //Player LVL 3
       if (facingRight==false) {
         scale(-1, 1);
       }
@@ -1197,7 +1206,7 @@ class Player {
           image(player3_run2, 0, 0);
         }
       }
-    } else if (level==4) {            //Spieler LVL 4
+    } else if (level==4) {            //Player LVL 4
       if (facingRight==false) {
         scale(-1, 1);
       }

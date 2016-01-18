@@ -24,13 +24,6 @@ class Evilpig extends Archer {
     position.y=y;
   }//Evilpig
 
-  void reset() {
-    velocity.x = 0;
-    velocity.y = 0;
-    alive=false;
-    moveLeft=true;
-  }//reset
-
   void move() {
     float speedHere = (isOnGround ? RUN_SPEED : AIR_RUN_SPEED);
     float frictionHere = (isOnGround ? SLOWDOWN_PERC : AIR_SLOWDOWN_PERC);

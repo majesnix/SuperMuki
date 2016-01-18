@@ -26,7 +26,7 @@ class Ninja {
     moveLeft=true;
     position = new PVector();
     velocity = new PVector();
-  }//Enemy
+  }//Ninja
 
   Ninja(int x, int y) {
     isOnGround = false;
@@ -37,18 +37,18 @@ class Ninja {
     velocity = new PVector();
     position.x=x;
     position.y=y;
-  }//Enemy
+  }//Ninja
 
   void reset() {
     velocity.x = 0;
     velocity.y = 0;
     alive=false;
     moveLeft=true;
-  }//eReset
+  }//reset
 
-  /************************                    
-   **  Prüft Collisionen  **    
-   ************************/
+  /***************************                    
+   **  Collision detection  **    
+   **************************/
 
   void checkForWallBumping() {
     int guyWidth = ninja.width;
@@ -97,9 +97,9 @@ class Ninja {
       }
     }
 
-    /**************************************
-     **  Hält Gegner auf den Plattformen  **
-     **************************************/
+    /*********************************
+     **  Enemy walking on platform  **
+     ********************************/
 
     if ( theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_EMPTY || 
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_LAVA ||
@@ -137,9 +137,9 @@ class Ninja {
       }
     }
 
-    /****************************
-     **  Wenn wahr, Kill Enemy  **
-     ****************************/
+    /******************************************
+     **  Kill Enemy when jumping on his head **
+     *****************************************/
 
     if ((position.x-guyWidth/2-2)-(thePlayer.position.x+player1.width/2)<=1  && 
       (thePlayer.position.x-player1.width/2)-(position.x+guyWidth/2-2)<=1 &&
@@ -150,9 +150,10 @@ class Ninja {
     }
 
 
-    /*******************************************
-     **  Gegner berührt Player -> Player kill  **
-     *******************************************/
+    /**********************
+     **  Player killable **
+     *********************/
+
     if (!debug) {
       if ((position.x-guyWidth/2)-(thePlayer.position.x+player1.width/2)<=1  && 
         (thePlayer.position.x-player1.width/2)-(position.x+guyWidth/2)<=1 &&
@@ -163,8 +164,9 @@ class Ninja {
   }//checkForWallbumping
 
   /*
-  *  Boden unter den Füßen?
+  *  On Ground ?
    */
+
   void checkForFalling() {
     if (theWorld.worldSquareAt(position)==World.TILE_EMPTY) {
       isOnGround=false;
@@ -188,9 +190,9 @@ class Ninja {
     }
   }//checkForFalling
 
-  /*******************************************
-   **  Permanentes patrollieren des Gegners  **
-   *******************************************/
+  /********************************
+   **  Enemy moving permanently  **
+   *******************************/
 
   void move() {
     float speedHere = (isOnGround ? RUN_SPEED : AIR_RUN_SPEED);
@@ -232,7 +234,7 @@ class Ninja {
     translate(-guyWidth/2, -guyHeight);
 
     /* 
-     *  Bild des "Gegners"
+     *  Enemy picture
      */
 
     if (position.x - thePlayer.position.x<120 && thePlayer.position.x<position.x && !facingRight || thePlayer.position.x>position.x && thePlayer.position.x-position.x<120 && facingRight) {

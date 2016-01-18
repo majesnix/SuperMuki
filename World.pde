@@ -36,6 +36,7 @@ class World {
   static final int TILE_BLASE2 = 19;    //Zerplatzende Blase
   static final int TILE_FON1 = 67;
   static final int TILE_FON2 = 68;
+  static final int TILE_WATER2 = 69;
 
   static final int COIN = 20;      //Münze
 
@@ -326,6 +327,8 @@ class World {
           image(fon1, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
         } else if (worldGrid[ii][i]==TILE_FON2){
           image(fon2, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
+        } else if (worldGrid[ii][i]==TILE_WATER2){
+          image(water2, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
         }
         if (worldGrid[ii][i]==COIN) { // Münze     + Werte, damit die Gegenstände ca. im Zentrum des Blocks liegen
           image(coin, i*GRID_UNIT_SIZE+10, ii*GRID_UNIT_SIZE+8);

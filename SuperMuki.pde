@@ -53,7 +53,7 @@ PImage questionmark;
 PImage rubin;
 
 Gif muncher, ninja, archer, archer_attack, archer_attack2, ninja_attack, fireface, fireface_left, fireface_right, evilpig, bee, ballon_cat, piranha;
-Gif lava, lava_top, wolke, water, flower, fon1, fon2, blase2, blase3;
+Gif lava, lava_top, wolke, water, water2, flower, fon1, fon2, blase2, blase3;
 Gif coin, fish;
 
 Gif magical_doge;
@@ -137,6 +137,7 @@ ItemBox itembox;
 
 void setup() {
   size(1280, 960, P2D);
+  //fullScreen(P2D);
 
   pixelDensity(1);
 
@@ -144,7 +145,7 @@ void setup() {
 
   messages = new MsgBox(new PVector(width/2-280, height-(height/100)*10), 560, font, 40); //creates the message Box
   dogeMessages = new MsgBox(new PVector(width/2-280, height-height/100*99), 560, font, 30); //creates message Box for the Doge
-  itembox = new ItemBox(new PVector(10, height-height/100*7), 290); //creates itemBox
+  itembox = new ItemBox(new PVector(10, height-height/100*7), 290); //creates the itemBox
 
   loadImages(); //method which loads images into the imagevariables
 
@@ -237,6 +238,7 @@ void saveGame() {
 /*
 * Method to load images
 */
+
 void loadImages() {
 
   /*******************
@@ -300,6 +302,8 @@ void loadImages() {
   fon1.loop();
   fon2 = new Gif(this, "tiles/fontaeneRechts.gif");
   fon2.loop();
+  water2 = new Gif(this, "tiles/water2.gif");
+  water2.loop();
 
   /**************
    **  ENEMIES  **
@@ -880,6 +884,15 @@ void dogeText2() {
   dogeSpeaking=true;
   dogeMessages.s[0] = "Watch out, the clouds are ending!\nYou need to jump!!";
   dogeMessages.s[1] = "Fear not, I will protect you with my magical\nPower and soften your landing!";
+
+  dogeMessages.setText(dogeMessages.s[dogeMessages.index]);
+  dogeMessages.animateText();
+}
+
+void dogeText3() {
+  dogeSpeaking=true;
+  dogeMessages.s[0] = "When you find a Fish,\nyou can throw it by pressing 'F'";
+  dogeMessages.s[1] = "";
 
   dogeMessages.setText(dogeMessages.s[dogeMessages.index]);
   dogeMessages.animateText();
