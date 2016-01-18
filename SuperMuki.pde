@@ -887,31 +887,31 @@ void dogeText2() {
 
 void dogeRandomText() {
   switch(int(random(7))) {
-  case 1:
+  case 0:
     dogeMessages.s[0] = "Much wow, Such skill";
     dogeMessages.s[1] = "";
     break;
-  case 2:
+  case 1:
     dogeMessages.s[0] = "Much fate";
     dogeMessages.s[1] = "";
     break;
-  case 3:
+  case 2:
     dogeMessages.s[0] = "Such skill";
     dogeMessages.s[1] = "";
     break;
-  case 4:
+  case 3:
     dogeMessages.s[0] = "Very skill";
     dogeMessages.s[1] = "";
     break;
-  case 5:
+  case 4:
     dogeMessages.s[0] = "Such 2D";
     dogeMessages.s[1] = "";
     break;
-  case 6:
+  case 5:
     dogeMessages.s[0] = "Very code";
     dogeMessages.s[1] = "";
     break;
-  case 7:
+  case 6:
     dogeMessages.s[0] = "Much wow";
     dogeMessages.s[1] = "";
     break;
