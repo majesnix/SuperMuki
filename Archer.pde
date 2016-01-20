@@ -70,11 +70,6 @@ void move() {
     }
     translate(-guyWidth/2, -guyHeight);
 
-    /***********************************************
-     **  Animation ändert sich, je nach Situation  **
-     ***********************************************/
-
-
     if (position.x - thePlayer.position.x<100 && thePlayer.position.x<position.x && !facingRight || thePlayer.position.x>position.x && thePlayer.position.x-position.x<100 && facingRight) {
       image(archer_attack2, 0, 0);
     }

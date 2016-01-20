@@ -52,9 +52,9 @@ PImage arrow, fireball, pigshot;
 PImage questionmark;
 PImage rubin;
 
-Gif muncher, ninja, archer, archer_attack, archer_attack2, ninja_attack, fireface, fireface_left, fireface_right, evilpig, bee, ballon_cat, piranha;
+Gif muncher, ninja, archer, archer_attack, archer_attack2, ninja_attack, fireface, fireface_left, fireface_right, evilpig, bee, ballon_cat, ballon_cat2, piranha;
 Gif lava, lava_top, wolke, water, water2, flower, fon1, fon2, blase2, blase3;
-Gif coin, fish;
+Gif coin, fish, potion;
 
 Gif magical_doge;
 
@@ -121,6 +121,7 @@ ArrayList<Piranha> piranhas = new ArrayList<Piranha>();
 ArrayList<MovingPlatform> platforms = new ArrayList<MovingPlatform>();
 ArrayList<Timer> timers = new ArrayList<Timer>();
 ArrayList<Fish> fishs = new ArrayList<Fish>();
+ArrayList<Potion> potions = new ArrayList<Potion>();
 
 Player thePlayer = new Player();
 World theWorld = new World();
@@ -334,6 +335,8 @@ void loadImages() {
   bee.loop();
   ballon_cat = new Gif(this,"enemies/ballon_cat.gif");
   ballon_cat.loop();
+  ballon_cat2 = new Gif(this,"enemies/ballon_cat2.gif");
+  ballon_cat2.loop();
   piranha = new Gif(this, "enemies/piranha.gif");
   piranha.loop();
 
@@ -356,6 +359,8 @@ void loadImages() {
   rubin = loadImage("items/rubin.png");
   fish = new Gif(this, "items/fish.gif");
   fish.loop();
+  potion = new Gif(this, "items/potion.gif");
+  potion.loop();
 
   dcl_apple = loadImage("items/dominic/apple.png");
   dcl_bier = new Gif(this, "items/dominic/bier.gif");
@@ -892,7 +897,7 @@ void dogeText2() {
 void dogeText3() {
   dogeSpeaking=true;
   dogeMessages.s[0] = "When you find a Fish,\nyou can throw it by pressing 'F'";
-  dogeMessages.s[1] = "";
+  dogeMessages.s[1] = "Maybe you will find a Cat,\nwhich wants to trade it";
 
   dogeMessages.setText(dogeMessages.s[dogeMessages.index]);
   dogeMessages.animateText();
@@ -963,7 +968,7 @@ void draw() {
   } else if (level==4) {
     image(bg4, 0, 0);
   } else if (level==5) {
-    image(ending, 0, 0);
+    image(ending, 0, 0,1280,960);
   }
 
   pushMatrix();
@@ -1111,6 +1116,17 @@ void draw() {
       Fish fish = fishs.get(--i);
       if ( !fish.alive ) {  
         fishs.remove(i);
+      }
+    }
+    for (int i=0; i < potions.size(); i++) {
+      Potion potion = potions.get(i);
+        potion.move();
+        potion.draw();
+    }
+    for (int i = potions.size(); i != 0; ) {
+      Potion potion = potions.get(--i);
+      if ( !potion.alive ) {  
+        potions.remove(i);
       }
     }
     

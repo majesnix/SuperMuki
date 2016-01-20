@@ -13,6 +13,14 @@ class Fish {
 	Boolean alive;
 	float rotation;
 
+	float i = 2.5;
+
+	Fish(){
+		velocity = new PVector();
+		position = new PVector();
+		alive=true;
+	}//Fish
+
 	Fish(float positionX, float positionY){
 		velocity = new PVector();
 		position = new PVector();
@@ -20,7 +28,7 @@ class Fish {
 		position.y = positionY;
 		alive=true;
 		rotation = 0;
-	}
+	}//Fish
 
 	void move(){
 
@@ -28,7 +36,7 @@ class Fish {
 
     	position.add(velocity);
 
-	}
+	}//move
 
 	void draw(){
 		if (position.y<0){
@@ -41,7 +49,10 @@ class Fish {
     translate(position.x, position.y);
     translate(-guyWidth/2, -guyHeight);
 
-    rotate(radians(rotation++));
+    rotation = rotation+i;
+    translate(guyWidth/2,guyHeight/2);
+    rotate(radians(rotation));
+    translate(-guyWidth/2, -guyHeight/2);
 
       image(fish, 0, 0);
 

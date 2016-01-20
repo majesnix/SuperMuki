@@ -62,10 +62,6 @@ class Evilpig extends Archer {
     }
     translate(-guyWidth/2, -guyHeight);
 
-    /***********************************************
-     **  Animation ändert sich, je nach Situation  **
-     ***********************************************/
-
 
     if (position.x - thePlayer.position.x<350 && thePlayer.position.x<position.x && !facingRight) {
       image(evilpig, 0, 0);
@@ -75,7 +71,6 @@ class Evilpig extends Archer {
         rngShoot=false;
         shootDelay = 0;
       }
-      //Player steht rechts vom Pig
     } else if (thePlayer.position.x>position.x && thePlayer.position.x-position.x<350 && facingRight) {
       image(evilpig, 0, 0);
       if (shootingAllowed || rngShoot) {
@@ -87,7 +82,6 @@ class Evilpig extends Archer {
     } else {
       image(evilpig, 0, 0);
     }
-    //3 Sekunden timer
     shootDelay++;
     if (shootDelay >= 180) {
       shootingAllowed=true;
