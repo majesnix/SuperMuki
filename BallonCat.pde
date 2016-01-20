@@ -32,7 +32,8 @@ class BallonCat{
       Fish tmpFish = fishs.get(i);
       if(position.y-ballon_cat.height<=tmpFish.position.y-fish.height && position.y>=tmpFish.position.y && position.x-ballon_cat.width/2 <= tmpFish.position.x && position.x+ballon_cat.width/2 >= tmpFish.position.x){
         tmpFish.alive = false;
-        lifes++;
+        //lifes++;
+        potions.add(new Potion(position.x,position.y));
       }
     }
   }//checkForFish
@@ -78,8 +79,11 @@ class BallonCat{
       scale(-1, 1);
     }
     translate(-guyWidth/2, -guyHeight);
-
-    image(ballon_cat, 0, 0);
+    if(level==3){
+      image(ballon_cat2, 0, 0);
+    }else{
+      image(ballon_cat, 0, 0);
+    }
 
     popMatrix();
   }//draw
