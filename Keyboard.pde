@@ -26,16 +26,13 @@ class Keyboard {
 
   void pressKey(int key, int keyCode) {
     if (key == 'r') { // never will be held down, so no Boolean needed to track it
-      if(!gameStarted){
-      }
       if (level==0) {
         level=1;
         loadLVL1();
         dogeIntro=true;
         gameStarted=true;
         saveGame();
-      }
-      if (gameWon() && level==1) {//Sofern das Spiel gewonnen wurde..
+      } else if (gameWon() && level==1) {//Sofern das Spiel gewonnen wurde..
         thePlayer.checkpointTriggered=false;
         level=2;
         loadLVL2(); // wird dass passende LVL geladen
@@ -53,23 +50,27 @@ class Keyboard {
       } else if (gameWon() && level==4) {
         level=5;
         ending();
-      } else if (lifes==0) {
+      }
+      if (lifes==0) {
         thePlayer.checkpointTriggered=false;
         music.play();
         if(level==1){
           loadLVL1();
+          //level=1;
           lifes=3;
         } else if(level==2){
           loadLVL2();
+          //level=2;
           lifes=3;
         } else if(level==3){
           loadLVL3();
+          //level=3;
           lifes=3;
         } else if(level==4){
           loadLVL4();
+          //level=4;
           lifes=3;
         }
-        
       }
     }
     if (key == 'l'  && !gameStarted) {
@@ -166,9 +167,9 @@ class Keyboard {
       if (looping) {
         music.pause();
         noLoop();
-        image(menu,0,0);
-        textAlign(CENTER);
-        outlinedText("P to Resume", width/2, height/2);
+        //image(menu,0,0);
+        //textAlign(CENTER);
+        //outlinedText("P to Resume", width/2, height/2);
       } else {
         loop();
         music.loop();

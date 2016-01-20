@@ -73,7 +73,7 @@ void move() {
     if (position.x - thePlayer.position.x<100 && thePlayer.position.x<position.x && !facingRight || thePlayer.position.x>position.x && thePlayer.position.x-position.x<100 && facingRight) {
       image(archer_attack2, 0, 0);
     }
-    //Player steht links vom Archer
+    //Player left of the Archer
     else if (position.x - thePlayer.position.x<350 && thePlayer.position.x<position.x && !facingRight || thePlayer.position.x>position.x && thePlayer.position.x-position.x<350 && facingRight) {
       image(archer_attack, 0, 0);
       if (shootingAllowed || rngShoot) {
@@ -82,16 +82,16 @@ void move() {
         rngShoot=false;
         shootDelay = 0;
       }
-      //Player steht rechts vom Archer
+      //Player right of the Archer
     } else {
       image(archer, 0, 0);
     }
-    //3 Sekunden timer
+    //3 Sec timer
     shootDelay++;
     if (shootDelay >= 90) {
       shootingAllowed=true;
     }
-    //15% chance auf Zufalls Schuss
+    //15% chance for a RNG Shot
     if (shootDelay==30) {
       if (random(100) < 15) {
         rngShoot=true;

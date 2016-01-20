@@ -106,6 +106,16 @@ class Arrow {
         ninja.alive=false;
       }
     }
+    for (int i=0; i < archers.size(); i++) {
+      Archer archer = archers.get(i);
+
+      if ((position.x-arrowWidth/2)-(archer.position.x+player1.width/2)<=1  && 
+        (archer.position.x-player1.width/2)-(position.x+arrowWidth/2)<=1 &&
+        leftSideLow.y<archer.position.y && leftSideLow.y>archer.position.y-(ninjaHeight*0.95)) {
+        archer.velocity.x=0.0;
+        archer.alive=false;
+      }
+    }
   }//checkForWallbumping
 
   void checkForFalling() {

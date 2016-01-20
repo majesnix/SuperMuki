@@ -53,7 +53,7 @@ PImage questionmark;
 PImage rubin;
 
 Gif muncher, ninja, archer, archer_attack, archer_attack2, ninja_attack, fireface, fireface_left, fireface_right, evilpig, bee, ballon_cat, ballon_cat2, piranha;
-Gif lava, lava_top, wolke, water, water2, flower, fon1, fon2, blase2, blase3;
+Gif lava, lava_top, wolke, water, water2, flower, fon1, fon2, blase2, blase3, cloud_dis;
 Gif coin, fish, potion;
 
 Gif magical_doge;
@@ -305,6 +305,8 @@ void loadImages() {
   fon2.loop();
   water2 = new Gif(this, "tiles/water2.gif");
   water2.loop();
+  cloud_dis = new Gif(this, "tiles/wolke2.gif");
+  cloud_dis.loop();
 
   /**************
    **  ENEMIES  **

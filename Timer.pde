@@ -23,7 +23,10 @@ class Timer{
 	}
 
 	void run(){
-		if(millis()/1000-startTime/1000==1){
+		if(millis()/1000-startTime/1000==3 && level==1){
+			theWorld.setSquareAtToThis(tilePosition, World.TILE_EMPTY);
+			done=true;
+		} else if (millis()/1000-startTime/1000==1 && level==3){
 			theWorld.setSquareAtToThis(tilePosition, World.TILE_EMPTY);
 			done=true;
 		}

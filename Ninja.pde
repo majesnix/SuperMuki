@@ -105,6 +105,7 @@ class Ninja {
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_LAVA ||
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_KILL ||
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_WATER ||
+      theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_WATER2 ||
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_MUNCHER ||
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.COIN ||
       theWorld.worldSquareAt(rightSideLow)==World.TILE_BLASE ||
@@ -123,6 +124,7 @@ class Ninja {
       theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_LAVA ||
       theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_KILL ||
       theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_WATER ||
+      theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_WATER2 ||
       theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_MUNCHER ||
       theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.COIN ||
       theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE ||

@@ -37,6 +37,8 @@ class World {
   static final int TILE_FON1 = 67;
   static final int TILE_FON2 = 68;
   static final int TILE_WATER2 = 69;
+  static final int TILE_CLOUD2 = 70;
+  static final int TILE_CLOUD_DIS = 71; //verschwindende Wolke
 
   static final int COIN = 20;      //Münze
 
@@ -104,7 +106,7 @@ class World {
 
   /*
   **  GridSpotX = zwischen 0-400 (12.000 X) SPALTE
-   **  GridSpotY = zwischen 0 - 35 (1.140 Y) ZEILE
+  **  GridSpotY = zwischen 0 - 35 (1.140 Y) ZEILE
    */
 
   // returns what type of tile is at a given pixel coordinate
@@ -321,14 +323,18 @@ class World {
           image(flower, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
         } else if (worldGrid[ii][i]==TILE_ALGE_BOTTOM) {
           image(alge_bottom, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
-        } else if (worldGrid[ii][i]==TILE_BLASE2){
+        } else if (worldGrid[ii][i]==TILE_BLASE2) {
           image(blase2, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
-        } else if (worldGrid[ii][i]==TILE_FON1){
+        } else if (worldGrid[ii][i]==TILE_FON1) {
           image(fon1, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
-        } else if (worldGrid[ii][i]==TILE_FON2){
+        } else if (worldGrid[ii][i]==TILE_FON2) {
           image(fon2, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
-        } else if (worldGrid[ii][i]==TILE_WATER2){
+        } else if (worldGrid[ii][i]==TILE_WATER2) {
           image(water2, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
+        } else if (worldGrid[ii][i]==TILE_CLOUD2) {
+          image(wolke, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
+        } else if (worldGrid[ii][i]==TILE_CLOUD_DIS) {
+          image(cloud_dis, i*GRID_UNIT_SIZE, ii*GRID_UNIT_SIZE);
         }
         if (worldGrid[ii][i]==COIN) { // Münze     + Werte, damit die Gegenstände ca. im Zentrum des Blocks liegen
           image(coin, i*GRID_UNIT_SIZE+10, ii*GRID_UNIT_SIZE+8);

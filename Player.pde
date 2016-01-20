@@ -205,7 +205,8 @@ class Player {
       theWorld.worldSquareAt(leftSideLow)==World.TILE_MOVING || theWorld.worldSquareAt(leftSideLow)==World.TILE_ALGE ||
       theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE || theWorld.worldSquareAt(leftSideLow)==World.TILE_ALGE_BOTTOM ||
       theWorld.worldSquareAt(leftSideLow)==World.TILE_MAGIC || theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE2 || 
-      theWorld.worldSquareAt(leftSideLow)==World.TILE_FON1 | theWorld.worldSquareAt(leftSideLow)==World.TILE_FON2) {
+      theWorld.worldSquareAt(leftSideLow)==World.TILE_FON1 || theWorld.worldSquareAt(leftSideLow)==World.TILE_FON2 ||
+      theWorld.worldSquareAt(leftSideLow)==World.TILE_CLOUD2 || theWorld.worldSquareAt(leftSideLow)==World.TILE_CLOUD_DIS) {
       position.x = theWorld.rightOfSquare(leftSideLow)+wallProbeDistance;
       if (velocity.x < 0) {
         velocity.x = 0.0;
@@ -220,7 +221,8 @@ class Player {
       theWorld.worldSquareAt(leftSideHigh)==World.TILE_MOVING || theWorld.worldSquareAt(leftSideHigh)==World.TILE_ALGE ||
       theWorld.worldSquareAt(leftSideHigh)==World.TILE_BLASE || theWorld.worldSquareAt(leftSideHigh)==World.TILE_ALGE_BOTTOM ||
       theWorld.worldSquareAt(leftSideHigh)==World.TILE_MAGIC || theWorld.worldSquareAt(leftSideHigh)==World.TILE_BLASE2 || 
-      theWorld.worldSquareAt(leftSideHigh)==World.TILE_FON2 || theWorld.worldSquareAt(leftSideHigh)==World.TILE_FON2) {
+      theWorld.worldSquareAt(leftSideHigh)==World.TILE_FON1 || theWorld.worldSquareAt(leftSideHigh)==World.TILE_FON2 ||
+      theWorld.worldSquareAt(leftSideHigh)==World.TILE_CLOUD2 || theWorld.worldSquareAt(leftSideHigh)==World.TILE_CLOUD_DIS) {
       position.x = theWorld.rightOfSquare(leftSideHigh)+wallProbeDistance;
       if (velocity.x < 0) {
         velocity.x = 0.0;
@@ -235,7 +237,8 @@ class Player {
       theWorld.worldSquareAt(rightSideLow)==World.TILE_MOVING || theWorld.worldSquareAt(rightSideLow)==World.TILE_ALGE ||
       theWorld.worldSquareAt(rightSideLow)==World.TILE_BLASE || theWorld.worldSquareAt(rightSideLow)==World.TILE_ALGE_BOTTOM ||
       theWorld.worldSquareAt(rightSideLow)==World.TILE_MAGIC || theWorld.worldSquareAt(rightSideLow)==World.TILE_BLASE2 || 
-      theWorld.worldSquareAt(rightSideLow)==World.TILE_FON1 || theWorld.worldSquareAt(rightSideLow)==World.TILE_FON2) {
+      theWorld.worldSquareAt(rightSideLow)==World.TILE_FON1 || theWorld.worldSquareAt(rightSideLow)==World.TILE_FON2 ||
+      theWorld.worldSquareAt(rightSideLow)==World.TILE_CLOUD2 || theWorld.worldSquareAt(rightSideLow)==World.TILE_CLOUD_DIS) {
       position.x = theWorld.leftOfSquare(rightSideLow)-wallProbeDistance;
       if (velocity.x > 0) {
         velocity.x = 0.0;
@@ -250,7 +253,8 @@ class Player {
       theWorld.worldSquareAt(rightSideHigh)==World.TILE_MOVING || theWorld.worldSquareAt(rightSideHigh)==World.TILE_ALGE ||
       theWorld.worldSquareAt(rightSideHigh)==World.TILE_BLASE || theWorld.worldSquareAt(rightSideHigh)==World.TILE_ALGE_BOTTOM ||
       theWorld.worldSquareAt(rightSideHigh)==World.TILE_MAGIC || theWorld.worldSquareAt(rightSideHigh)==World.TILE_BLASE2 || 
-      theWorld.worldSquareAt(rightSideHigh)==World.TILE_FON1 || theWorld.worldSquareAt(rightSideHigh)==World.TILE_FON2) {
+      theWorld.worldSquareAt(rightSideHigh)==World.TILE_FON1 || theWorld.worldSquareAt(rightSideHigh)==World.TILE_FON2 ||
+      theWorld.worldSquareAt(rightSideHigh)==World.TILE_CLOUD2 || theWorld.worldSquareAt(rightSideHigh)==World.TILE_CLOUD_DIS) {
       position.x = theWorld.leftOfSquare(rightSideHigh)-wallProbeDistance;
       if (velocity.x > 0) {
         velocity.x = 0.0;
@@ -927,6 +931,7 @@ class Player {
     centerOfPlayer = new PVector(position.x, position.y-guyHeight/2);
 
     if (theWorld.worldSquareAt(position)==World.TILE_EMPTY ||
+      theWorld.worldSquareAt(position)==World.TILE_BLOCK ||
       theWorld.worldSquareAt(position)==World.COIN ||
       theWorld.worldSquareAt(position)==World.ITEM_DOMINIC_APPLE ||
       theWorld.worldSquareAt(position)==World.ITEM_DOMINIC_BIER ||
@@ -968,7 +973,7 @@ class Player {
         theWorld.worldSquareAt(position)==World.TILE_ALGE || theWorld.worldSquareAt(position)==World.TILE_BLASE ||
         theWorld.worldSquareAt(position)==World.TILE_ALGE_BOTTOM || theWorld.worldSquareAt(position)==World.TILE_MAGIC || 
         theWorld.worldSquareAt(position)==World.TILE_BLASE2 || theWorld.worldSquareAt(position)==World.TILE_FON1 || 
-        theWorld.worldSquareAt(position)==World.TILE_FON2 ) { // landed on solid square?
+        theWorld.worldSquareAt(position)==World.TILE_FON2 || theWorld.worldSquareAt(position)==World.TILE_CLOUD2) { // landed on solid square?
         isOnGround = true;
         position.y = theWorld.topOfSquare(position);
         velocity.y = 0.0;
@@ -985,7 +990,7 @@ class Player {
         isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_ALGE || isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_BLASE ||
         isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_ALGE_BOTTOM || isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_MAGIC || 
         isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_BLASE2 || isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_FON1 || 
-        isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_FON2){
+        isOnGround && theWorld.worldSquareAt(centerOfPlayer)==World.TILE_FON2 || theWorld.worldSquareAt(centerOfPlayer)==World.TILE_CLOUD2){
           position.y=position.y-guyHeight;
         }
   }//checkForFalling
@@ -1011,15 +1016,21 @@ class Player {
 
 
   void bubbleBurst(){
-    if(theWorld.worldSquareAt(position)==World.TILE_BLASE && !bubbleBoom){
+    if((theWorld.worldSquareAt(position)==World.TILE_BLASE && !bubbleBoom) || (theWorld.worldSquareAt(position)==World.TILE_CLOUD2 && !bubbleBoom)){
       timer = millis();
       tilePosition = new PVector(position.x,position.y);
       bubbleBoom=true;
-    }    if(millis()/1000-timer/1000==1 && bubbleBoom){
+    }    
+    if(millis()/1000-timer/1000==1 && bubbleBoom && level==3){
       theWorld.setSquareAtToThis(tilePosition, World.TILE_BLASE2);
         timers.add(new Timer((int)millis(),tilePosition));
         bubbleBoom=false;
       }
+    if(millis()/1000-timer/1000==1 && bubbleBoom && level==1){
+      theWorld.setSquareAtToThis(tilePosition, World.TILE_CLOUD_DIS);
+      timers.add(new Timer((int)millis(),tilePosition));
+      bubbleBoom=false;
+    }
   }//bubbleBurst
 
   void move() {
