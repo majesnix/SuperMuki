@@ -18,13 +18,13 @@ class Bee extends Ninja {
     moveLeft=true;
   }//Bee
   
-  Bee(int x, int y) {
+  Bee(int positionX, int positionY) {
     isOnGround = false;
     facingRight = false;
     alive=true;
     moveLeft=true;
-    position.x=x;
-    position.y=y;
+    position.x=positionX;
+    position.y=positionY;
   }//Bee
 
   /*******************************************

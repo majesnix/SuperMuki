@@ -23,21 +23,21 @@ class MovingPlatform {
     velocity = new PVector();
   }//Moving_Platform
   
-  MovingPlatform(int x, int y) {
+  MovingPlatform(int positionX, int positionY) {
     moveLeft=true;
     position = new PVector();
     velocity = new PVector();
-    position.x=x;
-    position.y=y;
+    position.x=positionX;
+    position.y=positionY;
     tile = "TILE_CLOUD";
   }//Moving_Platform
 
-  MovingPlatform(int x, int y, String s) {
+  MovingPlatform(int positionX, int positionY, String s) {
     moveLeft=true;
     position = new PVector();
     velocity = new PVector();
-    position.x=x;
-    position.y=y;
+    position.x=positionX;
+    position.y=positionY;
     tile = s;
   }//Moving_Platform
 

@@ -26,14 +26,14 @@ class Arrow {
     velocity = new PVector();
   }
 
-  Arrow(float x, float y, boolean b) {
+  Arrow(float positionX, float positionY, boolean b) {
     facingRight = b;
     alive=true;
     isOnGround=false;
     position = new PVector();
     velocity = new PVector();
-    position.x = x;
-    position.y = y;
+    position.x = positionX;
+    position.y = positionY;
     velocity.y = -7;
   }//Arrow
 

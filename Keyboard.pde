@@ -2,7 +2,7 @@
  **  Basecode: http://www.hobbygamedev.com/int/platformer-game-source-in-processing/  **
  ***************************************************************************************
  **
- **  Gibt die Tastenanschläge weiter
+ **  Keeps track of keystrokes
  **
  */
 
@@ -14,7 +14,6 @@ class Keyboard {
   Keyboard() {
     holdingUp=holdingRight=holdingLeft=holdingSpace=holdingDown=false;
     debug=false;
-    MusicOn=true;
     throwFish=false;
   }//keyboard
 
@@ -32,11 +31,16 @@ class Keyboard {
         dogeIntro=true;
         gameStarted=true;
         saveGame();
-      } else if (gameWon() && level==1) {//Sofern das Spiel gewonnen wurde..
+      } else if (gameWon() && level==1) {//If gameWon()...
+        if(millis()/1000-profileTimer<5){
+          displayProfile=true;
+        } else {
+          displayProfile=false;
         thePlayer.checkpointTriggered=false;
         level=2;
-        loadLVL2(); // wird dass passende LVL geladen
+        loadLVL2(); // ...load next lvl
         saveGame();
+        }
       } else if (gameWon() && level==2) {
         thePlayer.checkpointTriggered=false;
         level=3;
@@ -136,15 +140,14 @@ class Keyboard {
     if(key == 'f'){
       throwFish=true;
     }
-    /***************************************
-     **  Musik muten / wieder aufschalten  **
-     ***************************************/
+    /***************************
+     **  Mute music / resume  **
+     **************************/
 
     if (!music.isMuted() && key == 'm') {
       music.mute();
       sndJump.mute();
       sndCoin.mute();
-      sndEnemieDead.mute();
       sndLifeLost.mute();
       sndPlayerDead.mute();
       sndGameWon.mute();
@@ -152,24 +155,22 @@ class Keyboard {
       music.unmute();
       sndJump.unmute();
       sndCoin.unmute();
-      sndEnemieDead.unmute();
       sndLifeLost.unmute();
       sndPlayerDead.unmute();
       sndGameWon.unmute();
     }
 
-    /***************************************************************************************************************************
-     **  Spiel kann pausiert werden, Loop von Draw wird angehalten und der Menühintergrund geladen, außerdem ein Hinweistext,  ** 
-     **  wie das Spiel fortgesetzt werden kann                                                                                 **
-     ***************************************************************************************************************************/
+    /******************************************************************************************************
+     **  Pauses the game and loads the Menu background, game can be resumed (loop stopped and relooped)  ** 
+     *****************************************************************************************************/
 
     if (key == 'p' && level!=0) {
       if (looping) {
         music.pause();
         noLoop();
-        //image(menu,0,0);
-        //textAlign(CENTER);
-        //outlinedText("P to Resume", width/2, height/2);
+        image(menu,0,0);
+        textAlign(CENTER);
+        outlinedText("P to Resume", width/2, height/2);
       } else {
         loop();
         music.loop();

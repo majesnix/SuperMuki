@@ -8,12 +8,12 @@
 
 class Pigshot extends Arrow {
 
-  Pigshot(float x, float y, boolean b) {
+  Pigshot(float positionX, float positionY, boolean b) {
     facingRight = b;
     alive=true;
     isOnGround=false;
-    position.x = x;
-    position.y = y;
+    position.x = positionX;
+    position.y = positionY;
     velocity.y = -7;
   }//Pigshot
 

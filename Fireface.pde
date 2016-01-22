@@ -35,14 +35,14 @@ class Fireface {
     shootDelay=0;
   }//Fireface
 
-  Fireface(int x, int y) {
+  Fireface(int positionX, int positionY) {
     isOnGround = false;
     alive=true;
     moveLeft=true;
     position = new PVector();
     velocity = new PVector();
-    position.x=x;
-    position.y=y;
+    position.x=positionX;
+    position.y=positionY;
     shootingAllowed=true;
     shootDelay=0;
   }//Enemy

@@ -14,13 +14,13 @@ class Piranha extends Bee{
     alive=false;
     moveLeft=true;
   }
-   Piranha(int x, int y) {
+   Piranha(int positionX, int positionY) {
     isOnGround = false;
     facingRight = false;
     alive=true;
     moveLeft=true;
-    position.x=x;
-    position.y=y;
+    position.x=positionX;
+    position.y=positionY;
   }
 
   void draw() {

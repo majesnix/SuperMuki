@@ -3,7 +3,7 @@
  * Purpose: Enemy Main.class, checks Collision detection, Falling and Enemy-Kill / Player-Kill triggers
  *
  * @author Claßen, Dominic
- * @version 1.0
+ * @version 1.1
  */
 
 class Ninja {
@@ -28,15 +28,15 @@ class Ninja {
     velocity = new PVector();
   }//Ninja
 
-  Ninja(int x, int y) {
+  Ninja(int positionX, int positionY) {
     isOnGround = false;
     facingRight = false;
     alive=true;
     moveLeft=true;
     position = new PVector();
     velocity = new PVector();
-    position.x=x;
-    position.y=y;
+    position.x= positionX;
+    position.y=positionY;
   }//Ninja
 
   void reset() {

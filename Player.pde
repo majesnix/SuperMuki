@@ -1015,7 +1015,7 @@ class Player {
  */
 
 
-  void bubbleBurst(){
+  void worldEvent(){
     if((theWorld.worldSquareAt(position)==World.TILE_BLASE && !bubbleBoom) || (theWorld.worldSquareAt(position)==World.TILE_CLOUD2 && !bubbleBoom)){
       timer = millis();
       tilePosition = new PVector(position.x,position.y);
@@ -1031,7 +1031,7 @@ class Player {
       timers.add(new Timer((int)millis(),tilePosition));
       bubbleBoom=false;
     }
-  }//bubbleBurst
+  }//worldEvent
 
   void move() {
     position.add(velocity);
@@ -1044,7 +1044,7 @@ class Player {
 
     checkForSpout();
 
-    bubbleBurst();
+    worldEvent();
   }//move
 
 /**

@@ -51,6 +51,7 @@ PImage dirt, grass_top, grass_left_top, grass_right_top, grass_ltr, stone, alge,
 PImage arrow, fireball, pigshot;
 PImage questionmark;
 PImage rubin;
+PImage dominic_profile, lori_profile, cennet_profile, lena_profile;
 
 Gif muncher, ninja, archer, archer_attack, archer_attack2, ninja_attack, fireface, fireface_left, fireface_right, evilpig, bee, ballon_cat, ballon_cat2, piranha;
 Gif lava, lava_top, wolke, water, water2, flower, fon1, fon2, blase2, blase3, cloud_dis;
@@ -87,12 +88,14 @@ int rememberLifes; //remembers the correct lifes, after switching from debug mod
 int level; //Level counter
 int checkpointReachedDisplayTimer;
 int menuTimer;
+int profileTimer;
 
-Boolean debug, MusicOn;
+Boolean debug;
 Boolean dogeIntro;
 Boolean gameStarted;
 Boolean dogeSpeaking;
 Boolean ballonCatStart;
+Boolean displayProfile;
 
 int gameStartTimeSec, gameCurrentTimeSec;
 
@@ -103,7 +106,7 @@ static final String SAVEGAME = "savegame.dat";
  ******************************/
 
 AudioPlayer music, sndPlayerDead; // AudioPlayer uses less memory. Better for music.
-AudioSample sndJump, sndCoin, sndEnemieDead, sndLifeLost, sndGameWon; // AudioSample plays more respnosively. Better for sound effects.
+AudioSample sndJump, sndCoin, sndLifeLost, sndGameWon; // AudioSample plays more respnosively. Better for sound effects.
 
 /********************************************************************
  **  Objekte für Spieler, Gegner, die Welt, Keyboardeingaben, etc.  **
@@ -155,12 +158,18 @@ void setup() {
   bg2.resize(width, height);
   bg3.resize(width, height);
   bg4.resize(width, height);
+  dominic_profile.resize(width,height);
+  lori_profile.resize(width,height);
+  cennet_profile.resize(width,height);
+  lena_profile.resize(width,height);
 
   lifes = 3; // game starts with 3 lifes
   level = 0; // game starts with level 0 (the menu)
   checkpointReachedDisplayTimer = 0;
   menuTimer=millis();
+  profileTimer=3;
   ballonCatStart=false;
+  displayProfile=false;
 
   cameraOffsetX = 0.0;
   cameraOffsetY = 0.0;
@@ -178,7 +187,6 @@ void setup() {
   int buffersize = 256;
   sndJump = minim.loadSample("sounds/Jump.wav", buffersize);
   sndCoin = minim.loadSample("sounds/coin.wav", buffersize);
-  sndEnemieDead = minim.loadSample("sounds/Sound_Boese_Wicht.mp3", buffersize);
   sndLifeLost = minim.loadSample("sounds/life_lost.mp3", buffersize);
   sndPlayerDead = minim.loadFile("sounds/game_over.mp3", 1024);
   sndGameWon = minim.loadSample("sounds/Sound_Gewonnen.mp3", buffersize);
@@ -251,6 +259,11 @@ void loadImages() {
   bg2=loadImage("backgrounds/background2.jpg");
   bg3=loadImage("backgrounds/background3.jpg");
   bg4=loadImage("backgrounds/background4.jpg");
+
+  dominic_profile=loadImage("steckbriefe/dominics.png");
+  lori_profile=loadImage("steckbriefe/loris.png");
+  cennet_profile=loadImage("steckbriefe/cennets.png");
+  lena_profile=loadImage("steckbriefe/lenas.png");
 
   /**************
    **  PLAYERS  **
@@ -946,9 +959,9 @@ void dogeRandomText() {
 
 void draw() {
 
-  /***********************************************
-   **  changeing backgrounds and the aftermovie **
-   **********************************************/
+  /**********************************************
+   **  changing backgrounds and the aftermovie **
+   *********************************************/
 
   if (level==0) {
     image(menu, 0, 0);
@@ -960,7 +973,7 @@ void draw() {
     if(ballonCatStart){
       theBallonCat.move();
       theBallonCat.draw();
-      }
+    }
   } else if (level==1) {
     image(bg, 0, 0);
   } else if (level==2) {
@@ -1146,6 +1159,18 @@ void draw() {
     }
     thePlayer.move();
     thePlayer.draw();
+  }
+
+  if(displayProfile){
+    if (level==1) {
+      image(dominic_profile,0,0);
+    } else if (level==2) {
+      image(lori_profile,0,0);
+    } else if (level==3) {
+      image(cennet_profile,0,0);
+    } else if (level==4) {
+      image(lena_profile,0,0);
+    }
   }
 
   popMatrix();

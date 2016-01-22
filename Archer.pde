@@ -23,13 +23,13 @@ class Archer extends Ninja {
     moveLeft=true;
   }//Archer
 
-  Archer(int x, int y) {
+  Archer(int positionX, int positionY) {
     isOnGround = false;
     facingRight = false;
     alive=true;
     moveLeft=true;
-    position.x=x;
-    position.y=y;
+    position.x=positionX;
+    position.y=positionY;
   }//Archer
   
 void move() {

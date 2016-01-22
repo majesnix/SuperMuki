@@ -15,13 +15,13 @@ class Evilpig extends Archer {
     moveLeft=true;
   }//Evilpig
 
-  Evilpig(int x, int y) {
+  Evilpig(int positionX, int positionY) {
     isOnGround = false;
     facingRight = true;
     alive=true;
     moveLeft=true;
-    position.x=x;
-    position.y=y;
+    position.x=positionX;
+    position.y=positionY;
   }//Evilpig
 
   void move() {
