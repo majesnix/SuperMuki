@@ -4,7 +4,7 @@
 
 class World {
 
-  int coinsInStage, itemsInStage, rubysInStage;
+  int coinsInStage, rubysInStage;
 
   /*********************************************
    **  Bausteine der einzelnen Welten / Level  **
@@ -38,7 +38,7 @@ class World {
   static final int TILE_FON2 = 68;
   static final int TILE_WATER2 = 69;
   static final int TILE_CLOUD2 = 70;
-  static final int TILE_CLOUD_DIS = 71; //verschwindende Wolke
+  static final int TILE_CLOUD_DIS = 71; //disappearing cloud
 
   static final int COIN = 20;      //Münze
 
@@ -201,7 +201,6 @@ class World {
 
   void generate(int n) {
     coinsInStage = 0; // we count them while copying in level data
-    itemsInStage = 0;
     rubysInStage = 0;
 
     int[][] a = loadWorld(n);
@@ -268,12 +267,6 @@ class World {
           }
           if (a[ii][i]==RUBY) {
             rubysInStage++;
-          }
-          if (a[ii][i]== ITEM_DOMINIC_APPLE || a[ii][i]== ITEM_DOMINIC_BIER || a[ii][i]== ITEM_DOMINIC_KAFFEE || a[ii][i]== ITEM_DOMINIC_COMPUTER || a[ii][i]== ITEM_DOMINIC_BURGER || a[ii][i]== ITEM_DOMINIC_GOLF || a[ii][i]== ITEM_DOMINIC_JAVA ||
-            a[ii][i]== ITEM_LENA_BRILLE || a[ii][i]== ITEM_LENA_HUND || a[ii][i]== ITEM_LENA_KUNST || a[ii][i]== ITEM_LENA_VEGGIE || a[ii][i]== ITEM_LENA_SPORT || a[ii][i]== ITEM_LENA_METAL || a[ii][i]== ITEM_LENA_NOTEN ||
-            a[ii][i]== ITEM_CENNET_BRILLE || a[ii][i]== ITEM_CENNET_CAT || a[ii][i]== ITEM_CENNET_BURGER || a[ii][i]== ITEM_CENNET_SCHMINKE || a[ii][i]== ITEM_CENNET_KUNST || a[ii][i]== ITEM_CENNET_NOTEN || a[ii][i]== ITEM_CENNET_GAMEBOY ||
-            a[ii][i]== ITEM_LORI_BRILLE || a[ii][i]== ITEM_LORI_COMPUTER || a[ii][i]== ITEM_LORI_NOTEN || a[ii][i]== ITEM_LORI_TOPF || a[ii][i]== ITEM_LORI_SCHUHE || a[ii][i]== ITEM_LORI_EIS || a[ii][i]== ITEM_LORI_KUNST) {
-            itemsInStage++;
           }
           worldGrid[ii][i] = a[ii][i];
         }

@@ -22,7 +22,7 @@
  **                                                                                                                                        **
  **  How to Save a Game: https://forum.processing.org/two/discussion/6800/how-can-save-and-load-a-game                                     **
  **                                                                                                                                        **
- **  LVL Speicherort ausgelagert (Danke Jan)  (09.01.2016)                                                                                 **
+ **  LVL Speicherort ausgelagert (thanks Jan)  (09.01.2016)                                                                                **
  **                                                                                                                                        **
  ********************************************************************************************************************************************
  *******************************************************************************************************************************************/
@@ -609,6 +609,7 @@ Boolean gameWon() {
     theWorld.worldSquareAt(rightSideLow)==World.TILE_WIN || theWorld.worldSquareAt(topSide)==World.TILE_WIN ||
     theWorld.worldSquareAt(centerOfPlayer)==World.TILE_WIN) {
       sndGameWon.trigger();
+    profileTimer=millis();
     return true;
   } else {
     return false;
@@ -1159,18 +1160,6 @@ void draw() {
     }
     thePlayer.move();
     thePlayer.draw();
-  }
-
-  if(displayProfile){
-    if (level==1) {
-      image(dominic_profile,0,0);
-    } else if (level==2) {
-      image(lori_profile,0,0);
-    } else if (level==3) {
-      image(cennet_profile,0,0);
-    } else if (level==4) {
-      image(lena_profile,0,0);
-    }
   }
 
   popMatrix();

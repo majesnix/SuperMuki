@@ -32,15 +32,10 @@ class Keyboard {
         gameStarted=true;
         saveGame();
       } else if (gameWon() && level==1) {//If gameWon()...
-        if(millis()/1000-profileTimer<5){
-          displayProfile=true;
-        } else {
-          displayProfile=false;
         thePlayer.checkpointTriggered=false;
         level=2;
         loadLVL2(); // ...load next lvl
         saveGame();
-        }
       } else if (gameWon() && level==2) {
         thePlayer.checkpointTriggered=false;
         level=3;
@@ -60,19 +55,15 @@ class Keyboard {
         music.play();
         if(level==1){
           loadLVL1();
-          //level=1;
           lifes=3;
         } else if(level==2){
           loadLVL2();
-          //level=2;
           lifes=3;
         } else if(level==3){
           loadLVL3();
-          //level=3;
           lifes=3;
         } else if(level==4){
           loadLVL4();
-          //level=4;
           lifes=3;
         }
       }
