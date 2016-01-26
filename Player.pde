@@ -9,13 +9,13 @@ class Player {
   Boolean facingRight; // used to keep track of which direction the player last moved in. used to flip player image.
   Boolean checkpointTriggered; // keeps track of whether the player reached the checkpoint or not.
   Boolean isOnPlatform; // keeps track of wheter the player is on a MovingPlatorm or not.
-  Boolean bubbleBoom; // checks wheter the Players stands on a bubble
+  Boolean boom; // checks wheter the Players stands on a bubble
   int animDelay; // countdown timer between animation updates
   int animFrame; // keeps track of which animation frame is currently shown for the player
   int coinsCollected, itemsCollected, rubysCollected, fishsCollected; // a counter to keep a tally on how many coins the player has collected
   int coinsRemembered, itemsRemembered, rubysRemembered; // rememberes the collected Coins / Rubys / items and loads them after checkpoint / game loaded
   int dogeIntroCount; // starts the Doge intro and deactivates the movement block
-  int timer; // timer for bubbleBoom
+  int timer; // timer for boom
 
   static final float JUMP_POWER = 10.0; // how hard the player jolts upward on jump
   static final float RUN_SPEED = 5.0; // force of player movement on ground, in pixels/cycle
@@ -32,7 +32,7 @@ class Player {
     position = new PVector();
     velocity = new PVector();
     checkpointTriggered=false;
-    bubbleBoom=false;
+    boom=false;
   }//Player
 
   void reset() {
@@ -1016,20 +1016,20 @@ class Player {
 
 
   void worldEvent(){
-    if((theWorld.worldSquareAt(position)==World.TILE_BLASE && !bubbleBoom) || (theWorld.worldSquareAt(position)==World.TILE_CLOUD2 && !bubbleBoom)){
+    if((theWorld.worldSquareAt(position)==World.TILE_BLASE && !boom) || (theWorld.worldSquareAt(position)==World.TILE_CLOUD2 && !boom)){
       timer = millis();
       tilePosition = new PVector(position.x,position.y);
-      bubbleBoom=true;
+      boom=true;
     }    
-    if(millis()/1000-timer/1000==1 && bubbleBoom && level==3){
+    if(millis()/1000-timer/1000==1 && boom && level==3){
       theWorld.setSquareAtToThis(tilePosition, World.TILE_BLASE2);
         timers.add(new Timer((int)millis(),tilePosition));
-        bubbleBoom=false;
+        boom=false;
       }
-    if(millis()/1000-timer/1000==1 && bubbleBoom && level==1){
+    if(millis()/1000-timer/1000==1 && boom && level==1){
       theWorld.setSquareAtToThis(tilePosition, World.TILE_CLOUD_DIS);
       timers.add(new Timer((int)millis(),tilePosition));
-      bubbleBoom=false;
+      boom=false;
     }
   }//worldEvent
 
