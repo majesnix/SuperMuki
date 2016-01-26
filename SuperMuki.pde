@@ -85,16 +85,16 @@ final float GRAVITY_POWER = 0.8;
 int lifes; //Lifes
 int rememberLifes; //remembers the correct lifes, after switching from debug mode back to normal mode
 int level; //Level counter
-int checkpointReachedDisplayTimer;
-int menuTimer;
+int checkpointReachedDisplayTimer; //timer for Checkpoint info text
+int menuTimer; //timer for menuEvents
 
-Boolean debug;
-Boolean dogeIntro;
-Boolean gameStarted;
-Boolean dogeSpeaking;
-Boolean ballonCatStart;
+Boolean debug; //debug true,false
+Boolean dogeIntro; //intro true,false
+Boolean gameStarted; //GameLoaded, new Game started
+Boolean dogeSpeaking; //
+Boolean ballonCatStart; //shows the ballon cat
 
-boolean [] tmpValues = new boolean[7];
+boolean [] tmpValues = new boolean[7]; //helper for load/save game
 
 int gameStartTimeSec, gameCurrentTimeSec;
 
@@ -163,6 +163,8 @@ void setup() {
   checkpointReachedDisplayTimer = 0;
   menuTimer=millis();
   ballonCatStart=false;
+  dogeIntro = false;
+  gameStarted = false;
 
   cameraOffsetX = 0.0;
   cameraOffsetY = 0.0;
@@ -185,9 +187,6 @@ void setup() {
   sndGameWon = minim.loadSample("sounds/Sound_Gewonnen.mp3", buffersize);
 
   frameRate(30);
-
-  dogeIntro = false;
-  gameStarted = false;
 }//Setup
 
 /*
@@ -210,13 +209,14 @@ void loadGame() {
   itembox.item7=boolean(values[10]);
   lifes=int(values[11]);
   thePlayer.rubysRemembered=int(values[12]);
-    tmpValues[0] = boolean(values[4]);
-    tmpValues[1] = boolean(values[5]);
-    tmpValues[2] = boolean(values[6]);
-    tmpValues[3] = boolean(values[7]);
-    tmpValues[4] = boolean(values[8]);
-    tmpValues[5] = boolean(values[9]);
-    tmpValues[6] = boolean(values[10]);
+
+  tmpValues[0] = boolean(values[4]);
+  tmpValues[1] = boolean(values[5]);
+  tmpValues[2] = boolean(values[6]);
+  tmpValues[3] = boolean(values[7]);
+  tmpValues[4] = boolean(values[8]);
+  tmpValues[5] = boolean(values[9]);
+  tmpValues[6] = boolean(values[10]);
 }//loadGame
 
 /*

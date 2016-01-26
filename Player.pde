@@ -115,6 +115,7 @@ class Player {
       wallProbeDistance = int(guyWidth*0.3);
       ceilingProbeDistance = int(guyHeight*0.95);
     }
+    
     /* Because of how we draw the player, "position" is the center of the feet/bottom
      * To detect and handle wall/ceiling collisions, we create 5 additional positions:
      * leftSideHigh - left of center, at shoulder/head level
@@ -144,7 +145,6 @@ class Player {
 
     topSide.x = position.x; // center of player
     topSide.y = position.y-ceilingProbeDistance; // top of guy
-
 
     if ( theWorld.worldSquareAt(topSide)==World.TILE_MUNCHER || theWorld.worldSquareAt(leftSideHigh)==World.TILE_MUNCHER ||
       theWorld.worldSquareAt(leftSideLow)==World.TILE_MUNCHER || theWorld.worldSquareAt(rightSideHigh)==World.TILE_MUNCHER ||
@@ -298,7 +298,6 @@ class Player {
       wallProbeDistance = int(guyWidth*0.3);
       ceilingProbeDistance = int(guyHeight*0.95);
     }
-
 
     topSide = new PVector(position.x, position.y-guyHeight);
     centerOfPlayer = new PVector(position.x, position.y-guyHeight/2);
@@ -1001,7 +1000,6 @@ class Player {
  * @author Claßen, Dominic
  */
 
-
   void checkForSpout(){
     if (theWorld.worldSquareAt(position)==World.TILE_FON1 || theWorld.worldSquareAt(position)==World.TILE_FON2){
       velocity.y=-10;
@@ -1013,7 +1011,6 @@ class Player {
  * 
  * @author Claßen, Dominic
  */
-
 
   void worldEvent(){
     if((theWorld.worldSquareAt(position)==World.TILE_BLASE && !boom) || (theWorld.worldSquareAt(position)==World.TILE_CLOUD2 && !boom)){
