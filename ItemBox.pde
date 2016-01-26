@@ -198,13 +198,13 @@ class ItemBox {
       item6=false;
       item7=false;
     } else {
-      item1=true;
-      item2=true;
-      item3=true;
-      item4=true;
-      item5=false;
-      item6=false;
-      item7=false;
+      item1=tmpValues[0];
+      item2=tmpValues[1];
+      item3=tmpValues[2];
+      item4=tmpValues[3];
+      item5=tmpValues[4];
+      item6=tmpValues[5];
+      item7=tmpValues[6];
     }
-  }//reset
+  }
 }//class.Itembox

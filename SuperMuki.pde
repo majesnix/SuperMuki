@@ -51,7 +51,6 @@ PImage dirt, grass_top, grass_left_top, grass_right_top, grass_ltr, stone, alge,
 PImage arrow, fireball, pigshot;
 PImage questionmark;
 PImage rubin;
-PImage dominic_profile, lori_profile, cennet_profile, lena_profile;
 
 Gif muncher, ninja, archer, archer_attack, archer_attack2, ninja_attack, fireface, fireface_left, fireface_right, evilpig, bee, ballon_cat, ballon_cat2, piranha;
 Gif lava, lava_top, wolke, water, water2, flower, fon1, fon2, blase2, blase3, cloud_dis;
@@ -88,14 +87,14 @@ int rememberLifes; //remembers the correct lifes, after switching from debug mod
 int level; //Level counter
 int checkpointReachedDisplayTimer;
 int menuTimer;
-int profileTimer;
 
 Boolean debug;
 Boolean dogeIntro;
 Boolean gameStarted;
 Boolean dogeSpeaking;
 Boolean ballonCatStart;
-Boolean displayProfile;
+
+boolean [] tmpValues = new boolean[7];
 
 int gameStartTimeSec, gameCurrentTimeSec;
 
@@ -158,23 +157,17 @@ void setup() {
   bg2.resize(width, height);
   bg3.resize(width, height);
   bg4.resize(width, height);
-  dominic_profile.resize(width,height);
-  lori_profile.resize(width,height);
-  cennet_profile.resize(width,height);
-  lena_profile.resize(width,height);
 
   lifes = 3; // game starts with 3 lifes
   level = 0; // game starts with level 0 (the menu)
   checkpointReachedDisplayTimer = 0;
   menuTimer=millis();
-  profileTimer=3;
   ballonCatStart=false;
-  displayProfile=false;
 
   cameraOffsetX = 0.0;
   cameraOffsetY = 0.0;
 
-  ending=new Movie(this, "ende.mp4");
+  ending = new Movie(this, "ende.mp4");
 
   /*******************************************
    **  Läd die Sound"engine" / Soundeffekte  **
@@ -193,8 +186,8 @@ void setup() {
 
   frameRate(30);
 
-  dogeIntro=false;
-  gameStarted=false;
+  dogeIntro = false;
+  gameStarted = false;
 }//Setup
 
 /*
@@ -217,6 +210,13 @@ void loadGame() {
   itembox.item7=boolean(values[10]);
   lifes=int(values[11]);
   thePlayer.rubysRemembered=int(values[12]);
+    tmpValues[0] = boolean(values[4]);
+    tmpValues[1] = boolean(values[5]);
+    tmpValues[2] = boolean(values[6]);
+    tmpValues[3] = boolean(values[7]);
+    tmpValues[4] = boolean(values[8]);
+    tmpValues[5] = boolean(values[9]);
+    tmpValues[6] = boolean(values[10]);
 }//loadGame
 
 /*
@@ -241,6 +241,14 @@ void saveGame() {
     str(thePlayer.rubysCollected)
   };
 
+  tmpValues[0] = itembox.item1;
+  tmpValues[1] = itembox.item2;
+  tmpValues[2] = itembox.item3;
+  tmpValues[3] = itembox.item4;   
+  tmpValues[4] = itembox.item5;
+  tmpValues[5] = itembox.item6;
+  tmpValues[6] = itembox.item7;
+
   saveStrings(dataFile(SAVEGAME), values);
 }//saveGame
 
@@ -259,11 +267,6 @@ void loadImages() {
   bg2=loadImage("backgrounds/background2.jpg");
   bg3=loadImage("backgrounds/background3.jpg");
   bg4=loadImage("backgrounds/background4.jpg");
-
-  dominic_profile=loadImage("steckbriefe/dominics.png");
-  lori_profile=loadImage("steckbriefe/loris.png");
-  cennet_profile=loadImage("steckbriefe/cennets.png");
-  lena_profile=loadImage("steckbriefe/lenas.png");
 
   /**************
    **  PLAYERS  **
@@ -288,13 +291,13 @@ void loadImages() {
 
   dirt = loadImage("tiles/dirt_dcl.png");
   dirt_big = loadImage("tiles/dirt_23x10.png");
-  grass_top=loadImage("tiles/ground-top_dcl.png");
-  grass_left_top=loadImage("tiles/gL.png");
-  grass_right_top=loadImage("tiles/gR.png");
-  grass_left=loadImage("tiles/dirt_grass_left.png");
-  grass_right=loadImage("tiles/dirt_grass_right.png");
-  grass_ltr=loadImage("tiles/gLOR.png");
-  stone=loadImage("tiles/stone_dcl.png");
+  grass_top = loadImage("tiles/ground-top_dcl.png");
+  grass_left_top = loadImage("tiles/gL.png");
+  grass_right_top = loadImage("tiles/gR.png");
+  grass_left = loadImage("tiles/dirt_grass_left.png");
+  grass_right = loadImage("tiles/dirt_grass_right.png");
+  grass_ltr = loadImage("tiles/gLOR.png");
+  stone = loadImage("tiles/stone_dcl.png");
   lava = new Gif(this, "tiles/lava.gif");
   lava.loop();
   lava_top = new Gif(this, "tiles/lava_top.gif");
@@ -609,7 +612,6 @@ Boolean gameWon() {
     theWorld.worldSquareAt(rightSideLow)==World.TILE_WIN || theWorld.worldSquareAt(topSide)==World.TILE_WIN ||
     theWorld.worldSquareAt(centerOfPlayer)==World.TILE_WIN) {
       sndGameWon.trigger();
-    profileTimer=millis();
     return true;
   } else {
     return false;
