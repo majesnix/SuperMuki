@@ -166,7 +166,6 @@ class Player {
       return;
     }
 
-
     if (  theWorld.worldSquareAt(topSide)==World.TILE_SOLID || theWorld.worldSquareAt(topSide)==World.TILE_SOLID2 ||
       theWorld.worldSquareAt(topSide)==World.TILE_GRASS_LEFT || theWorld.worldSquareAt(topSide)==World.TILE_GRASS_RIGHT ||
       theWorld.worldSquareAt(topSide)==World.TILE_GRASS_LEFT_TOP || theWorld.worldSquareAt(topSide)==World.TILE_GRASS_RIGHT_TOP ||
@@ -302,7 +301,7 @@ class Player {
     topSide = new PVector(position.x, position.y-guyHeight);
     centerOfPlayer = new PVector(position.x, position.y-guyHeight/2);
 
-    if (theWorld.worldSquareAt(centerOfPlayer)==World.COIN) { //MÜNZEN
+    if (theWorld.worldSquareAt(centerOfPlayer)==World.COIN) { //Coins
       theWorld.setSquareAtToThis(centerOfPlayer, World.TILE_EMPTY);
       sndCoin.trigger();
       coinsCollected++;
@@ -317,7 +316,7 @@ class Player {
         coinsRemembered++;
       }
     }
-    if (theWorld.worldSquareAt(centerOfPlayer)==World.RUBY) { 
+    if (theWorld.worldSquareAt(centerOfPlayer)==World.RUBY) { //Rubys
       theWorld.setSquareAtToThis(centerOfPlayer, World.TILE_EMPTY);
       sndCoin.trigger();
       rubysCollected++;
@@ -332,7 +331,7 @@ class Player {
         rubysRemembered++;
       }
     }
-    if (theWorld.worldSquareAt(centerOfPlayer)==World.FISH) { 
+    if (theWorld.worldSquareAt(centerOfPlayer)==World.FISH) { //Fish
       theWorld.setSquareAtToThis(centerOfPlayer, World.TILE_EMPTY);
       sndCoin.trigger();
       fishsCollected++;

@@ -1168,7 +1168,7 @@ void draw() {
         potion.move();
         potion.draw();
     }
-    
+
     for (int i = potions.size(); i != 0; ) {
       Potion potion = potions.get(--i);
       if ( !potion.alive ) {  
