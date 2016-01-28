@@ -91,14 +91,14 @@ int menuTimer; //timer for menuEvents
 Boolean debug; //debug true,false
 Boolean dogeIntro; //intro true,false
 Boolean gameStarted; //GameLoaded, new Game started
-Boolean dogeSpeaking; //
+Boolean dogeSpeaking; //checks Doge Story Messages and stop randomText
 Boolean ballonCatStart; //shows the ballon cat
 
 boolean [] tmpValues = new boolean[7]; //helper for load/save game
 
-int gameStartTimeSec, gameCurrentTimeSec;
+int gameStartTimeSec, gameCurrentTimeSec; //variables to track time
 
-static final String SAVEGAME = "savegame.dat";
+static final String SAVEGAME = "savegame.dat"; //name of the savegame file
 
 /******************************
  **  music and sound effects  **
