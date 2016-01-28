@@ -94,7 +94,7 @@ Boolean gameStarted; //GameLoaded, new Game started
 Boolean dogeSpeaking; //checks Doge Story Messages and stop randomText
 Boolean ballonCatStart; //shows the ballon cat
 
-boolean [] tmpValues = new boolean[7]; //helper for load/save game
+boolean [] tmpValues = new boolean[7]; //helper for load/save game / keeps loaded items and resets the right items, when player loses a life
 
 int gameStartTimeSec, gameCurrentTimeSec; //variables to track time
 
@@ -139,6 +139,7 @@ ItemBox itembox;
  ************/
 
 void setup() {
+
   size(1280, 960, P2D);
   //fullScreen(P2D);
 
@@ -194,6 +195,7 @@ void setup() {
 */
 
 void loadGame() {
+
   dogeIntro=false;
   String[] values = loadStrings(SAVEGAME);
   level = int(values[0]);
@@ -429,6 +431,7 @@ void loadImages() {
  */
  
 int[][] loadWorld(int n) {
+
   Table t;
   try {
     t = loadTable("worlds/world" + n + ".tsv.xls", "tsv");
@@ -563,6 +566,7 @@ void resetEverything() {
  *****************/
 
 Boolean gameWon() {
+
   int guyWidth, guyHeight, wallProbeDistance, ceilingProbeDistance;
 
   if (level==1) {
@@ -624,6 +628,7 @@ Boolean gameWon() {
  ********************************/
 
 void outlinedText(String sayThis, float atX, float atY) {
+
   textFont(font);
   fill(0);
   text(sayThis, atX-1, atY);
@@ -641,6 +646,7 @@ void outlinedText(String sayThis, float atX, float atY) {
  *************************************************************************/
 
 void updateCameraPosition() {
+
   int rightEdge = World.GRID_UNITS_WIDE*World.GRID_UNIT_SIZE-width;
   int topEdge = World.GRID_UNITS_TALL*World.GRID_UNIT_SIZE-height;
   // the left side of the camera view should never go right of the above number
@@ -1017,6 +1023,7 @@ void draw() {
         ninjas.remove(i);
       }
     }
+
     for (int i=0; i < archers.size(); i++) {
       Archer archer = archers.get(i);
       if (archer.position.x<thePlayer.position.x+width && archer.position.x>thePlayer.position.x-width) {
@@ -1024,40 +1031,47 @@ void draw() {
         archer.draw();
       }
     }
+
     for (int i = archers.size(); i != 0; ) {
       Archer archer = archers.get(--i);
       if ( !archer.alive ) {  
         archers.remove(i);
       }
     }
+
     for (int i=0; i < arrows.size(); i++) {
       Arrow arrow = arrows.get(i);
       arrow.move();
       arrow.draw();
     }
+
     for (int i = arrows.size(); i != 0; ) {
       Arrow arrow = arrows.get(--i);
       if ( !arrow.alive ) {  
         arrows.remove(i);
       }
     }
+
     for (int i=0; i < firefaces.size(); i++) {
       Fireface fireface = firefaces.get(i);
       if (fireface.position.x<thePlayer.position.x+width && fireface.position.x>thePlayer.position.x-width) {
         fireface.draw();
       }
     }
+
     for (int i=0; i < fireballs.size(); i++) {
       Fireball fireball = fireballs.get(i);
       fireball.move();
       fireball.draw();
     }
+
     for (int i = fireballs.size(); i != 0; ) {
       Fireball fireball = fireballs.get(--i);
       if ( !fireball.alive ) {  
         fireballs.remove(i);
       }
     }
+
     for (int i=0; i < evilpigs.size(); i++) {
       Evilpig evilpig = evilpigs.get(i);
       if (evilpig.position.x<thePlayer.position.x+width && evilpig.position.x>thePlayer.position.x-width) {
@@ -1065,23 +1079,27 @@ void draw() {
         evilpig.draw();
       }
     }
+
     for (int i = evilpigs.size(); i != 0; ) {
       Evilpig evilpig = evilpigs.get(--i);
       if ( !evilpig.alive ) {  
         evilpigs.remove(i);
       }
     }
+
     for (int i=0; i < pigshots.size(); i++) {
       Pigshot pigshot = pigshots.get(i);
       pigshot.move();
       pigshot.draw();
     }
+
     for (int i = pigshots.size(); i != 0; ) {
       Pigshot pigshot = pigshots.get(--i);
       if ( !pigshot.alive ) {  
         pigshots.remove(i);
       }
     }
+
     for (int i=0; i < bees.size(); i++) {
       Bee bee = bees.get(i);
       if (bee.position.x<thePlayer.position.x+width && bee.position.x>thePlayer.position.x-width) {
@@ -1089,12 +1107,14 @@ void draw() {
         bee.draw();
       }
     }
+
     for (int i = bees.size(); i != 0; ) {
       Bee bee = bees.get(--i);
       if ( !bee.alive ) {  
         bees.remove(i);
       }
     }
+
     for (int i=0; i < piranhas.size(); i++) {
       Piranha piranha = piranhas.get(i);
       if (piranha.position.x<thePlayer.position.x+width && piranha.position.x>thePlayer.position.x-width) {
@@ -1102,12 +1122,14 @@ void draw() {
         piranha.draw();
       }
     }
+
     for (int i = piranhas.size(); i != 0; ) {
       Piranha piranha = piranhas.get(--i);
       if ( !piranha.alive ) {  
         piranhas.remove(i);
       }
     }
+
     for (int i=0; i < platforms.size(); i++) {
       MovingPlatform platform = platforms.get(i);
       if (platform.position.x<thePlayer.position.x+width && platform.position.x>thePlayer.position.x-width) {
@@ -1115,32 +1137,38 @@ void draw() {
         platform.draw();
       }
     }
+
     for (int i=0; i < timers.size(); i++) {
       Timer timer = timers.get(i);
         timer.run();
     }
+
     for (int i = timers.size(); i != 0; ) {
       Timer timer = timers.get(--i);
       if ( timer.done ) {  
         timers.remove(i);
       }
     }
+
     for (int i=0; i < fishs.size(); i++) {
       Fish fish = fishs.get(i);
         fish.move();
         fish.draw();
     }
+
     for (int i = fishs.size(); i != 0; ) {
       Fish fish = fishs.get(--i);
       if ( !fish.alive ) {  
         fishs.remove(i);
       }
     }
+
     for (int i=0; i < potions.size(); i++) {
       Potion potion = potions.get(i);
         potion.move();
         potion.draw();
     }
+    
     for (int i = potions.size(); i != 0; ) {
       Potion potion = potions.get(--i);
       if ( !potion.alive ) {  
