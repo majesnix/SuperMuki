@@ -20,12 +20,7 @@ class Ninja {
   static final float AIR_SLOWDOWN_PERC = 0.85;
 
   Ninja() {
-    isOnGround = false;
-    facingRight = false;
-    alive=false;
-    moveLeft=true;
-    position = new PVector();
-    velocity = new PVector();
+    this(0,0);
   }//Ninja
 
   Ninja(int positionX, int positionY) {

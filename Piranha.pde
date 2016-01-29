@@ -9,10 +9,7 @@
 class Piranha extends Bee{
 
     Piranha() {
-    isOnGround = false;
-    facingRight = false;
-    alive=false;
-    moveLeft=true;
+    this(0,0);
   }
    Piranha(int positionX, int positionY) {
     isOnGround = false;

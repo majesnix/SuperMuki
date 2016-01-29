@@ -12,10 +12,7 @@ class Bee extends Ninja {
   static final float AIR_SLOWDOWN_PERC = 0.75;
 
   Bee() {
-    isOnGround = false;
-    facingRight = false;
-    alive=false;
-    moveLeft=true;
+    this(0,0);
   }//Bee
   
   Bee(int positionX, int positionY) {

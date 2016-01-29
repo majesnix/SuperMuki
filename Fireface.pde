@@ -26,13 +26,7 @@ class Fireface {
   int arrowStart;
 
   Fireface() {
-    isOnGround = false;
-    alive=false;
-    moveLeft=true;
-    position = new PVector();
-    velocity = new PVector();
-    shootingAllowed=true;
-    shootDelay=0;
+    this(0,0);
   }//Fireface
 
   Fireface(int positionX, int positionY) {

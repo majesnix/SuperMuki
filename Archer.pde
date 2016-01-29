@@ -17,10 +17,7 @@ class Archer extends Ninja {
   int arrowStart;
 
   Archer() {
-    isOnGround = false;
-    facingRight = false;
-    alive=false;
-    moveLeft=true;
+    this(0,0);
   }//Archer
 
   Archer(int positionX, int positionY) {
