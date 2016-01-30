@@ -71,10 +71,19 @@ void move() {
       image(archer_attack2, 0, 0);
     }
     //Player left of the Archer
-    else if (position.x - thePlayer.position.x<350 && thePlayer.position.x<position.x && !facingRight || thePlayer.position.x>position.x && thePlayer.position.x-position.x<350 && facingRight) {
+    else if (position.x - thePlayer.position.x<350 && thePlayer.position.x<position.x && !facingRight) {
       image(archer_attack, 0, 0);
       if (shootingAllowed || rngShoot) {
         arrows.add(new Arrow(position.x-arrowStart, position.y-0.8*guyHeight, false));
+        shootingAllowed=false;
+        rngShoot=false;
+        shootDelay = 0;
+      }
+      //Player right of the Archer
+    } else if (thePlayer.position.x>position.x && thePlayer.position.x-position.x<350 && facingRight) {
+      image(archer_attack, 0, 0);
+      if (shootingAllowed || rngShoot) {
+        arrows.add(new Arrow(position.x-arrowStart, position.y-0.8*guyHeight, true));
         shootingAllowed=false;
         rngShoot=false;
         shootDelay = 0;
