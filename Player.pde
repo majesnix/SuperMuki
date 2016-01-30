@@ -1057,8 +1057,7 @@ class Player {
         sndLifeLost.trigger();
       } else if (lifes==1) {
         music.pause();
-        sndPlayerDead.play();
-        sndPlayerDead.rewind();
+        sndPlayerDead.trigger();
         lifes--;
       }
     } else if (level==2 && !gameWon()) {
@@ -1068,8 +1067,7 @@ class Player {
         sndLifeLost.trigger();
       } else if (lifes==1) {
         music.pause();
-        sndPlayerDead.play();
-        sndPlayerDead.rewind();
+        sndPlayerDead.trigger();
         lifes--;
       }
     } else if (level==3 && !gameWon()) {
@@ -1079,8 +1077,7 @@ class Player {
         sndLifeLost.trigger();
       } else if (lifes==1) {
         music.pause();
-        sndPlayerDead.play();
-        sndPlayerDead.rewind();
+        sndPlayerDead.trigger();
         lifes--;
       }
     } else if (level==4 && !gameWon()) {
@@ -1090,8 +1087,7 @@ class Player {
         sndLifeLost.trigger();
       } else if (lifes==1) {
         music.pause();
-        sndPlayerDead.play();
-        sndPlayerDead.rewind();
+        sndPlayerDead.trigger();
         lifes--;
       }
     }

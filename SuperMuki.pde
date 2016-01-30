@@ -82,30 +82,30 @@ final float GRAVITY_POWER = 0.8;
  **  Hilfsvariablen  **
  *********************/
 
-int lifes; //Lifes
-int rememberLifes; //remembers the correct lifes, after switching from debug mode back to normal mode
-int level; //Level counter
-int checkpointReachedDisplayTimer; //timer for Checkpoint info text
-int menuTimer; //timer for menuEvents
+int lifes; //Leben
+int rememberLifes; //speichert "reale" Leben, wenn Debug-Modus aktiviert wird
+int level; //level zähler
+int checkpointReachedDisplayTimer; //Timer, wie lange der Checkpoint-Reached text gezeigt wird
+int menuTimer; //timer, wann die MenuEvents beginnen
 
 Boolean debug; //debug true,false
 Boolean dogeIntro; //intro true,false
 Boolean gameStarted; //GameLoaded, new Game started
-Boolean dogeSpeaking; //checks Doge Story Messages and stop randomText
-Boolean ballonCatStart; //shows the ballon cat
+Boolean dogeSpeaking; //prüft ob Doge spricht, stop dogeRandom
+Boolean ballonCatStart; //"aktiviert" BallonCat im menu
 
-boolean [] tmpValues = new boolean[7]; //helper for load/save game / keeps loaded items and resets the right items, when player loses a life
+boolean [] tmpValues = new boolean[7]; //helper für save/load game / speichert "geladene" items und setzt die richtigen items bei lebensverlust zurück
 
-int gameStartTimeSec, gameCurrentTimeSec; //variables to track time
+int gameStartTimeSec, gameCurrentTimeSec; //Vergangene ingamezeit
 
-static final String SAVEGAME = "savegame.dat"; //name of the savegame file
+static final String SAVEGAME = "savegame.dat"; //name des savegame files
 
 /******************************
- **  music and sound effects  **
+ **  musik und soundeffekte  **
  ******************************/
 
-AudioPlayer music, sndPlayerDead; // AudioPlayer uses less memory. Better for music.
-AudioSample sndJump, sndCoin, sndLifeLost, sndGameWon; // AudioSample plays more respnosively. Better for sound effects.
+AudioPlayer music; // AudioPlayer uses less memory. Better for music.
+AudioSample sndJump, sndCoin, sndLifeLost, sndGameWon, sndPlayerDead; // AudioSample plays more respnosively. Better for sound effects.
 
 /********************************************************************
  **  Objekte für Spieler, Gegner, die Welt, Keyboardeingaben, etc.  **
@@ -184,8 +184,12 @@ void setup() {
   sndJump = minim.loadSample("sounds/Jump.wav", buffersize);
   sndCoin = minim.loadSample("sounds/coin.wav", buffersize);
   sndLifeLost = minim.loadSample("sounds/life_lost.mp3", buffersize);
-  sndPlayerDead = minim.loadFile("sounds/game_over.mp3", 1024);
+  sndPlayerDead = minim.loadSample("sounds/game_over.mp3", 1024);
   sndGameWon = minim.loadSample("sounds/Sound_Gewonnen.mp3", buffersize);
+  sndJump.setGain(-15.0);
+  sndCoin.setGain(-15.0);
+  sndGameWon.setGain(-15.0);
+  sndLifeLost.setGain(-15.0);
 
   frameRate(30);
 }//Setup
@@ -676,6 +680,12 @@ void updateCameraPosition() {
  **  Storyline texts  **
  **********************/
 
+ /**
+* Methods to set the right text
+*
+* @author Claßen, Dominic
+*/
+
 void storyDCL() {
   messages.s[0] = "Dominic likes Apple(s). As long as one \nWindows PC is left!";
   messages.s[1] = "";
@@ -926,6 +936,12 @@ void dogeText3() {
   dogeMessages.setText(dogeMessages.s[dogeMessages.index]);
   dogeMessages.animateText();
 }
+
+/**
+* Method to display a random text, into DogeMSGBox
+*
+* @author Claßen, Dominic
+*/
 
 void dogeRandomText() {
   switch(int(random(7))) {
@@ -1213,7 +1229,7 @@ void draw() {
     }
   }
 
-  if (focused == false) { // checks wheter the window is in focus or not
+  if (focused == false) { // checks whether the window is in focus or not
     textAlign(CENTER);
     outlinedText("Click here to Play!\n\nUse the arrow keys to move.\nSpacebar or UP to jump.", width/2, height-height/100*31.25);
   } else {
