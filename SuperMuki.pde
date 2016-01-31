@@ -179,7 +179,6 @@ void setup() {
   minim = new Minim(this);
   music = minim.loadFile("sounds/music.mp3", 1024);
   music.setGain(-30.0); //Lautstärke ertragbar machen
-  music.loop();
   int buffersize = 256;
   sndJump = minim.loadSample("sounds/Jump.wav", buffersize);
   sndCoin = minim.loadSample("sounds/coin.wav", buffersize);
@@ -1023,6 +1022,10 @@ void draw() {
 
   if (level!=0) {
     theWorld.render();
+  }
+
+  if(!music.isPlaying() && level!=5){
+    music.loop();
   }
 
   /*
