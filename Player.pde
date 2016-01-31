@@ -335,16 +335,20 @@ class Player {
       theWorld.setSquareAtToThis(centerOfPlayer, World.TILE_EMPTY);
       sndCoin.trigger();
       fishsCollected++;
+      if(level==1){
       dogeMessages.textPosition=1;
       dogeMessages.dogeSpeaking=true;
       dogeText3();
+      }
     } else if (theWorld.worldSquareAt(topSide)==World.FISH) { 
       theWorld.setSquareAtToThis(topSide, World.TILE_EMPTY);
       sndCoin.trigger();
       fishsCollected++;
+      if(level==1){
       dogeMessages.textPosition=1;
       dogeMessages.dogeSpeaking=true;
       dogeText3();
+      }
     }
     /***************
      **  Dominic  **
