@@ -67,7 +67,7 @@ void move() {
     }
     translate(-guyWidth/2, -guyHeight);
 
-    if (position.x - thePlayer.position.x<100 && thePlayer.position.x<position.x && !facingRight || thePlayer.position.x>position.x && thePlayer.position.x-position.x<100 && facingRight) {
+    if (position.x - thePlayer.position.x<100 && thePlayer.position.x<position.x && thePlayer.position.y<=position.y && !facingRight || thePlayer.position.x>position.x && thePlayer.position.x-position.x<100 && thePlayer.position.y<=position.y && facingRight) {
       image(archer_attack2, 0, 0);
     }
     //Player left of the Archer

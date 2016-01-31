@@ -619,7 +619,9 @@ Boolean gameWon() {
   if (theWorld.worldSquareAt(thePlayer.position)==World.TILE_WIN || theWorld.worldSquareAt(rightSideHigh)==World.TILE_WIN ||
     theWorld.worldSquareAt(rightSideLow)==World.TILE_WIN || theWorld.worldSquareAt(topSide)==World.TILE_WIN ||
     theWorld.worldSquareAt(centerOfPlayer)==World.TILE_WIN) {
+    if(level!=4){
       sndGameWon.trigger();
+    }
     return true;
   } else {
     return false;
@@ -1008,7 +1010,10 @@ void draw() {
   } else if (level==4) {
     image(bg4, 0, 0);
   } else if (level==5) {
-    image(ending, 0, 0,1280,960);
+    image(ending, 0, 0,width,height);
+    if(ending.time()==ending.duration()){
+      exit();
+    }
   }
 
   pushMatrix();

@@ -102,6 +102,7 @@ class Ninja {
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_WATER ||
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_WATER2 ||
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.TILE_MUNCHER ||
+      theWorld.worldSquareAt(rightSideLow)==World.TILE_LAVA_TOP ||
       theWorld.worldSquareAtPlusOneSquare(rightSideLow)==World.COIN ||
       theWorld.worldSquareAt(rightSideLow)==World.TILE_BLASE ||
       theWorld.worldSquareAt(rightSideLow)==World.TILE_BLASE2 ||
@@ -121,6 +122,7 @@ class Ninja {
       theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_WATER ||
       theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_WATER2 ||
       theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.TILE_MUNCHER ||
+      theWorld.worldSquareAt(leftSideLow)==World.TILE_LAVA_TOP ||
       theWorld.worldSquareAtPlusOneSquare(leftSideLow)==World.COIN ||
       theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE ||
       theWorld.worldSquareAt(leftSideLow)==World.TILE_BLASE2 ||
@@ -195,11 +197,11 @@ class Ninja {
     float speedHere = (isOnGround ? RUN_SPEED : AIR_RUN_SPEED);
     float frictionHere = (isOnGround ? SLOWDOWN_PERC : AIR_SLOWDOWN_PERC);
 
-    if (thePlayer.position.x>position.x && thePlayer.position.x-position.x<80) {
+    if (thePlayer.position.x>position.x && thePlayer.position.x-position.x<80 && thePlayer.position.y<=position.y) {
       speedHere*=3;
       moveLeft=false;
       facingRight=true;
-    } else if (position.x - thePlayer.position.x<80 && thePlayer.position.x<position.x) {
+    } else if (position.x - thePlayer.position.x<80 && thePlayer.position.x<position.x && thePlayer.position.y<=position.y) {
       speedHere*=3;
       moveLeft=true;
       facingRight=false;
@@ -234,7 +236,7 @@ class Ninja {
      *  Enemy picture
      */
 
-    if (position.x - thePlayer.position.x<120 && thePlayer.position.x<position.x && !facingRight || thePlayer.position.x>position.x && thePlayer.position.x-position.x<120 && facingRight) {
+    if (position.x - thePlayer.position.x<120 && thePlayer.position.x<position.x && thePlayer.position.y<=position.y && !facingRight || thePlayer.position.x>position.x && thePlayer.position.x-position.x<120 && thePlayer.position.y<=position.y && facingRight) {
       image(ninja_attack, 0, 0);
     } else {
       image(ninja, 0, 0);
