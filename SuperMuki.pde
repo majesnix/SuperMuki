@@ -78,21 +78,21 @@ float cameraOffsetY;
 //Gravity
 final float GRAVITY_POWER = 0.8;
 
-/*********************
- **  Hilfsvariablen  **
- *********************/
+/************************
+ **  Helper variables  **
+ ***********************/
 
-int lifes; //Leben
-int rememberLifes; //speichert "reale" Leben, wenn Debug-Modus aktiviert wird
-int level; //level zähler
-int checkpointReachedDisplayTimer; //Timer, wie lange der Checkpoint-Reached text gezeigt wird
-int menuTimer; //timer, wann die MenuEvents beginnen
+int lifes; //Lifes
+int rememberLifes; //saves lifes before debug mode, sets lifes back to normal, after debug mode is left
+int level; //level counter
+int checkpointReachedDisplayTimer; //Timer, how long checkpointReached text is displayed
+int menuTimer; //timer for menu events
 
 Boolean debug; //debug true,false
 Boolean dogeIntro; //intro true,false
 Boolean gameStarted; //GameLoaded, new Game started
-Boolean dogeSpeaking; //prüft ob Doge spricht, stop dogeRandom
-Boolean ballonCatStart; //"aktiviert" BallonCat im menu
+Boolean dogeSpeaking; //dogeSpeaking true/false, stops dogeRandom
+Boolean ballonCatStart; //activates ballonCat in the menu
 
 boolean [] tmpValues = new boolean[7]; //helper für save/load game / speichert "geladene" items und setzt die richtigen items bei lebensverlust zurück
 
@@ -172,9 +172,9 @@ void setup() {
 
   ending = new Movie(this, "ende.mp4");
 
-  /*******************************************
-   **  Läd die Sound"engine" / Soundeffekte  **
-   *******************************************/
+  /**********************************
+   **  Soundengine / soundeffects  **
+   *********************************/
 
   minim = new Minim(this);
   music = minim.loadFile("sounds/music.mp3", 1024);
@@ -705,7 +705,7 @@ void storyDCL2() {
 }//storyDCL2
 
 void storyDCL3() {
-  messages.s[0] = "He is also a heavy coffee drinker.\nCoffee helps to find solutions!";
+  messages.s[0] = "He is a heavy coffee drinker.\nCoffee helps to find solutions!";
   messages.s[1] = "";
 
   messages.setText(messages.s[messages.index]);
@@ -713,7 +713,7 @@ void storyDCL3() {
 }//storyDCL3
 
 void storyDCL4() {
-  messages.s[0] = "He always loves to play and work\nwith the Computer.";
+  messages.s[0] = "He always loved to Play and work\non the Computer.";
   messages.s[1] = "";
 
   messages.setText(messages.s[messages.index]);
