@@ -1024,7 +1024,7 @@ void draw() {
     theWorld.render();
   }
 
-  if(!music.isPlaying() && level!=5){
+  if(!music.isPlaying() && level!=5 && lifes!=0){
     music.loop();
   }
 
